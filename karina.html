@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karina | Chiang Family</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F4F7F4;
+      --white: #FFFFFF;
+      --teal: #3D7A6F;
+      --teal-light: #E4F0EE;
+      --teal-dark: #2A5E55;
+      --text: #141C1A;
+      --text-mid: #3D4F4B;
+      --text-soft: #7A9490;
+      --border: #D8E5E2;
+      --section-gap: 100px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* FAMILY NAV */
+    .family-bar {
+      background: var(--text);
+      padding: 10px 48px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      flex-wrap: wrap;
+    }
+    .family-bar-label { color: rgba(255,255,255,0.4); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-right: 8px; }
+    .family-bar a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      padding: 4px 12px;
+      border-radius: 100px;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+    .family-bar a:hover { color: white; background: rgba(255,255,255,0.1); }
+    .family-bar a.active { background: var(--teal); color: white; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      background: rgba(244,247,244,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-bottom-color: var(--border); }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--teal-dark); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--text);
+      color: var(--bg) !important;
+      padding: 8px 20px;
+      border-radius: 100px;
+    }
+    .nav-cta:hover { background: var(--teal-dark) !important; color: white !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 48px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .hero-tag::before { content: "●"; font-size: 8px; }
+    h1 {
+      font-size: clamp(40px, 5vw, 60px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+    h1 em { font-style: normal; color: var(--teal-dark); }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--text); transform: translateY(-1px); }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 40px rgba(20,28,26,0.06);
+    }
+    .hero-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 16px;
+    }
+    .hero-card-quote {
+      font-family: 'Lora', serif;
+      font-size: 19px;
+      line-height: 1.65;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-mid);
+      margin-bottom: 10px;
+    }
+    .meta-icon { font-size: 16px; }
+
+    /* SECTIONS */
+    section {
+      padding: var(--section-gap) 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.12;
+      margin-bottom: 24px;
+    }
+    .section-intro {
+      font-size: 18px;
+      color: var(--text-mid);
+      line-height: 1.75;
+      max-width: 620px;
+      margin-bottom: 48px;
+    }
+
+    /* CARDS */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .card:hover { box-shadow: 0 8px 32px rgba(20,28,26,0.08); transform: translateY(-2px); }
+    .card.wide { grid-column: span 2; }
+    .card-emoji { font-size: 30px; margin-bottom: 14px; }
+    .card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.3px; }
+    .card p { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+
+    /* SERVICES */
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 8px 32px rgba(20,28,26,0.08); transform: translateY(-2px); }
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--teal-light);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+    .service-card h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 12px; }
+    .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin-bottom: 20px; }
+    .service-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .service-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-mid); }
+    .service-list li::before { content: "→"; color: var(--teal-dark); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* CONTACT */
+    .contact-section {
+      background: var(--teal-dark);
+      color: white;
+      border-radius: 28px;
+      padding: 72px 64px;
+      text-align: center;
+      margin: 0 48px 100px;
+    }
+    .contact-section .section-label { color: #7ECFC5; }
+    .contact-section h2 { color: white; margin-bottom: 16px; }
+    .contact-section p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin: 0 auto 36px; }
+    .btn-light {
+      background: white;
+      color: var(--teal-dark);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-light:hover { background: var(--teal-light); transform: translateY(-1px); }
+
+    .divider { width: calc(100% - 96px); height: 1px; background: var(--border); margin: 0 48px; }
+
+    footer {
+      text-align: center;
+      padding: 32px 48px;
+      font-size: 13px;
+      color: var(--text-soft);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--text-soft); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      .family-bar { padding: 10px 24px; }
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 60px 24px; }
+      .hero-inner { grid-template-columns: 1fr; }
+      section { padding: 64px 24px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .card.wide { grid-column: span 1; }
+      .contact-section { margin: 0 24px 64px; padding: 48px 32px; }
+      .divider { margin: 0 24px; width: calc(100% - 48px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="family-bar">
+    <span class="family-bar-label">The Chiangs</span>
+    <a href="/kevin">Kevin</a>
+    <a href="/karina" class="active">Karina</a>
+    <a href="/deborah">Deborah</a>
+  </div>
+
+  <nav id="nav">
+    <a href="/karina" class="nav-logo">Karina<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">What I Do</a>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag">Chiang Family</div>
+        <h1>Your vision<br>made <em>operational.</em></h1>
+        <p class="hero-sub">
+          You have the dream. I build the system that makes it real. Relational by nature, systematic by design — I'm the person who turns "what if" into "what's next."
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Work with me</a>
+          <a href="#services" class="btn-secondary">What I do</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-label">A bit about Karina</div>
+        <p class="hero-card-quote">"I genuinely care about the people I work with — and I also really love a good system."</p>
+        <div class="meta-row"><span class="meta-icon">🧩</span> ISTJ — reliable, precise, trustworthy</div>
+        <div class="meta-row"><span class="meta-icon">🤝</span> Relationship-first operator</div>
+        <div class="meta-row"><span class="meta-icon">📋</span> Turns chaos into clarity</div>
+        <div class="meta-row"><span class="meta-icon">✦</span> Part of the Chiang family</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">Who I Am</div>
+    <h2>Warm. Structured.<br>Genuinely invested.</h2>
+    <p class="section-intro">
+      I'm an ISTJ — which means I show up, follow through, and remember the details that matter. But the "relational" part comes first.
+    </p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-emoji">🧩</div>
+        <h3>ISTJ — but not what you'd expect</h3>
+        <p>Yes, I'm systematic and structured. But I lead with people. I build trust before I build processes, and I think good systems are worthless without human buy-in to run them.</p>
+      </div>
+      <div class="card">
+        <div class="card-emoji">🌱</div>
+        <h3>I operationalize dreams</h3>
+        <p>The people I work with have big ideas and real vision. My job is to meet them there emotionally, then build the scaffolding that actually gets them to the outcome they're imagining.</p>
+      </div>
+      <div class="card wide">
+        <div class="card-emoji">🔗</div>
+        <h3>The bridge between vision and execution</h3>
+        <p>A lot of brilliant people lose their dreams in the gap between "I want to do this" and "here's how we actually do this." That gap is exactly where I thrive. I speak both languages — the passionate, visionary one and the operational, step-by-step one — and I help people cross.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-label">What I Do</div>
+    <h2>I take your dream<br>and give it a spine.</h2>
+    <p class="section-intro">
+      Whether you're an entrepreneur who needs their vision systematized or a team that needs operational structure with a human touch — I'm built for this.
+    </p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+      <div class="service-card">
+        <div class="service-icon">🗺️</div>
+        <h3>Dream Operationalization</h3>
+        <p>You bring the vision. I turn it into a roadmap with actual milestones, owners, and timelines — without losing the soul of what you're building.</p>
+        <ul class="service-list">
+          <li>Goal-to-system translation</li>
+          <li>Project roadmaps and milestone planning</li>
+          <li>Process design and documentation</li>
+          <li>Progress tracking and accountability</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤝</div>
+        <h3>Relational Operations</h3>
+        <p>Operations shouldn't feel cold. I build the systems and also hold the relationships — making sure the people doing the work feel seen and supported.</p>
+        <ul class="service-list">
+          <li>Team alignment and communication</li>
+          <li>Stakeholder relationship management</li>
+          <li>Culture and process integration</li>
+          <li>Follow-through and closure</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-section" id="contact">
+    <div class="section-label">Let's Build Something</div>
+    <h2>Got a dream that needs<br>a solid foundation?</h2>
+    <p>If you have vision and need someone to make it real — systematically, relationally, for real — let's talk.</p>
+    <a href="/kevin#contact" class="btn-light">Get in touch through Kevin</a>
+  </div>
+
+  <footer>
+    <p>Karina · Part of the <a href="/">Chiang Family</a> · <a href="/kevin">Kevin</a> · <a href="/deborah">Deborah</a></p>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+  </script>
+
+</body>
+</html>

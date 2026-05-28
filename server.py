@@ -66,6 +66,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
         path = self.path.split("?")[0]
         if path == "/":
             self.send_file(BASE / "submit.html")
+        elif path in ("/kevin", "/consulting"):
+            self.send_file(BASE / "consulting.html")
+        elif path == "/karina":
+            self.send_file(BASE / "karina.html")
+        elif path == "/deborah":
+            self.send_file(BASE / "deborah.html")
         elif path == "/wall":
             self.send_file(BASE / "wall.html")
         elif path == "/api/memories":

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kevin | Glass Canvas</title>
+  <title>Kevin Chiang | Glass Canvas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
@@ -429,9 +429,37 @@
       .contact-section { margin: 0 24px 64px; padding: 48px 32px; }
       .divider { margin: 0 24px; width: calc(100% - 48px); }
     }
+  /* FAMILY BAR */
+    .family-bar {
+      background: var(--text);
+      padding: 10px 48px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+    .family-bar-label { color: rgba(255,255,255,0.4); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-right: 8px; }
+    .family-bar a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      padding: 4px 12px;
+      border-radius: 100px;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+    .family-bar a:hover { color: white; background: rgba(255,255,255,0.1); }
+    .family-bar a.active { background: var(--amber-dark); color: white; }
   </style>
 </head>
 <body>
+
+  <div class="family-bar">
+    <span class="family-bar-label">The Chiangs</span>
+    <a href="/kevin" class="active">Kevin</a>
+    <a href="/karina">Karina</a>
+    <a href="/deborah">Deborah</a>
+  </div>
 
   <nav id="nav">
     <a href="#" class="nav-logo">Kevin<span>.</span></a>
