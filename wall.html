@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Villagers — Memory Wall</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: #f5ede0;
+      background-image:
+        radial-gradient(circle at 20% 20%, #ede0cc 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, #e8d5b8 0%, transparent 50%);
+      font-family: Georgia, 'Times New Roman', serif;
+      padding: 32px 40px 40px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.6rem;
+      color: #4a3728;
+      letter-spacing: 0.02em;
+    }
+
+    header p {
+      color: #9a7a62;
+      font-style: italic;
+      font-size: 1.1rem;
+      margin-top: 6px;
+    }
+
+    #empty {
+      text-align: center;
+      color: #b09070;
+      font-style: italic;
+      font-size: 1.1rem;
+      margin-top: 80px;
+    }
+
+    #wall {
+      columns: 3 300px;
+      column-gap: 20px;
+    }
+
+    .note {
+      break-inside: avoid;
+      margin-bottom: 20px;
+      padding: 20px 22px 16px;
+      border-radius: 4px;
+      box-shadow: 2px 3px 10px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.08);
+      position: relative;
+      animation: pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+
+    @keyframes pop-in {
+      from { opacity: 0; transform: scale(0.85) rotate(var(--tilt)); }
+      to   { opacity: 1; transform: scale(1)    rotate(var(--tilt)); }
+    }
+
+    .note-text {
+      font-size: 1rem;
+      color: #3d2b1f;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .note-author {
+      font-size: 0.8rem;
+      color: #7a5c48;
+      text-align: right;
+      font-style: italic;
+    }
+
+    .note-author::before { content: "— "; }
+
+    /* sticky note color palette */
+    .color-0 { background: #fef9c3; }
+    .color-1 { background: #fde8c8; }
+    .color-2 { background: #d4edda; }
+    .color-3 { background: #fce4ec; }
+    .color-4 { background: #e8eaf6; }
+    .color-5 { background: #e0f7fa; }
+    .color-6 { background: #f3e5f5; }
+    .color-7 { background: #fff3e0; }
+
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      color: #b09070;
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🏡 Villagers</h1>
+    <p>Season Finale — our memories</p>
+  </header>
+
+  <div id="empty">Memories will appear here as people share them…</div>
+  <div id="wall"></div>
+
+  <footer id="footer" style="display:none">
+    <span id="count">0</span> memories shared
+  </footer>
+
+  <script>
+    const COLORS = 8;
+    const TILTS = [-2, -1, 0, 0.5, 1, 1.5, -1.5, 2];
+
+    let knownIds = new Set();
+
+    function createNote(memory, index) {
+      const div = document.createElement("div");
+      const colorClass = `color-${index % COLORS}`;
+      const tilt = TILTS[index % TILTS.length];
+      div.className = `note ${colorClass}`;
+      div.style.setProperty("--tilt", `${tilt}deg`);
+      div.style.transform = `rotate(${tilt}deg)`;
+
+      div.innerHTML = `
+        <div class="note-text">${escapeHtml(memory.text)}</div>
+        <div class="note-author">${escapeHtml(memory.author)}</div>
+      `;
+      return div;
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    async function fetchAndUpdate() {
+      try {
+        const res = await fetch("/api/memories");
+        const memories = await res.json();
+
+        const wall = document.getElementById("wall");
+        const empty = document.getElementById("empty");
+        const footer = document.getElementById("footer");
+        const countEl = document.getElementById("count");
+
+        let added = false;
+        memories.forEach((m, i) => {
+          if (!knownIds.has(m.id)) {
+            knownIds.add(m.id);
+            wall.appendChild(createNote(m, i));
+            added = true;
+          }
+        });
+
+        if (memories.length > 0) {
+          empty.style.display = "none";
+          footer.style.display = "block";
+          countEl.textContent = memories.length;
+        }
+      } catch (e) {
+        // silently retry
+      }
+    }
+
+    fetchAndUpdate();
+    setInterval(fetchAndUpdate, 3000);
+  </script>
+</body>
+</html>

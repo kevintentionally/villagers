@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Villagers — Share a Memory</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: #fdf6ec;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia, 'Times New Roman', serif;
+      padding: 24px;
+    }
+
+    .card {
+      background: #fffdf7;
+      border: 1px solid #e8d9c0;
+      border-radius: 16px;
+      padding: 32px 28px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+
+    .emoji { font-size: 2.4rem; text-align: center; margin-bottom: 12px; }
+
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #4a3728;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #8a6e58;
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #6b4f3a;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    input, textarea {
+      width: 100%;
+      border: 1.5px solid #d9c4a8;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      color: #3d2b1f;
+      background: #fdfaf4;
+      resize: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #c4834a;
+    }
+
+    .field { margin-bottom: 18px; }
+
+    textarea { height: 120px; }
+
+    .char-count {
+      text-align: right;
+      font-size: 0.78rem;
+      color: #b09070;
+      margin-top: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #c4834a;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: Georgia, serif;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    button:hover { background: #a8693a; }
+    button:active { transform: scale(0.98); }
+    button:disabled { background: #d4b898; cursor: default; }
+
+    .success {
+      display: none;
+      text-align: center;
+      padding: 24px 0 8px;
+    }
+
+    .success .big { font-size: 2.5rem; margin-bottom: 10px; }
+    .success p { color: #6b4f3a; font-size: 1.05rem; }
+    .success .again {
+      margin-top: 20px;
+      color: #c4834a;
+      cursor: pointer;
+      font-style: italic;
+      font-size: 0.95rem;
+      background: none;
+      border: none;
+      font-family: Georgia, serif;
+      width: auto;
+      padding: 0;
+    }
+    .success .again:hover { background: none; color: #a8693a; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div id="form-view">
+      <div class="emoji">🏡</div>
+      <h1>Villagers</h1>
+      <p class="subtitle">Season Finale — share a memory from this season</p>
+
+      <div class="field">
+        <label for="author">Your name</label>
+        <input type="text" id="author" placeholder="e.g. Sarah" maxlength="40" autocomplete="off" />
+      </div>
+
+      <div class="field">
+        <label for="memory">Your memory</label>
+        <textarea id="memory" placeholder="A moment, a laugh, something you'll remember…" maxlength="300"></textarea>
+        <div class="char-count"><span id="count">0</span>/300</div>
+      </div>
+
+      <button id="submit-btn" onclick="submit()">Add to the wall ✨</button>
+    </div>
+
+    <div class="success" id="success-view">
+      <div class="big">🌿</div>
+      <p>Your memory is on the wall!</p>
+      <button class="again" onclick="reset()">Add another memory →</button>
+    </div>
+  </div>
+
+  <script>
+    const textarea = document.getElementById("memory");
+    const countEl = document.getElementById("count");
+
+    textarea.addEventListener("input", () => {
+      countEl.textContent = textarea.value.length;
+    });
+
+    async function submit() {
+      const author = document.getElementById("author").value.trim();
+      const text = textarea.value.trim();
+      if (!text) { textarea.focus(); return; }
+
+      const btn = document.getElementById("submit-btn");
+      btn.disabled = true;
+      btn.textContent = "Saving…";
+
+      try {
+        const res = await fetch("/api/memories", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text, author }),
+        });
+        if (!res.ok) throw new Error();
+        document.getElementById("form-view").style.display = "none";
+        document.getElementById("success-view").style.display = "block";
+      } catch {
+        btn.disabled = false;
+        btn.textContent = "Add to the wall ✨";
+        alert("Something went wrong — try again!");
+      }
+    }
+
+    function reset() {
+      document.getElementById("author").value = "";
+      textarea.value = "";
+      countEl.textContent = "0";
+      document.getElementById("success-view").style.display = "none";
+      document.getElementById("form-view").style.display = "block";
+      document.getElementById("submit-btn").disabled = false;
+      document.getElementById("submit-btn").textContent = "Add to the wall ✨";
+    }
+  </script>
+</body>
+</html>
