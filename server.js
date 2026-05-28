@@ -48,6 +48,12 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  if (req.method === "GET" && url.pathname === "/consulting") {
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.end(fs.readFileSync(path.join(__dirname, "consulting.html")));
+    return;
+  }
+
   if (req.method === "GET" && url.pathname === "/wall") {
     res.writeHead(200, { "Content-Type": "text/html" });
     res.end(fs.readFileSync(path.join(__dirname, "wall.html")));

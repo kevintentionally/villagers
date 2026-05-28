@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin | Glass Canvas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF7F2;
+      --warm-white: #FFFFFF;
+      --amber: #E8A838;
+      --amber-light: #FDF3DC;
+      --amber-dark: #C48A1A;
+      --text: #1A1612;
+      --text-mid: #4A3F35;
+      --text-soft: #8C7B6E;
+      --border: #E8E0D5;
+      --section-gap: 100px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-bottom-color: var(--border); }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--amber-dark); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--text);
+      color: var(--cream) !important;
+      padding: 8px 20px;
+      border-radius: 100px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--amber-dark) !important; color: var(--warm-white) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 48px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--amber-light);
+      color: var(--amber-dark);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+      letter-spacing: 0.3px;
+    }
+    .hero-tag::before { content: "●"; font-size: 8px; }
+    h1 {
+      font-size: clamp(42px, 5vw, 64px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+    h1 em {
+      font-style: normal;
+      color: var(--amber-dark);
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--text);
+      color: var(--cream);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--amber-dark); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--text); transform: translateY(-1px); }
+
+    .hero-card {
+      background: var(--warm-white);
+      border-radius: 24px;
+      padding: 40px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 40px rgba(26,22,18,0.06);
+    }
+    .hero-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 16px;
+    }
+    .hero-card-quote {
+      font-family: 'Lora', serif;
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    .hero-card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-mid);
+    }
+    .meta-icon { font-size: 16px; }
+
+    /* SECTIONS */
+    section {
+      padding: var(--section-gap) 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber-dark);
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.12;
+      margin-bottom: 24px;
+    }
+    .section-intro {
+      font-size: 18px;
+      color: var(--text-mid);
+      line-height: 1.75;
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+
+    /* WHO I AM */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .about-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .about-card:hover { box-shadow: 0 8px 32px rgba(26,22,18,0.08); transform: translateY(-2px); }
+    .about-card.wide { grid-column: span 2; }
+    .card-emoji { font-size: 32px; margin-bottom: 16px; }
+    .about-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .about-card p { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+
+    /* JOURNEY */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      bottom: 12px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--amber), var(--border));
+    }
+    .timeline-item {
+      position: relative;
+      padding: 0 0 48px 32px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -32px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--amber);
+      border: 3px solid var(--cream);
+      box-shadow: 0 0 0 2px var(--amber);
+    }
+    .timeline-period {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 8px;
+    }
+    .timeline-item h3 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .timeline-item p { font-size: 16px; color: var(--text-mid); line-height: 1.75; max-width: 580px; }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 8px 32px rgba(26,22,18,0.08); transform: translateY(-2px); }
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--amber-light);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+    .service-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin-bottom: 20px; }
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .service-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-mid);
+    }
+    .service-list li::before {
+      content: "→";
+      color: var(--amber-dark);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      background: var(--text);
+      color: var(--cream);
+      border-radius: 28px;
+      padding: 72px 64px;
+      text-align: center;
+      margin: 0 48px 100px;
+    }
+    .contact-section .section-label { color: var(--amber); }
+    .contact-section h2 { color: var(--cream); margin-bottom: 16px; }
+    .contact-section p { font-size: 18px; color: rgba(250,247,242,0.7); max-width: 480px; margin: 0 auto 40px; }
+    .contact-email {
+      display: inline-block;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--amber);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+      margin-bottom: 36px;
+      transition: color 0.2s;
+    }
+    .contact-email:hover { color: #F5C060; }
+    .contact-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-light {
+      display: inline-block;
+      background: var(--cream);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-light:hover { background: var(--amber-light); transform: translateY(-1px); }
+    .btn-outline-light {
+      display: inline-block;
+      background: transparent;
+      color: var(--cream);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      border: 1.5px solid rgba(250,247,242,0.3);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .btn-outline-light:hover { border-color: var(--cream); transform: translateY(-1px); }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 32px 48px;
+      font-size: 13px;
+      color: var(--text-soft);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--text-soft); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    /* DIVIDER */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 0 48px;
+      width: calc(100% - 96px);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      section { padding: 64px 24px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-card.wide { grid-column: span 1; }
+      .services-grid { grid-template-columns: 1fr; }
+      .contact-section { margin: 0 24px 64px; padding: 48px 32px; }
+      .divider { margin: 0 24px; width: calc(100% - 48px); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="#" class="nav-logo">Kevin<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#journey">Journey</a>
+      <a href="#services">Work</a>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag">Glass Canvas Consulting</div>
+        <h1>The person in your corner who <em>actually gets stuff done.</em></h1>
+        <p class="hero-sub">
+          I plug into your world — as the second employee who makes a solopreneur unstoppable, or the EA who makes a mid-sized org leader feel like they have superpowers.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Let's talk</a>
+          <a href="#services" class="btn-secondary">See how I work</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-label">A little about Kevin</div>
+        <p class="hero-card-quote">"I'm an ENFP who also ships things. The warm energy and the to-do list are the same person."</p>
+        <div class="hero-card-meta">
+          <div class="meta-row"><span class="meta-icon">🇨🇦</span> Originally from Canada</div>
+          <div class="meta-row"><span class="meta-icon">🎓</span> MBA, Queen's University</div>
+          <div class="meta-row"><span class="meta-icon">🐶</span> Dog dad, first and foremost</div>
+          <div class="meta-row"><span class="meta-icon">✦</span> Elder Gen Z, proud of it</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WHO I AM -->
+  <section id="about">
+    <div class="section-label">Who I Am</div>
+    <h2>More than a consultant.<br>A person you'll actually like.</h2>
+    <p class="section-intro">
+      Before we talk business, you should know who you're dealing with. I'm Kevin — and the personal stuff isn't separate from my work, it's the whole point.
+    </p>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="card-emoji">🧠</div>
+        <h3>ENFP through and through</h3>
+        <p>I see patterns and possibilities where others see problems. I lead with curiosity, bring energy into every room, and genuinely care about the humans I work with — not just the deliverables.</p>
+      </div>
+      <div class="about-card">
+        <div class="card-emoji">🐾</div>
+        <h3>Dog dad, family person</h3>
+        <p>My dogs keep me grounded. My family taught me what real work looks like — showing up, adapting, and caring about the outcome. That's not a metaphor. It's just true.</p>
+      </div>
+      <div class="about-card wide">
+        <div class="card-emoji">⚡</div>
+        <h3>Warm energy + real execution</h3>
+        <p>I've heard "you're so friendly" and "how did you get all that done?" in the same week more times than I can count. Being an ENFP doesn't mean I can't ship — it means I ship things people actually want to use. The warmth and the work ethic come from the same place.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- JOURNEY -->
+  <section id="journey">
+    <div class="section-label">My Journey</div>
+    <h2>Canada → family business<br>→ Queen's → Glass Canvas.</h2>
+    <p class="section-intro">
+      Every chapter taught me something different about what it takes to build, lead, and execute.
+    </p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">The Foundation</div>
+        <h3>Pearl Sinks — Family Business</h3>
+        <p>Growing up working in my family's business in Canada wasn't just a summer job — it was a masterclass in operations, customer relationships, and what it actually takes to keep something running. I learned early that the best businesses are built on trust and that no task is beneath you.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">The Framework</div>
+        <h3>MBA at Queen's University</h3>
+        <p>Queen's gave me the vocabulary for what I'd already learned by doing. Strategy, leadership, finance — but more than anything, it sharpened my ability to think clearly under pressure and communicate ideas that move people to action.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">Now</div>
+        <h3>Glass Canvas Consulting</h3>
+        <p>Glass Canvas is the synthesis of everything — the scrappy operator, the strategic thinker, the person who rolls up their sleeves and the one who can see three moves ahead. I work with founders and leaders who need someone who can do both.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-label">How I Can Help</div>
+    <h2>Two ways I show up<br>for the people I work with.</h2>
+    <p class="section-intro">
+      I don't do cookie-cutter. I plug in where you need me most and become a genuine extension of how you operate.
+    </p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🚀</div>
+        <h3>The Best Second Employee</h3>
+        <p>
+          Solopreneurs don't need a team — they need the right one person. I become that person: part operator, part strategist, part accountability partner. You focus on what only you can do; I handle everything that would otherwise slow you down.
+        </p>
+        <ul class="service-list">
+          <li>Systems and operations setup</li>
+          <li>Project and launch management</li>
+          <li>Research, writing, and decision support</li>
+          <li>Vendor and partner coordination</li>
+          <li>Strategic sounding board, always on</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <h3>EA for the Mid-Org Leader</h3>
+        <p>
+          Leading a mid-sized organization is relentless. I step in as a high-trust executive partner — filtering, prioritizing, and executing so you can lead with clarity instead of getting buried in the details.
+        </p>
+        <ul class="service-list">
+          <li>Executive inbox and calendar management</li>
+          <li>Cross-functional project tracking</li>
+          <li>Stakeholder communication and prep</li>
+          <li>Meeting facilitation and follow-through</li>
+          <li>Strategic research and briefing documents</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-section" id="contact">
+    <div class="section-label">Get In Touch</div>
+    <h2>Ready to add a Kevin<br>to your team?</h2>
+    <p>If you're building something or leading something and you need someone genuinely in your corner — let's have a conversation.</p>
+    <a href="mailto:kevin@glasscanvas.io" class="contact-email">kevin@glasscanvas.io</a>
+    <div class="contact-actions">
+      <a href="mailto:kevin@glasscanvas.io" class="btn-light">Send me an email</a>
+      <a href="https://linkedin.com/in/kevin" class="btn-outline-light">Connect on LinkedIn</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Glass Canvas Consulting · Built by Kevin, maintained with Claude Code &nbsp;·&nbsp; <a href="mailto:kevin@glasscanvas.io">kevin@glasscanvas.io</a></p>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    });
+  </script>
+
+</body>
+</html>
