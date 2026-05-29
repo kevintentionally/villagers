@@ -65,6 +65,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         path = self.path.split("?")[0]
         if path == "/":
+            self.send_file(BASE / "home.html")
+        elif path == "/submit":
             self.send_file(BASE / "submit.html")
         elif path in ("/kevin", "/consulting"):
             self.send_file(BASE / "consulting.html")
