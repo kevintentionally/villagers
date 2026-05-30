@@ -89,6 +89,23 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.require_auth()
             return
         path = self.path.split("?")[0]
+        # Static assets
+        static = {'.svg': 'image/svg+xml', '.css': 'text/css', '.js': 'application/javascript'}
+        ext = Path(path).suffix.lower()
+        if ext in static:
+            filepath = BASE / path.lstrip('/')
+            try:
+                filepath.relative_to(BASE)
+            except ValueError:
+                self.send_response(403)
+                self.end_headers()
+                return
+            if filepath.exists():
+                self.send_file(filepath, static[ext])
+            else:
+                self.send_response(404)
+                self.end_headers()
+            return
         if path == "/":
             self.send_file(BASE / "home.html")
         elif path == "/submit":

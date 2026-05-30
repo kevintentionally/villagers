@@ -3,581 +3,509 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kevin Chiang | Üsan Consulting</title>
+  <title>Kevin Chiang — Üsan Consulting</title>
+  <meta name="description" content="Kevin Chiang is the best second employee for solopreneurs and the EA that gives mid-org leaders superpowers." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream: #FAF7F2;
-      --warm-white: #FFFFFF;
-      --amber: #E8A838;
-      --amber-light: #FDF3DC;
-      --amber-dark: #C48A1A;
-      --text: #1A1612;
-      --text-mid: #4A3F35;
-      --text-soft: #8C7B6E;
-      --border: #E8E0D5;
-      --section-gap: 100px;
+      --ink:        oklch(0.10 0.000 0);
+      --ink-2:      oklch(0.17 0.000 0);
+      --amber:      oklch(0.75 0.149 46);
+      --amber-deep: oklch(0.58 0.149 46);
+      --amber-pale: oklch(0.94 0.04  46);
+      --paper:      oklch(1.00 0.000 0);
+      --paper-2:    oklch(0.96 0.000 0);
+      --text:       oklch(0.16 0.000 0);
+      --text-2:     oklch(0.44 0.000 0);
+      --on-dark:    oklch(0.93 0.008 80);
+      --on-dark-2:  oklch(0.58 0.006 80);
+      --border-d:   oklch(1 0 0 / 0.09);
+      --border-l:   oklch(0 0 0 / 0.08);
+      --font-d: 'Bricolage Grotesque', system-ui, sans-serif;
+      --font-b: 'Hanken Grotesk', system-ui, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--cream);
+      font-family: var(--font-b);
+      background: var(--paper);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
+
+    /* FAMILY BAR */
+    .fam-bar {
+      background: var(--ink);
+      padding: 10px 52px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .fam-bar-home {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--on-dark-2);
+      font-family: var(--font-d);
+      font-size: 13px;
+      font-weight: 700;
+      margin-right: 12px;
+      transition: color 0.15s;
+    }
+    .fam-bar-home:hover { color: var(--on-dark); }
+    .fam-bar-home svg { color: var(--amber); width: 14px; height: 16px; }
+    .fam-bar a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--on-dark-2);
+      text-decoration: none;
+      padding: 4px 12px;
+      border-radius: 100px;
+      transition: all 0.15s;
+    }
+    .fam-bar a:hover { color: var(--on-dark); background: var(--border-d); }
+    .fam-bar a.active { background: var(--amber); color: var(--ink); font-weight: 600; }
 
     /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
+      position: sticky;
+      top: 0;
       z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 48px;
-      background: rgba(250, 247, 242, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s;
+      padding: 18px 52px;
+      background: oklch(1 0 0 / 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-l);
     }
-    nav.scrolled { border-bottom-color: var(--border); }
-    .nav-logo {
-      font-weight: 700;
-      font-size: 18px;
-      letter-spacing: -0.3px;
-      color: var(--text);
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       text-decoration: none;
+      color: var(--text);
     }
-    .nav-logo span { color: var(--amber-dark); }
-    .nav-links { display: flex; gap: 32px; }
+    .nav-mark { color: var(--amber); width: 18px; height: 20px; }
+    .nav-name { font-family: var(--font-d); font-weight: 800; font-size: 17px; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
     .nav-links a {
       font-size: 14px;
       font-weight: 500;
-      color: var(--text-mid);
+      color: var(--text-2);
       text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      background: var(--text);
-      color: var(--cream) !important;
-      padding: 8px 20px;
+      padding: 7px 14px;
       border-radius: 100px;
-      transition: background 0.2s !important;
+      transition: color 0.15s, background 0.15s;
     }
-    .nav-cta:hover { background: var(--amber-dark) !important; color: var(--warm-white) !important; }
+    .nav-links a:hover { color: var(--text); background: var(--border-l); }
+    .nav-links a.cta {
+      background: var(--ink);
+      color: var(--paper);
+      font-weight: 600;
+    }
+    .nav-links a.cta:hover { background: var(--amber-deep); }
 
     /* HERO */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 120px 48px 80px;
+      padding: clamp(72px, 10vw, 112px) clamp(24px, 5vw, 80px);
       max-width: 1100px;
       margin: 0 auto;
-    }
-    .hero-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      gap: 72px;
       align-items: center;
-      width: 100%;
     }
     .hero-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--amber-light);
-      color: var(--amber-dark);
-      font-size: 13px;
+      background: var(--amber-pale);
+      color: var(--amber-deep);
+      font-size: 12px;
       font-weight: 600;
-      padding: 6px 14px;
+      padding: 5px 14px;
       border-radius: 100px;
       margin-bottom: 24px;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
     }
-    .hero-tag::before { content: "●"; font-size: 8px; }
     h1 {
-      font-size: clamp(42px, 5vw, 64px);
+      font-family: var(--font-d);
+      font-size: clamp(38px, 5vw, 62px);
       font-weight: 800;
-      line-height: 1.08;
-      letter-spacing: -2px;
+      letter-spacing: -0.04em;
+      line-height: 1.06;
       margin-bottom: 24px;
-      color: var(--text);
+      text-wrap: balance;
     }
-    h1 em {
-      font-style: normal;
-      color: var(--amber-dark);
-    }
+    h1 em { font-style: normal; color: var(--amber-deep); }
     .hero-sub {
       font-size: 18px;
-      color: var(--text-mid);
-      line-height: 1.7;
+      color: var(--text-2);
+      line-height: 1.75;
       margin-bottom: 36px;
-      max-width: 480px;
+      max-width: 50ch;
+      text-wrap: pretty;
     }
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-block;
-      background: var(--text);
-      color: var(--cream);
-      font-family: inherit;
+    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-b);
       font-size: 15px;
       font-weight: 600;
-      padding: 14px 28px;
+      padding: 13px 26px;
       border-radius: 100px;
       text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
+      transition: transform 0.15s, background 0.15s, border-color 0.15s;
     }
-    .btn-primary:hover { background: var(--amber-dark); transform: translateY(-1px); }
-    .btn-secondary {
-      display: inline-block;
-      background: transparent;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 14px 28px;
-      border-radius: 100px;
-      text-decoration: none;
-      border: 1.5px solid var(--border);
-      transition: border-color 0.2s, transform 0.15s;
-    }
-    .btn-secondary:hover { border-color: var(--text); transform: translateY(-1px); }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-dark { background: var(--ink); color: var(--paper); }
+    .btn-dark:hover { background: var(--amber-deep); }
+    .btn-ghost { background: transparent; color: var(--text); border: 1.5px solid var(--border-l); }
+    .btn-ghost:hover { border-color: var(--text); }
 
     .hero-card {
-      background: var(--warm-white);
-      border-radius: 24px;
-      padding: 40px;
-      border: 1px solid var(--border);
-      box-shadow: 0 8px 40px rgba(26,22,18,0.06);
+      background: var(--paper-2);
+      border-radius: 20px;
+      padding: 36px;
+      border: 1px solid var(--border-l);
     }
     .hero-card-label {
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--text-soft);
+      font-weight: 600;
+      color: var(--text-2);
       margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
     }
     .hero-card-quote {
-      font-family: 'Lora', serif;
-      font-size: 20px;
+      font-family: var(--font-d);
+      font-size: 18px;
+      font-weight: 500;
       line-height: 1.6;
       color: var(--text);
-      font-style: italic;
       margin-bottom: 24px;
-    }
-    .hero-card-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
     }
     .meta-row {
       display: flex;
       align-items: center;
       gap: 10px;
       font-size: 13px;
-      color: var(--text-mid);
+      color: var(--text-2);
+      margin-bottom: 10px;
     }
-    .meta-icon { font-size: 16px; }
 
     /* SECTIONS */
-    section {
-      padding: var(--section-gap) 48px;
+    .section {
+      padding: clamp(64px, 9vw, 100px) clamp(24px, 5vw, 80px);
       max-width: 1100px;
       margin: 0 auto;
     }
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--amber-dark);
-      margin-bottom: 16px;
-    }
+    .divider { height: 1px; background: var(--border-l); margin: 0 clamp(24px, 5vw, 80px); }
     h2 {
-      font-size: clamp(32px, 4vw, 48px);
+      font-family: var(--font-d);
+      font-size: clamp(28px, 3.5vw, 44px);
       font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.12;
-      margin-bottom: 24px;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      text-wrap: balance;
     }
     .section-intro {
       font-size: 18px;
-      color: var(--text-mid);
-      line-height: 1.75;
-      max-width: 640px;
+      color: var(--text-2);
+      line-height: 1.8;
+      max-width: 58ch;
       margin-bottom: 48px;
+      text-wrap: pretty;
     }
 
-    /* WHO I AM */
+    /* ABOUT GRID */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 16px;
     }
     .about-card {
-      background: var(--warm-white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      transition: box-shadow 0.2s, transform 0.2s;
+      background: var(--paper-2);
+      border-radius: 16px;
+      padding: 28px 30px;
+      border: 1px solid var(--border-l);
     }
-    .about-card:hover { box-shadow: 0 8px 32px rgba(26,22,18,0.08); transform: translateY(-2px); }
-    .about-card.wide { grid-column: span 2; }
-    .card-emoji { font-size: 32px; margin-bottom: 16px; }
-    .about-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      letter-spacing: -0.3px;
-    }
-    .about-card p { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+    .about-card.span2 { grid-column: span 2; }
+    .about-card .emoji { font-size: 28px; margin-bottom: 14px; display: block; }
+    .about-card h3 { font-family: var(--font-d); font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .about-card p { font-size: 15px; color: var(--text-2); line-height: 1.75; }
 
-    /* JOURNEY */
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      position: relative;
-      padding-left: 40px;
-    }
+    /* TIMELINE */
+    .timeline { padding-left: 32px; position: relative; }
     .timeline::before {
       content: '';
       position: absolute;
-      left: 12px;
-      top: 12px;
-      bottom: 12px;
+      left: 6px; top: 8px; bottom: 8px;
       width: 2px;
-      background: linear-gradient(to bottom, var(--amber), var(--border));
+      background: linear-gradient(to bottom, var(--amber), var(--border-l));
     }
-    .timeline-item {
-      position: relative;
-      padding: 0 0 48px 32px;
-    }
-    .timeline-item:last-child { padding-bottom: 0; }
-    .timeline-dot {
+    .tl-item { position: relative; padding: 0 0 48px 28px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
       position: absolute;
-      left: -32px;
-      top: 6px;
-      width: 14px;
-      height: 14px;
+      left: -28px; top: 7px;
+      width: 12px; height: 12px;
       border-radius: 50%;
       background: var(--amber);
-      border: 3px solid var(--cream);
-      box-shadow: 0 0 0 2px var(--amber);
+      border: 3px solid var(--paper);
+      box-shadow: 0 0 0 1.5px var(--amber);
     }
-    .timeline-period {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
+    .tl-period {
+      font-size: 11px;
+      font-weight: 600;
       text-transform: uppercase;
-      color: var(--text-soft);
-      margin-bottom: 8px;
+      letter-spacing: 1.5px;
+      color: var(--text-2);
+      margin-bottom: 6px;
     }
-    .timeline-item h3 {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
+    .tl-item h3 { font-family: var(--font-d); font-size: 22px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .tl-item p { font-size: 15px; color: var(--text-2); line-height: 1.8; max-width: 56ch; text-wrap: pretty; }
+
+    /* ORIGIN BAND */
+    .origin-band {
+      background: var(--ink);
+      padding: clamp(64px, 9vw, 96px) clamp(24px, 5vw, 80px);
+      text-align: center;
+    }
+    .origin-band-inner { max-width: 600px; margin: 0 auto; }
+    .origin-char {
+      font-size: 80px;
+      line-height: 1;
+      color: var(--amber);
+      display: block;
       margin-bottom: 10px;
+      font-family: 'Noto Serif CJK SC', 'Songti SC', 'SimSun', serif;
     }
-    .timeline-item p { font-size: 16px; color: var(--text-mid); line-height: 1.75; max-width: 580px; }
+    .origin-pinyin {
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--on-dark-2);
+      margin-bottom: 40px;
+      display: block;
+    }
+    .origin-song-lines { margin-bottom: 18px; }
+    .origin-song-line {
+      display: block;
+      font-family: 'Noto Serif CJK SC', 'Songti SC', 'SimSun', serif;
+      font-size: 20px;
+      color: var(--on-dark);
+      line-height: 2;
+    }
+    .origin-translation {
+      font-size: 14px;
+      color: var(--on-dark-2);
+      font-style: italic;
+      line-height: 1.8;
+      margin-bottom: 44px;
+    }
+    .origin-rule { width: 36px; height: 2px; background: var(--amber-deep); margin: 0 auto 36px; }
+    .origin-story {
+      font-size: 17px;
+      color: var(--on-dark-2);
+      line-height: 1.9;
+      text-wrap: pretty;
+    }
+    .origin-story strong { color: var(--on-dark); font-weight: 600; }
+    .origin-byline {
+      display: block;
+      margin-top: 32px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber-deep);
+    }
 
     /* SERVICES */
     .services-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 16px;
     }
     .service-card {
-      background: var(--warm-white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 40px;
-      transition: box-shadow 0.2s, transform 0.2s;
+      background: var(--paper-2);
+      border: 1px solid var(--border-l);
+      border-radius: 16px;
+      padding: 36px;
     }
-    .service-card:hover { box-shadow: 0 8px 32px rgba(26,22,18,0.08); transform: translateY(-2px); }
     .service-icon {
-      width: 52px;
-      height: 52px;
-      background: var(--amber-light);
-      border-radius: 14px;
+      width: 48px; height: 48px;
+      background: var(--amber-pale);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
-      margin-bottom: 24px;
-    }
-    .service-card h3 {
       font-size: 22px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
     }
-    .service-card p { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin-bottom: 20px; }
-    .service-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .service-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--text-mid);
-    }
-    .service-list li::before {
-      content: "→";
-      color: var(--amber-dark);
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
+    .service-card h3 { font-family: var(--font-d); font-size: 21px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .service-card > p { font-size: 15px; color: var(--text-2); line-height: 1.75; margin-bottom: 20px; }
+    .service-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .service-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-2); line-height: 1.6; }
+    .service-list li::before { content: "→"; color: var(--amber-deep); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
     /* CONTACT */
-    .contact-section {
-      background: var(--text);
-      color: var(--cream);
-      border-radius: 28px;
-      padding: 72px 64px;
+    .contact-band {
+      background: var(--ink);
+      border-radius: 20px;
+      margin: 0 clamp(24px, 5vw, 80px) clamp(64px, 9vw, 100px);
+      padding: 64px 60px;
       text-align: center;
-      margin: 0 48px 100px;
     }
-    .contact-section .section-label { color: var(--amber); }
-    .contact-section h2 { color: var(--cream); margin-bottom: 16px; }
-    .contact-section p { font-size: 18px; color: rgba(250,247,242,0.7); max-width: 480px; margin: 0 auto 40px; }
+    .contact-band h2 { color: var(--on-dark); margin-bottom: 14px; }
+    .contact-band p { font-size: 18px; color: var(--on-dark-2); max-width: 44ch; margin: 0 auto 36px; text-wrap: pretty; }
     .contact-email {
-      display: inline-block;
+      display: block;
+      font-family: var(--font-d);
       font-size: 22px;
       font-weight: 700;
       color: var(--amber);
       text-decoration: none;
-      letter-spacing: -0.3px;
-      margin-bottom: 36px;
-      transition: color 0.2s;
+      margin-bottom: 32px;
+      transition: color 0.15s;
+      letter-spacing: -0.02em;
     }
-    .contact-email:hover { color: #F5C060; }
-    .contact-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-light {
-      display: inline-block;
-      background: var(--cream);
-      color: var(--text);
-      font-family: inherit;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 14px 28px;
-      border-radius: 100px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .btn-light:hover { background: var(--amber-light); transform: translateY(-1px); }
+    .contact-email:hover { color: oklch(0.84 0.14 48); }
+    .contact-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-light { background: var(--paper); color: var(--ink); }
+    .btn-light:hover { background: var(--amber-pale); }
     .btn-outline-light {
-      display: inline-block;
       background: transparent;
-      color: var(--cream);
-      font-family: inherit;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 14px 28px;
-      border-radius: 100px;
-      text-decoration: none;
-      border: 1.5px solid rgba(250,247,242,0.3);
-      transition: border-color 0.2s, transform 0.15s;
+      color: var(--on-dark);
+      border: 1.5px solid oklch(1 0 0 / 0.2);
     }
-    .btn-outline-light:hover { border-color: var(--cream); transform: translateY(-1px); }
+    .btn-outline-light:hover { border-color: var(--on-dark); }
 
     /* FOOTER */
     footer {
+      border-top: 1px solid var(--border-l);
+      padding: 32px clamp(24px, 5vw, 80px);
       text-align: center;
-      padding: 32px 48px;
       font-size: 13px;
-      color: var(--text-soft);
-      border-top: 1px solid var(--border);
+      color: var(--text-2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-    footer a { color: var(--text-soft); text-decoration: none; }
+    footer a { color: var(--text-2); text-decoration: none; transition: color 0.15s; }
     footer a:hover { color: var(--text); }
 
-    /* DIVIDER */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: var(--border);
-      margin: 0 48px;
-      width: calc(100% - 96px);
+    /* REVEAL */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 1; transform: translateY(0); transition: opacity 0.7s ease, transform 0.7s ease; }
+      .reveal.pre { opacity: 0; transform: translateY(20px); }
     }
 
     /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      .hero { padding: 100px 24px 60px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-      section { padding: 64px 24px; }
+    @media (max-width: 800px) {
+      .fam-bar { padding: 10px 24px; }
+      nav { padding: 14px 24px; }
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px; }
+      .section { padding: 56px 24px; }
       .about-grid { grid-template-columns: 1fr; }
-      .about-card.wide { grid-column: span 1; }
+      .about-card.span2 { grid-column: span 1; }
       .services-grid { grid-template-columns: 1fr; }
-      .contact-section { margin: 0 24px 64px; padding: 48px 32px; }
-      .divider { margin: 0 24px; width: calc(100% - 48px); }
-    }
-  /* FAMILY BAR */
-    .family-bar {
-      background: var(--text);
-      padding: 10px 48px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      flex-wrap: wrap;
-    }
-    .family-bar-label { color: rgba(255,255,255,0.4); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-right: 8px; }
-    .family-bar a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      padding: 4px 12px;
-      border-radius: 100px;
-      transition: all 0.2s;
-      font-weight: 500;
-    }
-    .family-bar a:hover { color: white; background: rgba(255,255,255,0.1); }
-    .family-bar a.active { background: var(--amber-dark); color: white; }
-
-    /* TRIBUTE */
-    .tribute-section {
-      background: var(--text);
-      padding: 88px 48px;
-      text-align: center;
-    }
-    .tribute-inner { max-width: 600px; margin: 0 auto; }
-    .tribute-chinese {
-      font-size: 88px;
-      line-height: 1;
-      color: var(--amber);
-      margin-bottom: 10px;
-      letter-spacing: -2px;
-    }
-    .tribute-pinyin {
-      font-size: 13px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: rgba(250,247,242,0.35);
-      margin-bottom: 44px;
-    }
-    .tribute-song {
-      margin-bottom: 16px;
-    }
-    .tribute-song p {
-      font-size: 20px;
-      color: rgba(250,247,242,0.75);
-      line-height: 2;
-    }
-    .tribute-translation {
-      font-family: 'Lora', serif;
-      font-style: italic;
-      font-size: 15px;
-      color: rgba(250,247,242,0.4);
-      margin-bottom: 52px;
-      line-height: 1.75;
-    }
-    .tribute-divider {
-      width: 40px;
-      height: 1px;
-      background: var(--amber-dark);
-      margin: 0 auto 40px;
-    }
-    .tribute-story {
-      font-size: 17px;
-      line-height: 1.85;
-      color: rgba(250,247,242,0.82);
-      margin-bottom: 36px;
-    }
-    .tribute-name {
-      font-size: 12px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--amber-dark);
+      .contact-band { margin: 0 24px 56px; padding: 48px 28px; }
+      footer { padding: 28px 24px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="family-bar">
-    <a href="/" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-right:8px;font-weight:700;">Üsan Consulting</a>
+  <div class="fam-bar">
+    <a href="/" class="fam-bar-home">
+      <svg viewBox="0 0 48 54" fill="none" aria-hidden="true">
+        <path d="M4 24C4 6 44 6 44 24Z" fill="currentColor"/>
+        <path d="M24 24L24 41" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M24 41C24 49 14 49 14 44.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+      </svg>
+      Üsan
+    </a>
     <a href="/kevin" class="active">Kevin</a>
     <a href="/karina">Karina</a>
     <a href="/deborah">Deborah</a>
   </div>
 
-  <nav id="nav">
-    <a href="#" class="nav-logo">Kevin<span>.</span></a>
+  <nav>
+    <a href="/kevin" class="nav-brand">
+      <svg class="nav-mark" viewBox="0 0 48 54" fill="none" aria-hidden="true">
+        <path d="M4 24C4 6 44 6 44 24Z" fill="currentColor"/>
+        <path d="M24 24L24 41" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M24 41C24 49 14 49 14 44.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span class="nav-name">Kevin</span>
+    </a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#journey">Journey</a>
-      <a href="#services">Work</a>
-      <a href="#contact" class="nav-cta">Get in touch</a>
+      <a href="#services">Work with me</a>
+      <a href="#contact" class="cta">Get in touch</a>
     </div>
   </nav>
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-tag">Üsan Consulting</div>
-        <h1>The person in your corner who <em>actually gets stuff done.</em></h1>
-        <p class="hero-sub">
-          I plug into your world — as the second employee who makes a solopreneur unstoppable, or the EA who makes a mid-sized org leader feel like they have superpowers.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn-primary">Let's talk</a>
-          <a href="#services" class="btn-secondary">See how I work</a>
-        </div>
+    <div>
+      <div class="hero-tag">Üsan Consulting</div>
+      <h1>The person in your corner who <em>actually gets stuff done.</em></h1>
+      <p class="hero-sub">
+        I plug into your world as the second employee who makes a solopreneur unstoppable, or the EA that makes a mid-org leader feel like they have superpowers.
+      </p>
+      <div class="btn-row">
+        <a href="#contact" class="btn btn-dark">Let's talk</a>
+        <a href="#services" class="btn btn-ghost">How I work</a>
       </div>
-      <div class="hero-card">
-        <div class="hero-card-label">A little about Kevin</div>
-        <p class="hero-card-quote">"I'm an ENFP who also ships things. The warm energy and the to-do list are the same person."</p>
-        <div class="hero-card-meta">
-          <div class="meta-row"><span class="meta-icon">🇨🇦</span> Originally from Canada</div>
-          <div class="meta-row"><span class="meta-icon">🎓</span> MBA, Queen's University</div>
-          <div class="meta-row"><span class="meta-icon">🐶</span> Dog dad, first and foremost</div>
-          <div class="meta-row"><span class="meta-icon">✦</span> Elder Gen Z, proud of it</div>
-        </div>
-      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">A little about Kevin</div>
+      <p class="hero-card-quote">"I'm an ENFP who ships things. The warm energy and the to-do list are the same person."</p>
+      <div class="meta-row"><span>🇨🇦</span> Originally from Canada</div>
+      <div class="meta-row"><span>🎓</span> MBA, Queen's University</div>
+      <div class="meta-row"><span>🐶</span> Dog dad, family person</div>
+      <div class="meta-row"><span>✦</span> Elder Gen Z, proud of it</div>
     </div>
   </div>
 
   <div class="divider"></div>
 
-  <!-- WHO I AM -->
-  <section id="about">
-    <div class="section-label">Who I Am</div>
+  <!-- ABOUT -->
+  <section class="section" id="about">
     <h2>More than a consultant.<br>A person you'll actually like.</h2>
-    <p class="section-intro">
-      Before we talk business, you should know who you're dealing with. I'm Kevin — and the personal stuff isn't separate from my work, it's the whole point.
-    </p>
+    <p class="section-intro">Before we talk business — here's who you're dealing with. The personal stuff isn't separate from my work. It's the whole point.</p>
     <div class="about-grid">
       <div class="about-card">
-        <div class="card-emoji">🧠</div>
+        <span class="emoji">🧠</span>
         <h3>ENFP through and through</h3>
-        <p>I see patterns and possibilities where others see problems. I lead with curiosity, bring energy into every room, and genuinely care about the humans I work with — not just the deliverables.</p>
+        <p>I see patterns and possibilities where others see problems. I lead with curiosity, bring energy into every room, and genuinely care about the humans I work with.</p>
       </div>
       <div class="about-card">
-        <div class="card-emoji">🐾</div>
+        <span class="emoji">🐾</span>
         <h3>Dog dad, family person</h3>
-        <p>My dogs keep me grounded. My family taught me what real work looks like — showing up, adapting, and caring about the outcome. That's not a metaphor. It's just true.</p>
+        <p>My dogs keep me grounded. My family taught me what real work looks like: showing up, adapting, and caring about the outcome.</p>
       </div>
-      <div class="about-card wide">
-        <div class="card-emoji">⚡</div>
-        <h3>Warm energy + real execution</h3>
-        <p>I've heard "you're so friendly" and "how did you get all that done?" in the same week more times than I can count. Being an ENFP doesn't mean I can't ship — it means I ship things people actually want to use. The warmth and the work ethic come from the same place.</p>
+      <div class="about-card span2">
+        <span class="emoji">⚡</span>
+        <h3>Warm energy and real execution</h3>
+        <p>I've heard "you're so friendly" and "how did you get all that done?" in the same week more times than I can count. Being an ENFP doesn't mean I can't ship. It means I ship things people actually want to use. The warmth and the work ethic come from the same place.</p>
       </div>
     </div>
   </section>
@@ -585,75 +513,65 @@
   <div class="divider"></div>
 
   <!-- JOURNEY -->
-  <section id="journey">
-    <div class="section-label">My Journey</div>
-    <h2>Canada → family business<br>→ Queen's → Üsan.</h2>
-    <p class="section-intro">
-      Every chapter taught me something different about what it takes to build, lead, and execute.
-    </p>
+  <section class="section" id="journey">
+    <h2>Canada to family business<br>to Queen's to Üsan.</h2>
+    <p class="section-intro">Every chapter taught me something different about what it takes to build, lead, and execute.</p>
     <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-period">The Foundation</div>
+      <div class="tl-item reveal pre">
+        <div class="tl-dot"></div>
+        <div class="tl-period">The Foundation</div>
         <h3>Pearl Sinks — Family Business</h3>
-        <p>Growing up working in my family's business in Canada wasn't just a summer job — it was a masterclass in operations, customer relationships, and what it actually takes to keep something running. I learned early that the best businesses are built on trust and that no task is beneath you.</p>
+        <p>Growing up working in my family's business in Canada wasn't a summer job — it was a masterclass in operations, customer relationships, and what it actually takes to keep something running. I learned early that the best businesses are built on trust, and that no task is beneath you.</p>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-period">The Framework</div>
+      <div class="tl-item reveal pre">
+        <div class="tl-dot"></div>
+        <div class="tl-period">The Framework</div>
         <h3>MBA at Queen's University</h3>
-        <p>Queen's gave me the vocabulary for what I'd already learned by doing. Strategy, leadership, finance — but more than anything, it sharpened my ability to think clearly under pressure and communicate ideas that move people to action.</p>
+        <p>Queen's gave me the vocabulary for what I'd already learned by doing. Strategy, leadership, finance — and more than anything, it sharpened my ability to think clearly under pressure and communicate ideas that move people to action.</p>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-period">Now</div>
+      <div class="tl-item reveal pre">
+        <div class="tl-dot"></div>
+        <div class="tl-period">Now</div>
         <h3>Üsan Consulting</h3>
-        <p>Üsan is the synthesis of everything — the scrappy operator, the strategic thinker, the person who rolls up their sleeves and the one who can see three moves ahead. And the name carries something more: it's for my dad. Read on.</p>
+        <p>Üsan is the synthesis of everything — the scrappy operator, the strategic thinker, the person who rolls up their sleeves and the one who can see three moves ahead. The name carries something more too. Scroll down.</p>
       </div>
     </div>
   </section>
 
-  <!-- TRIBUTE TO JOHN -->
-  <div class="tribute-section">
-    <div class="tribute-inner">
-      <div class="tribute-chinese">雨傘</div>
-      <div class="tribute-pinyin">yǔ sǎn &nbsp;·&nbsp; umbrella</div>
-      <div class="tribute-song">
-        <p>大头大头</p>
-        <p>下雨不愁</p>
-        <p>人家有伞</p>
-        <p>我有大头</p>
+  <!-- ORIGIN BAND -->
+  <div class="origin-band">
+    <div class="origin-band-inner">
+      <span class="origin-char" aria-label="Yǔ sǎn — umbrella">雨傘</span>
+      <span class="origin-pinyin">yǔ sǎn · umbrella</span>
+      <div class="origin-song-lines">
+        <span class="origin-song-line">大头大头</span>
+        <span class="origin-song-line">下雨不愁</span>
+        <span class="origin-song-line">人家有伞</span>
+        <span class="origin-song-line">我有大头</span>
       </div>
-      <div class="tribute-translation">
+      <p class="origin-translation">
         "Big head, big head — don't worry when it rains.<br>
         Others have umbrellas. I have my big head."
-      </div>
-      <div class="tribute-divider"></div>
-      <p class="tribute-story">
-        My dad John used to sing this song to me. The joke was that my big head was shelter enough in the rain — I didn't need an umbrella. But the truth was always the opposite: he was the umbrella. He was the one who covered me, sheltered me, made space for my big head to exist and dream and grow.
-        <br><br>
-        He passed in 2020, and I named this after him. Üsan — umbrella in Mandarin — is my way of carrying him forward. Every client I work with, I work with under his umbrella too.
       </p>
-      <div class="tribute-name">In memory of John Chiang &nbsp;·&nbsp; 2020</div>
+      <div class="origin-rule"></div>
+      <p class="origin-story">
+        My dad John used to sing this song to me. The joke was that my big head — my big ideas, my big energy — meant I didn't need an umbrella in the rain. But the truth was always the opposite. <strong>He was the umbrella.</strong> Quietly overhead, making space for everything underneath to grow.
+        <br><br>
+        He passed in 2020, and I named this after him. Every client I work with, I work with under his umbrella too.
+      </p>
+      <span class="origin-byline">John Chiang, 2020</span>
     </div>
   </div>
 
-  <div class="divider"></div>
-
   <!-- SERVICES -->
-  <section id="services">
-    <div class="section-label">How I Can Help</div>
+  <section class="section" id="services">
     <h2>Two ways I show up<br>for the people I work with.</h2>
-    <p class="section-intro">
-      I don't do cookie-cutter. I plug in where you need me most and become a genuine extension of how you operate.
-    </p>
+    <p class="section-intro">I don't do cookie-cutter. I plug in where you need me most and become a genuine extension of how you operate.</p>
     <div class="services-grid">
-      <div class="service-card">
+      <div class="service-card reveal pre">
         <div class="service-icon">🚀</div>
         <h3>The Best Second Employee</h3>
-        <p>
-          Solopreneurs don't need a team — they need the right one person. I become that person: part operator, part strategist, part accountability partner. You focus on what only you can do; I handle everything that would otherwise slow you down.
-        </p>
+        <p>Solopreneurs don't need a team — they need the right one person. I become that person: part operator, part strategist, part accountability partner. You focus on what only you can do; I handle everything that would otherwise slow you down.</p>
         <ul class="service-list">
           <li>Systems and operations setup</li>
           <li>Project and launch management</li>
@@ -662,14 +580,12 @@
           <li>Strategic sounding board, always on</li>
         </ul>
       </div>
-      <div class="service-card">
+      <div class="service-card reveal pre">
         <div class="service-icon">🎯</div>
         <h3>EA for the Mid-Org Leader</h3>
-        <p>
-          Leading a mid-sized organization is relentless. I step in as a high-trust executive partner — filtering, prioritizing, and executing so you can lead with clarity instead of getting buried in the details.
-        </p>
+        <p>Leading a mid-sized organization is relentless. I step in as a high-trust executive partner — filtering, prioritizing, and executing so you can lead with clarity instead of getting buried in the details.</p>
         <ul class="service-list">
-          <li>Executive inbox and calendar management</li>
+          <li>Executive calendar and inbox management</li>
           <li>Cross-functional project tracking</li>
           <li>Stakeholder communication and prep</li>
           <li>Meeting facilitation and follow-through</li>
@@ -680,26 +596,33 @@
   </section>
 
   <!-- CONTACT -->
-  <div class="contact-section" id="contact">
-    <div class="section-label">Get In Touch</div>
+  <div class="contact-band" id="contact">
     <h2>Ready to add a Kevin<br>to your team?</h2>
     <p>If you're building something or leading something and you need someone genuinely in your corner — let's have a conversation.</p>
-    <a href="mailto:kevin@glasscanvas.io" class="contact-email">kevin@glasscanvas.io</a>
+    <a href="mailto:kevin@usanconsulting.com" class="contact-email">kevin@usanconsulting.com</a>
     <div class="contact-actions">
-      <a href="mailto:kevin@glasscanvas.io" class="btn-light">Send me an email</a>
-      <a href="https://linkedin.com/in/kevin" class="btn-outline-light">Connect on LinkedIn</a>
+      <a href="mailto:kevin@usanconsulting.com" class="btn btn-light">Send me an email</a>
+      <a href="https://www.linkedin.com/in/kevinchiangmba" target="_blank" rel="noopener" class="btn btn-outline-light">Connect on LinkedIn</a>
     </div>
   </div>
 
   <footer>
-    <p>© 2026 Üsan Consulting &nbsp;·&nbsp; <a href="/karina">Karina</a> &nbsp;·&nbsp; <a href="/deborah">Deborah</a> &nbsp;·&nbsp; <a href="mailto:kevin@glasscanvas.io">kevin@glasscanvas.io</a></p>
+    <span>© 2026 Üsan Consulting</span>
+    <div style="display:flex;gap:24px;">
+      <a href="/">Home</a>
+      <a href="/karina">Karina</a>
+      <a href="/deborah">Deborah</a>
+      <a href="mailto:kevin@usanconsulting.com">kevin@usanconsulting.com</a>
+    </div>
   </footer>
 
   <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 10);
-    });
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); } });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal.pre').forEach(el => io.observe(el));
+    }
   </script>
 
 </body>

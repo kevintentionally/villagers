@@ -3,446 +3,323 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deborah | Üsan Consulting</title>
+  <title>Deborah — Üsan Consulting</title>
+  <meta name="description" content="Deborah brings wisdom earned through real life — for the moments that need perspective, not just advice." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #FAF4EF;
-      --white: #FFFFFF;
-      --wine: #8B3A52;
-      --wine-light: #F5E8EC;
-      --wine-dark: #6B2A3E;
-      --text: #1C1210;
-      --text-mid: #4E3630;
-      --text-soft: #9A7A72;
-      --border: #EAD8D0;
-      --section-gap: 100px;
+      --ink:       oklch(0.10 0.000 0);
+      --mauve:     oklch(0.44 0.082 355);
+      --mauve-2:   oklch(0.36 0.078 355);
+      --mauve-pale:oklch(0.94 0.025 355);
+      --paper:     oklch(1.00 0.000 0);
+      --paper-2:   oklch(0.96 0.000 0);
+      --text:      oklch(0.16 0.000 0);
+      --text-2:    oklch(0.44 0.000 0);
+      --on-dark:   oklch(0.93 0.008 80);
+      --on-dark-2: oklch(0.58 0.006 80);
+      --border-d:  oklch(1 0 0 / 0.09);
+      --border-l:  oklch(0 0 0 / 0.08);
+      --font-d: 'Bricolage Grotesque', system-ui, sans-serif;
+      --font-b: 'Hanken Grotesk', system-ui, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--bg);
+      font-family: var(--font-b);
+      background: var(--paper);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* FAMILY NAV */
-    .family-bar {
-      background: var(--text);
-      padding: 10px 48px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      flex-wrap: wrap;
+    .fam-bar {
+      background: var(--ink); padding: 10px 52px;
+      display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
     }
-    .family-bar-label { color: rgba(255,255,255,0.4); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-right: 8px; }
-    .family-bar a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      padding: 4px 12px;
-      border-radius: 100px;
-      transition: all 0.2s;
-      font-weight: 500;
+    .fam-bar-home {
+      display: flex; align-items: center; gap: 8px;
+      text-decoration: none; color: var(--on-dark-2);
+      font-family: var(--font-d); font-size: 13px; font-weight: 700;
+      margin-right: 12px; transition: color 0.15s;
     }
-    .family-bar a:hover { color: white; background: rgba(255,255,255,0.1); }
-    .family-bar a.active { background: var(--wine); color: white; }
+    .fam-bar-home:hover { color: var(--on-dark); }
+    .fam-bar-home svg { color: oklch(0.75 0.149 46); width: 14px; height: 16px; }
+    .fam-bar a {
+      font-size: 13px; font-weight: 500; color: var(--on-dark-2);
+      text-decoration: none; padding: 4px 12px;
+      border-radius: 100px; transition: all 0.15s;
+    }
+    .fam-bar a:hover { color: var(--on-dark); background: var(--border-d); }
+    .fam-bar a.active { background: var(--mauve); color: var(--paper); font-weight: 600; }
 
-    /* NAV */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 48px;
-      background: rgba(250,244,239,0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s;
+      position: sticky; top: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 52px;
+      background: oklch(1 0 0 / 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-l);
     }
-    nav.scrolled { border-bottom-color: var(--border); }
-    .nav-logo {
-      font-weight: 700;
-      font-size: 18px;
-      letter-spacing: -0.3px;
-      color: var(--text);
-      text-decoration: none;
-    }
-    .nav-logo span { color: var(--wine-dark); }
-    .nav-links { display: flex; gap: 32px; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+    .nav-mark { color: var(--mauve); width: 18px; height: 20px; }
+    .nav-name { font-family: var(--font-d); font-weight: 800; font-size: 17px; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
     .nav-links a {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-mid);
-      text-decoration: none;
-      transition: color 0.2s;
+      font-size: 14px; font-weight: 500; color: var(--text-2);
+      text-decoration: none; padding: 7px 14px; border-radius: 100px;
+      transition: color 0.15s, background 0.15s;
     }
-    .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      background: var(--text);
-      color: var(--bg) !important;
-      padding: 8px 20px;
-      border-radius: 100px;
-    }
-    .nav-cta:hover { background: var(--wine-dark) !important; color: white !important; }
+    .nav-links a:hover { color: var(--text); background: var(--border-l); }
+    .nav-links a.cta { background: var(--mauve); color: var(--paper); font-weight: 600; }
+    .nav-links a.cta:hover { background: var(--mauve-2); }
 
-    /* HERO */
     .hero {
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      padding: 80px 48px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-      width: 100%;
+      padding: clamp(72px, 10vw, 112px) clamp(24px, 5vw, 80px);
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 72px; align-items: center;
     }
     .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--wine-light);
-      color: var(--wine-dark);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-bottom: 24px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--mauve-pale); color: var(--mauve-2);
+      font-size: 12px; font-weight: 600;
+      padding: 5px 14px; border-radius: 100px; margin-bottom: 24px;
     }
-    .hero-tag::before { content: "●"; font-size: 8px; }
     h1 {
-      font-family: 'Lora', serif;
-      font-size: clamp(38px, 5vw, 58px);
-      font-weight: 600;
-      line-height: 1.12;
-      letter-spacing: -1px;
-      margin-bottom: 24px;
+      font-family: var(--font-d);
+      font-size: clamp(38px, 5vw, 62px);
+      font-weight: 800; letter-spacing: -0.04em;
+      line-height: 1.06; margin-bottom: 24px; text-wrap: balance;
     }
-    h1 em { font-style: italic; color: var(--wine-dark); }
-    .hero-sub {
-      font-size: 18px;
-      color: var(--text-mid);
-      line-height: 1.75;
-      margin-bottom: 36px;
+    h1 em { font-style: normal; color: var(--mauve); }
+    .hero-sub { font-size: 18px; color: var(--text-2); line-height: 1.75; margin-bottom: 36px; max-width: 50ch; text-wrap: pretty; }
+    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center;
+      font-family: var(--font-b); font-size: 15px; font-weight: 600;
+      padding: 13px 26px; border-radius: 100px; text-decoration: none;
+      transition: transform 0.15s, background 0.15s, border-color 0.15s;
     }
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--text);
-      color: var(--bg);
-      font-family: inherit;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 14px 28px;
-      border-radius: 100px;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .btn-primary:hover { background: var(--wine-dark); transform: translateY(-1px); }
-    .btn-secondary {
-      background: transparent;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 14px 28px;
-      border-radius: 100px;
-      text-decoration: none;
-      border: 1.5px solid var(--border);
-      display: inline-block;
-      transition: border-color 0.2s, transform 0.15s;
-    }
-    .btn-secondary:hover { border-color: var(--text); transform: translateY(-1px); }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-mauve { background: var(--mauve); color: var(--paper); }
+    .btn-mauve:hover { background: var(--mauve-2); }
+    .btn-ghost { background: transparent; color: var(--text); border: 1.5px solid var(--border-l); }
+    .btn-ghost:hover { border-color: var(--text); }
+    .btn-light { background: var(--paper); color: var(--mauve-2); font-weight: 600; }
+    .btn-light:hover { background: var(--mauve-pale); }
 
     .hero-card {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 40px;
-      border: 1px solid var(--border);
-      box-shadow: 0 8px 40px rgba(28,18,16,0.06);
+      background: var(--paper-2); border-radius: 20px;
+      padding: 36px; border: 1px solid var(--border-l);
     }
-    .hero-card-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--text-soft);
-      margin-bottom: 16px;
-    }
-    .hero-card-quote {
-      font-family: 'Lora', serif;
-      font-size: 19px;
-      line-height: 1.7;
-      color: var(--text);
-      font-style: italic;
-      margin-bottom: 24px;
-    }
-    .meta-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--text-mid);
-      margin-bottom: 10px;
-    }
+    .hero-card-label { font-size: 11px; font-weight: 600; color: var(--text-2); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1.5px; }
+    .hero-card-quote { font-family: var(--font-d); font-size: 18px; font-weight: 500; line-height: 1.6; color: var(--text); margin-bottom: 24px; }
+    .meta-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-2); margin-bottom: 10px; }
 
-    /* SECTIONS */
-    section {
-      padding: var(--section-gap) 48px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--wine-dark);
-      margin-bottom: 16px;
-    }
-    h2 {
-      font-family: 'Lora', serif;
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-      margin-bottom: 24px;
-    }
-    .section-intro {
-      font-size: 18px;
-      color: var(--text-mid);
-      line-height: 1.8;
-      max-width: 620px;
-      margin-bottom: 48px;
-    }
+    .section { padding: clamp(64px, 9vw, 100px) clamp(24px, 5vw, 80px); max-width: 1100px; margin: 0 auto; }
+    .divider { height: 1px; background: var(--border-l); margin: 0 clamp(24px, 5vw, 80px); }
+    h2 { font-family: var(--font-d); font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 20px; text-wrap: balance; }
+    .section-intro { font-size: 18px; color: var(--text-2); line-height: 1.8; max-width: 58ch; margin-bottom: 48px; text-wrap: pretty; }
 
-    .card-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .card:hover { box-shadow: 0 8px 32px rgba(28,18,16,0.08); transform: translateY(-2px); }
-    .card.wide { grid-column: span 2; }
-    .card-emoji { font-size: 30px; margin-bottom: 14px; }
-    .card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-    .card p { font-size: 15px; color: var(--text-mid); line-height: 1.75; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .about-card { background: var(--paper-2); border-radius: 16px; padding: 28px 30px; border: 1px solid var(--border-l); }
+    .about-card.span2 { grid-column: span 2; }
+    .about-card .emoji { font-size: 28px; margin-bottom: 14px; display: block; }
+    .about-card h3 { font-family: var(--font-d); font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .about-card p { font-size: 15px; color: var(--text-2); line-height: 1.75; }
 
-    /* PULL QUOTE */
+    /* PULL QUOTE — uses background tint, not side border */
     .pull-quote {
-      background: var(--wine-light);
-      border-left: 4px solid var(--wine);
-      border-radius: 4px 20px 20px 4px;
+      background: var(--mauve-pale);
+      border-radius: 16px;
       padding: 36px 40px;
-      margin: 48px 0 0;
+      margin-top: 40px;
     }
-    .pull-quote blockquote {
-      font-family: 'Lora', serif;
-      font-size: 22px;
-      font-style: italic;
-      line-height: 1.65;
-      color: var(--wine-dark);
-    }
-
-    /* CONTACT */
-    .contact-section {
-      background: var(--text);
-      color: white;
-      border-radius: 28px;
-      padding: 72px 64px;
-      text-align: center;
-      margin: 0 48px 100px;
-    }
-    .contact-section .section-label { color: #D48A9E; }
-    .contact-section h2 { color: white; font-family: 'Lora', serif; }
-    .contact-section p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 480px; margin: 16px auto 36px; }
-    .btn-light {
-      background: white;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 15px;
+    .pull-quote p {
+      font-family: var(--font-d);
+      font-size: clamp(18px, 2.5vw, 24px);
       font-weight: 600;
-      padding: 14px 28px;
-      border-radius: 100px;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.2s, transform 0.15s;
+      line-height: 1.5;
+      color: var(--mauve-2);
+      letter-spacing: -0.02em;
+      text-wrap: balance;
     }
-    .btn-light:hover { background: var(--wine-light); transform: translateY(-1px); }
 
-    .divider { width: calc(100% - 96px); height: 1px; background: var(--border); margin: 0 48px; }
+    .offers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .offer-card { background: var(--paper-2); border: 1px solid var(--border-l); border-radius: 16px; padding: 32px; }
+    .offer-card .emoji { font-size: 26px; margin-bottom: 16px; display: block; }
+    .offer-card h3 { font-family: var(--font-d); font-size: 19px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .offer-card p { font-size: 15px; color: var(--text-2); line-height: 1.75; }
 
-    footer {
-      text-align: center;
-      padding: 32px 48px;
-      font-size: 13px;
-      color: var(--text-soft);
-      border-top: 1px solid var(--border);
+    .contact-band {
+      background: var(--mauve); border-radius: 20px;
+      margin: 0 clamp(24px, 5vw, 80px) clamp(64px, 9vw, 100px);
+      padding: 64px 60px; text-align: center;
     }
-    footer a { color: var(--text-soft); text-decoration: none; }
+    .contact-band h2 { color: var(--paper); margin-bottom: 14px; }
+    .contact-band p { font-size: 18px; color: oklch(0.85 0.025 355); max-width: 44ch; margin: 0 auto 36px; text-wrap: pretty; }
+
+    footer { border-top: 1px solid var(--border-l); padding: 32px clamp(24px, 5vw, 80px); font-size: 13px; color: var(--text-2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    footer a { color: var(--text-2); text-decoration: none; transition: color 0.15s; }
     footer a:hover { color: var(--text); }
 
-    @media (max-width: 768px) {
-      .family-bar { padding: 10px 24px; }
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      .hero { padding: 60px 24px; }
-      .hero-inner { grid-template-columns: 1fr; }
-      section { padding: 64px 24px; }
-      .card-grid { grid-template-columns: 1fr; }
-      .card.wide { grid-column: span 1; }
-      .contact-section { margin: 0 24px 64px; padding: 48px 32px; }
-      .divider { margin: 0 24px; width: calc(100% - 48px); }
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 1; transform: translateY(0); transition: opacity 0.7s ease, transform 0.7s ease; }
+      .reveal.pre { opacity: 0; transform: translateY(20px); }
+    }
+
+    @media (max-width: 800px) {
+      .fam-bar { padding: 10px 24px; }
+      nav { padding: 14px 24px; }
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px; }
+      .section { padding: 56px 24px; }
+      .about-grid, .offers-grid { grid-template-columns: 1fr; }
+      .about-card.span2 { grid-column: span 1; }
+      .contact-band { margin: 0 24px 56px; padding: 48px 28px; }
+      footer { padding: 28px 24px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="family-bar">
-    <a href="/" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-right:8px;font-weight:700;">Üsan Consulting</a>
+  <div class="fam-bar">
+    <a href="/" class="fam-bar-home">
+      <svg viewBox="0 0 48 54" fill="none" aria-hidden="true">
+        <path d="M4 24C4 6 44 6 44 24Z" fill="currentColor"/>
+        <path d="M24 24L24 41" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M24 41C24 49 14 49 14 44.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+      </svg>
+      Üsan
+    </a>
     <a href="/kevin">Kevin</a>
     <a href="/karina">Karina</a>
     <a href="/deborah" class="active">Deborah</a>
   </div>
 
-  <nav id="nav">
-    <a href="/deborah" class="nav-logo">Deborah<span>.</span></a>
+  <nav>
+    <a href="/deborah" class="nav-brand">
+      <svg class="nav-mark" viewBox="0 0 48 54" fill="none" aria-hidden="true">
+        <path d="M4 24C4 6 44 6 44 24Z" fill="currentColor"/>
+        <path d="M24 24L24 41" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M24 41C24 49 14 49 14 44.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span class="nav-name">Deborah</span>
+    </a>
     <div class="nav-links">
       <a href="#about">About</a>
-      <a href="#wisdom">What I Offer</a>
-      <a href="#contact" class="nav-cta">Get in touch</a>
+      <a href="#offers">What I offer</a>
+      <a href="#contact" class="cta">Connect</a>
     </div>
   </nav>
 
-  <!-- HERO -->
   <div class="hero">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-tag">Üsan Consulting</div>
-        <h1>Wisdom earned<br>through <em>real life.</em></h1>
-        <p class="hero-sub">
-          Some things only come with time — the ability to see clearly, to guide without directing, and to hold space for someone exactly where they are. That's what I bring.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn-primary">Connect with me</a>
-          <a href="#wisdom" class="btn-secondary">What I offer</a>
-        </div>
+    <div>
+      <div class="hero-tag">Üsan Consulting</div>
+      <h1>Wisdom earned through <em>real life.</em></h1>
+      <p class="hero-sub">
+        Some things only come with time — the ability to see clearly, to guide without directing, and to hold space for someone exactly where they are. That's what I bring.
+      </p>
+      <div class="btn-row">
+        <a href="#contact" class="btn btn-mauve">Connect with me</a>
+        <a href="#offers" class="btn btn-ghost">What I offer</a>
       </div>
-      <div class="hero-card">
-        <div class="hero-card-label">A little about Deborah</div>
-        <p class="hero-card-quote">"The best guidance I can give anyone is the kind that helps them find their own answer."</p>
-        <div class="meta-row"><span>🌿</span> A lifetime of lived experience</div>
-        <div class="meta-row"><span>💛</span> Mentor, listener, guide</div>
-        <div class="meta-row"><span>🏠</span> Family is everything</div>
-        <div class="meta-row"><span>✦</span> Kevin's mom</div>
-      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">A little about Deborah</div>
+      <p class="hero-card-quote">"The best guidance I can give anyone is the kind that helps them find their own answer."</p>
+      <div class="meta-row"><span>🌿</span> A lifetime of lived experience</div>
+      <div class="meta-row"><span>💛</span> Mentor, listener, guide</div>
+      <div class="meta-row"><span>🏠</span> Family is everything</div>
+      <div class="meta-row"><span>✦</span> Kevin's mom</div>
     </div>
   </div>
 
   <div class="divider"></div>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-label">Who I Am</div>
+  <section class="section" id="about">
     <h2>The kind of wisdom<br>that actually helps.</h2>
-    <p class="section-intro">
-      I'm Deborah — Kevin's mom, and someone who has spent a lifetime learning by doing, loving, building, and being present for the people around her.
-    </p>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-emoji">👁️</div>
+    <p class="section-intro">I'm Deborah — Kevin's mom, and someone who has spent a lifetime learning by doing, loving, building, and being present for the people around her.</p>
+    <div class="about-grid">
+      <div class="about-card reveal pre">
+        <span class="emoji">👁️</span>
         <h3>I see people clearly</h3>
         <p>Not with judgment — with understanding. Years of experience have given me the ability to sense what someone really needs, even when they can't quite articulate it themselves.</p>
       </div>
-      <div class="card">
-        <div class="card-emoji">🌊</div>
+      <div class="about-card reveal pre">
+        <span class="emoji">🌊</span>
         <h3>Steady in the storm</h3>
         <p>I've navigated enough of life's complexity to be a calm, grounded presence for the people I support. I don't panic. I help you find the path forward.</p>
       </div>
-      <div class="card wide">
-        <div class="card-emoji">🌱</div>
+      <div class="about-card span2 reveal pre">
+        <span class="emoji">🌱</span>
         <h3>Invested in your growth</h3>
         <p>My greatest joy comes from watching people step into more of who they are. Whether it's a life decision, a business challenge, or figuring out what's next — I'm genuinely here for the journey, not just the outcome.</p>
       </div>
     </div>
 
-    <div class="pull-quote">
-      <blockquote>
-        "Good mentorship isn't about telling someone what to do. It's about helping them trust themselves enough to take the next step."
-      </blockquote>
+    <div class="pull-quote reveal pre">
+      <p>Good mentorship isn't about telling someone what to do. It's about helping them trust themselves enough to take the next step.</p>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- WHAT I OFFER -->
-  <section id="wisdom">
-    <div class="section-label">What I Offer</div>
-    <h2>A kind of support that's<br>hard to find.</h2>
-    <p class="section-intro">
-      The world is full of advisors. What's rare is someone who listens first, sees the full picture, and helps you find clarity from the inside out.
-    </p>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-emoji">🧭</div>
-        <h3>Life & Direction</h3>
+  <section class="section" id="offers">
+    <h2>A kind of support<br>that's hard to find.</h2>
+    <p class="section-intro">The world is full of advisors. What's rare is someone who listens first, sees the full picture, and helps you find clarity from the inside out.</p>
+    <div class="offers-grid">
+      <div class="offer-card reveal pre">
+        <span class="emoji">🧭</span>
+        <h3>Life and Direction</h3>
         <p>For people navigating big transitions — career, relationships, personal reinvention — I offer steady perspective and the kind of questions that cut to what matters.</p>
       </div>
-      <div class="card">
-        <div class="card-emoji">🏗️</div>
+      <div class="offer-card reveal pre">
+        <span class="emoji">🏗️</span>
         <h3>Built from Experience</h3>
-        <p>Having built a family business from the ground up, I understand the pressures, sacrifices, and quiet victories that most people in business never talk about.</p>
+        <p>Having helped build and sustain a family business, I understand the pressures, sacrifices, and quiet victories that most people in business never talk about.</p>
       </div>
-      <div class="card">
-        <div class="card-emoji">💬</div>
-        <h3>Mentorship & Presence</h3>
+      <div class="offer-card reveal pre">
+        <span class="emoji">💬</span>
+        <h3>Mentorship and Presence</h3>
         <p>Sometimes you just need someone who truly listens — not to fix, not to advise, but to witness and reflect. I show up fully in those conversations.</p>
       </div>
-      <div class="card">
-        <div class="card-emoji">❤️</div>
+      <div class="offer-card reveal pre">
+        <span class="emoji">❤️</span>
         <h3>The Long View</h3>
         <p>I think in decades, not quarters. When everything feels urgent, I can help you zoom out and see what will actually matter in five, ten, twenty years.</p>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <div class="contact-section" id="contact">
-    <div class="section-label">Reach Out</div>
+  <div class="contact-band" id="contact">
     <h2>Looking for perspective<br>that goes deeper?</h2>
     <p>The best conversations start with a simple hello. Reach out through Kevin and we'll take it from there.</p>
-    <a href="/kevin#contact" class="btn-light">Connect through Kevin</a>
+    <a href="mailto:kevin@usanconsulting.com" class="btn btn-light">Connect through Kevin</a>
   </div>
 
   <footer>
-    <p>© 2026 Üsan Consulting &nbsp;·&nbsp; <a href="/kevin">Kevin</a> &nbsp;·&nbsp; <a href="/karina">Karina</a> &nbsp;·&nbsp; <a href="mailto:kevin@glasscanvas.io">kevin@glasscanvas.io</a></p>
+    <span>© 2026 Üsan Consulting</span>
+    <div style="display:flex;gap:24px;">
+      <a href="/">Home</a>
+      <a href="/kevin">Kevin</a>
+      <a href="/karina">Karina</a>
+      <a href="mailto:kevin@usanconsulting.com">kevin@usanconsulting.com</a>
+    </div>
   </footer>
 
   <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    });
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); } });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal.pre').forEach(el => io.observe(el));
+    }
   </script>
 
 </body>
