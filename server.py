@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import base64
 import http.server
 import json
 import os
@@ -9,6 +10,9 @@ from pathlib import Path
 PORT = int(os.environ.get("PORT", 3000))
 BASE = Path(__file__).parent
 DATA_FILE = BASE / "memories.json"
+
+AUTH_USER = os.environ.get("AUTH_USER", "usan")
+AUTH_PASS = os.environ.get("AUTH_PASS", "")  # no password = open access
 
 if not DATA_FILE.exists():
     DATA_FILE.write_text("[]")
@@ -46,6 +50,24 @@ class Handler(http.server.BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         pass  # suppress default request logs
 
+    def is_authorized(self):
+        if not AUTH_PASS:
+            return True
+        auth = self.headers.get("Authorization", "")
+        if not auth.startswith("Basic "):
+            return False
+        try:
+            user, pw = base64.b64decode(auth[6:]).decode().split(":", 1)
+            return user == AUTH_USER and pw == AUTH_PASS
+        except Exception:
+            return False
+
+    def require_auth(self):
+        self.send_response(401)
+        self.send_header("WWW-Authenticate", 'Basic realm="Üsan Consulting"')
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+
     def send_file(self, filepath, content_type="text/html"):
         content = Path(filepath).read_bytes()
         self.send_response(200)
@@ -63,6 +85,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_GET(self):
+        if not self.is_authorized():
+            self.require_auth()
+            return
         path = self.path.split("?")[0]
         if path == "/":
             self.send_file(BASE / "home.html")
@@ -83,6 +108,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.end_headers()
 
     def do_POST(self):
+        if not self.is_authorized():
+            self.require_auth()
+            return
         if self.path == "/api/memories":
             length = int(self.headers.get("Content-Length", 0))
             body = self.rfile.read(length)
