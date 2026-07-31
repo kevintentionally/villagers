@@ -14,6 +14,10 @@ DATA_FILE = BASE / "memories.json"
 AUTH_USER = os.environ.get("AUTH_USER", "usan")
 AUTH_PASS = os.environ.get("AUTH_PASS", "")  # no password = open access
 
+# Hosts that bypass auth entirely. The Pearl landing page is an ad destination,
+# so it must be publicly reachable even while the rest of the site is gated.
+PUBLIC_HOSTS = {"pearl.usanconsulting.com"}
+
 if not DATA_FILE.exists():
     DATA_FILE.write_text("[]")
 
@@ -50,7 +54,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         pass  # suppress default request logs
 
+    def request_host(self):
+        return self.headers.get("Host", "").split(":")[0].lower()
+
     def is_authorized(self):
+        if self.request_host() in PUBLIC_HOSTS:
+            return True
         if not AUTH_PASS:
             return True
         auth = self.headers.get("Authorization", "")
@@ -107,7 +116,13 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 self.end_headers()
             return
         if path == "/":
-            self.send_file(BASE / "home.html")
+            # The Pearl subdomain serves its landing page at the root.
+            if self.request_host() in PUBLIC_HOSTS:
+                self.send_file(BASE / "pearl.html")
+            else:
+                self.send_file(BASE / "home.html")
+        elif path == "/pearl":
+            self.send_file(BASE / "pearl.html")
         elif path == "/submit":
             self.send_file(BASE / "submit.html")
         elif path in ("/kevin", "/consulting"):

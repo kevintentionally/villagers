@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PEARL Canada · Partner With Us</title>
+  <meta name="description" content="Sinks, faucets, and fixtures for the builders, fabricators, and designers who put them in. 1,800+ trade partners across Canada since 1998." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --slate:        oklch(0.22 0.018 235);
+      --slate-2:      oklch(0.28 0.018 235);
+      --bronze:       oklch(0.66 0.095 62);
+      --bronze-deep:  oklch(0.45 0.085 62);
+      --bronze-pale:  oklch(0.95 0.022 62);
+      --surface:      oklch(0.99 0.002 235);
+      --surface-2:    oklch(0.96 0.004 235);
+      --text:         oklch(0.22 0.012 235);
+      --text-2:       oklch(0.45 0.010 235);
+      --on-dark:      oklch(0.94 0.006 235);
+      --on-dark-2:    oklch(0.70 0.010 235);
+      --rule-l:       oklch(0 0 0 / 0.10);
+      --rule-d:       oklch(1 0 0 / 0.12);
+      --font-d: 'Newsreader', Georgia, serif;
+      --font-b: 'Archivo', system-ui, sans-serif;
+
+      --z-nav: 100;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-b);
+      background: var(--surface);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: var(--z-nav);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 16px clamp(24px, 5vw, 64px);
+      background: oklch(0.22 0.018 235 / 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--rule-d);
+    }
+    .nav-brand {
+      font-family: var(--font-b);
+      font-weight: 700;
+      font-size: 19px;
+      letter-spacing: 3px;
+      color: var(--on-dark);
+      text-decoration: none;
+    }
+    .nav-brand span { color: var(--bronze); }
+    .nav-cta {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--slate);
+      background: var(--bronze);
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 3px;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .nav-cta:hover { background: oklch(0.74 0.10 62); }
+
+    /* HERO */
+    .hero {
+      background: var(--slate);
+      padding: clamp(72px, 11vw, 132px) clamp(24px, 5vw, 64px) clamp(56px, 8vw, 88px);
+    }
+    .hero-inner { max-width: 1080px; margin: 0 auto; }
+    .hero h1 {
+      font-family: var(--font-d);
+      font-size: clamp(42px, 6.2vw, 78px);
+      font-weight: 400;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      color: var(--on-dark);
+      max-width: 17ch;
+      margin-bottom: 32px;
+      text-wrap: balance;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--bronze);
+    }
+    .hero-sub {
+      font-size: clamp(16px, 1.7vw, 19px);
+      color: var(--on-dark-2);
+      line-height: 1.8;
+      max-width: 58ch;
+      margin-bottom: 40px;
+      text-wrap: pretty;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-b);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 15px 32px;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .btn-bronze { background: var(--bronze); color: var(--slate); }
+    .btn-bronze:hover { background: oklch(0.74 0.10 62); }
+    .btn-quiet-d {
+      color: var(--on-dark);
+      border: 1px solid var(--rule-d);
+    }
+    .btn-quiet-d:hover { border-color: var(--on-dark-2); }
+    .hero-aside {
+      font-size: 14px;
+      color: var(--on-dark-2);
+    }
+
+    /* TRUSTED BY */
+    .trusted {
+      background: var(--slate-2);
+      padding: 26px clamp(24px, 5vw, 64px);
+      border-top: 1px solid var(--rule-d);
+    }
+    .trusted-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 4vw, 44px);
+      flex-wrap: wrap;
+    }
+    .trusted-label {
+      font-size: 13px;
+      color: var(--on-dark-2);
+      flex-shrink: 0;
+    }
+    .trusted-names {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 3.5vw, 40px);
+      flex-wrap: wrap;
+    }
+    .trusted-names span {
+      font-family: var(--font-d);
+      font-size: clamp(15px, 1.7vw, 19px);
+      font-weight: 500;
+      color: var(--on-dark);
+      letter-spacing: -0.01em;
+    }
+
+    /* RECOGNITION */
+    .recog {
+      background: var(--surface);
+      padding: clamp(72px, 10vw, 112px) clamp(24px, 5vw, 64px);
+    }
+    .recog-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: start;
+    }
+    .recog h2 {
+      font-family: var(--font-d);
+      font-size: clamp(30px, 3.8vw, 46px);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-wrap: balance;
+    }
+    .recog h2 em { font-style: italic; color: var(--bronze-deep); }
+    .recog-items { display: flex; flex-direction: column; }
+    .recog-item {
+      padding: 22px 0;
+      border-top: 1px solid var(--rule-l);
+    }
+    .recog-item:last-child { border-bottom: 1px solid var(--rule-l); }
+    .recog-item p {
+      font-size: 16px;
+      color: var(--text-2);
+      line-height: 1.7;
+      max-width: 60ch;
+      text-wrap: pretty;
+    }
+    .recog-item strong { color: var(--text); font-weight: 600; }
+
+    /* WHY BAND */
+    .why {
+      background: var(--slate);
+      padding: clamp(80px, 11vw, 128px) clamp(24px, 5vw, 64px);
+    }
+    .why-inner { max-width: 760px; margin: 0 auto; }
+    .why p.why-quote {
+      font-family: var(--font-d);
+      font-size: clamp(26px, 3.6vw, 42px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.32;
+      letter-spacing: -0.02em;
+      color: var(--on-dark);
+      margin-bottom: 40px;
+      text-wrap: balance;
+    }
+    .why-rule {
+      width: 44px;
+      height: 2px;
+      background: var(--bronze);
+      margin-bottom: 36px;
+    }
+    .why p {
+      font-size: clamp(16px, 1.5vw, 18px);
+      color: var(--on-dark-2);
+      line-height: 1.9;
+      margin-bottom: 20px;
+      max-width: 62ch;
+      text-wrap: pretty;
+    }
+    .why p:last-child { margin-bottom: 0; }
+    .why p strong { color: var(--on-dark); font-weight: 600; }
+
+    /* NUMBERS */
+    .numbers {
+      background: var(--surface-2);
+      padding: clamp(48px, 6vw, 68px) clamp(24px, 5vw, 64px);
+    }
+    .numbers-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: clamp(28px, 4vw, 48px);
+    }
+    .number-item { display: flex; flex-direction: column; gap: 6px; }
+    .number-val {
+      font-family: var(--font-d);
+      font-size: clamp(30px, 3.4vw, 42px);
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .number-label {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.6;
+      max-width: 30ch;
+    }
+
+    /* SUPPORT */
+    .support {
+      background: var(--surface);
+      padding: clamp(72px, 10vw, 112px) clamp(24px, 5vw, 64px);
+    }
+    .support-inner { max-width: 1080px; margin: 0 auto; }
+    .support h2 {
+      font-family: var(--font-d);
+      font-size: clamp(30px, 3.8vw, 46px);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      max-width: 20ch;
+      margin-bottom: 14px;
+      text-wrap: balance;
+    }
+    .support h2 em { font-style: italic; color: var(--bronze-deep); }
+    .support-intro {
+      font-size: 17px;
+      color: var(--text-2);
+      line-height: 1.8;
+      max-width: 56ch;
+      margin-bottom: 52px;
+      text-wrap: pretty;
+    }
+    .support-list { display: flex; flex-direction: column; gap: 0; }
+    .support-row {
+      display: grid;
+      grid-template-columns: 0.5fr 1fr;
+      gap: clamp(20px, 4vw, 56px);
+      padding: 30px 0;
+      border-top: 1px solid var(--rule-l);
+      align-items: start;
+    }
+    .support-row:last-child { border-bottom: 1px solid var(--rule-l); }
+    .support-row h3 {
+      font-family: var(--font-d);
+      font-size: clamp(19px, 2.1vw, 24px);
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.015em;
+      line-height: 1.25;
+    }
+    .support-row p {
+      font-size: 16px;
+      color: var(--text-2);
+      line-height: 1.75;
+      max-width: 62ch;
+      text-wrap: pretty;
+    }
+
+    /* CTA */
+    .cta {
+      background: var(--slate);
+      padding: clamp(80px, 11vw, 124px) clamp(24px, 5vw, 64px);
+    }
+    .cta-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+    .cta h2 {
+      font-family: var(--font-d);
+      font-size: clamp(34px, 4.8vw, 60px);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--on-dark);
+      margin-bottom: 20px;
+      text-wrap: balance;
+    }
+    .cta h2 em { font-style: italic; color: var(--bronze); }
+    .cta p {
+      font-size: 18px;
+      color: var(--on-dark-2);
+      line-height: 1.8;
+      max-width: 46ch;
+      margin: 0 auto 40px;
+      text-wrap: pretty;
+    }
+    .cta-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .cta-note { font-size: 14px; color: var(--on-dark-2); }
+    .cta-note a { color: var(--bronze); text-decoration: none; }
+    .cta-note a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      background: oklch(0.17 0.015 235);
+      padding: 30px clamp(24px, 5vw, 64px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--rule-d);
+    }
+    .footer-brand {
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 2.5px;
+      color: var(--on-dark-2);
+    }
+    .footer-meta { font-size: 13px; color: oklch(0.55 0.008 235); }
+    .footer-meta a { color: oklch(0.55 0.008 235); text-decoration: none; }
+    .footer-meta a:hover { color: var(--on-dark-2); }
+
+    /* MOTION */
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes riseIn {
+        from { opacity: 0; transform: translateY(14px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      .hero h1        { animation: riseIn 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+      .hero-sub       { animation: riseIn 0.8s 0.10s cubic-bezier(0.16,1,0.3,1) both; }
+      .hero-actions   { animation: riseIn 0.8s 0.20s cubic-bezier(0.16,1,0.3,1) both; }
+
+      .reveal {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+      }
+      .reveal.pre { opacity: 0; transform: translateY(18px); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .recog-inner { grid-template-columns: 1fr; gap: 32px; }
+      .support-row { grid-template-columns: 1fr; gap: 10px; }
+      .trusted-inner { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#top" class="nav-brand">PEARL<span>.</span></a>
+    <a href="#talk" class="nav-cta">Talk to a rep</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <h1>You build the rooms where <em>life actually happens.</em></h1>
+      <p class="hero-sub">
+        We make the sinks, faucets, and fixtures that go into them. Since 1998, PEARL has supplied the fabricators, builders, designers, and cabinet shops who put their own name on every install. Three distribution centres. 1,800+ trade partners across Canada.
+      </p>
+      <div class="hero-actions">
+        <a href="#talk" class="btn btn-bronze">Talk to a PEARL rep</a>
+        <a href="#partnership" class="btn btn-quiet-d">See how we support partners</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- TRUSTED BY -->
+  <div class="trusted">
+    <div class="trusted-inner">
+      <span class="trusted-label">Preferred dealers include</span>
+      <div class="trusted-names">
+        <span>Jade Stone</span>
+        <span>Colonial Countertops</span>
+        <span>AB Granite</span>
+        <span>Kitchen Cabinet Solutions</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECOGNITION -->
+  <section class="recog">
+    <div class="recog-inner">
+      <div class="reveal pre">
+        <h2>When something goes wrong, the homeowner doesn't call us. <em>They call you.</em></h2>
+      </div>
+      <div class="recog-items">
+        <div class="recog-item reveal pre">
+          <p><strong>A callback costs more than the fixture.</strong> Pulling a sink out of a finished countertop is a day you don't get paid for, plus a client who now doubts everything else you specified.</p>
+        </div>
+        <div class="recog-item reveal pre">
+          <p><strong>Backorders wreck schedules.</strong> A fixture that ships in six weeks instead of six days pushes trades, delays occupancy, and lands on your reputation, not the manufacturer's.</p>
+        </div>
+        <div class="recog-item reveal pre">
+          <p><strong>Most reps disappear after the PO.</strong> The relationship that mattered during the quote is unreachable when a cutout is wrong or a finish arrives short.</p>
+        </div>
+        <div class="recog-item reveal pre">
+          <p><strong>Spec sheets that don't match the box.</strong> You measured against the drawing. The drawing was out of date. Now you're improvising on site.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why">
+    <div class="why-inner">
+      <p class="why-quote reveal pre">
+        "Our purpose is to create spaces that encourage genuine human connection."
+      </p>
+      <div class="why-rule reveal pre"></div>
+      <p class="reveal pre">
+        Connection doesn't need to be forced or formal. It happens when people feel comfortable, supported, and present in the spaces around them. A kitchen sink is where a family lands at the end of the day. That's the room you're building.
+      </p>
+      <p class="reveal pre">
+        <strong>PEARL started in 1998</strong>, with John and Deborah Chiang selling tools out of the family garage. What they understood from the first sale still runs the company: build trust, do the work, make a community out of the people you serve. That's how a garage operation became a supplier to 1,800+ partners across Canada.
+      </p>
+      <p class="reveal pre">
+        We still treat it the same way. You're not a purchase order. You're the reason the product has to be right.
+      </p>
+    </div>
+  </section>
+
+  <!-- NUMBERS -->
+  <div class="numbers">
+    <div class="numbers-inner">
+      <div class="number-item reveal pre">
+        <span class="number-val">1998</span>
+        <span class="number-label">Founded in a family garage in Vancouver, BC</span>
+      </div>
+      <div class="number-item reveal pre">
+        <span class="number-val">1,800+</span>
+        <span class="number-label">Trade partners supplied across Canada</span>
+      </div>
+      <div class="number-item reveal pre">
+        <span class="number-val">Three</span>
+        <span class="number-label">Staffed showrooms and distribution centres: Greater Vancouver, Calgary, Kingston</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPPORT -->
+  <section class="support" id="partnership">
+    <div class="support-inner">
+      <h2 class="reveal pre">From the first conversation through installation, <em>and long after.</em></h2>
+      <p class="support-intro reveal pre">What a PEARL partnership actually covers, beyond the price list.</p>
+      <div class="support-list">
+        <div class="support-row reveal pre">
+          <h3>Stock that's actually on the floor</h3>
+          <p>Three distribution centres holding real inventory, not a drop-ship promise. You quote a lead time you can defend, and the product is there when the countertop is ready to template.</p>
+        </div>
+        <div class="support-row reveal pre">
+          <h3>A rep who stays reachable</h3>
+          <p>The same person who helped you spec the job picks up when a cutout dimension doesn't match or a finish needs to be swapped mid-build. No ticket queue, no handoff to a call centre.</p>
+        </div>
+        <div class="support-row reveal pre">
+          <h3>Specs and templates you can build from</h3>
+          <p>Current cutout drawings, finish samples, and product data through the dealer portal. What's on the sheet matches what's in the box.</p>
+        </div>
+        <div class="support-row reveal pre">
+          <h3>A range that covers the whole job</h3>
+          <p>Stainless, granite composite, and ceramic sinks, faucets, and mirrors across PEARL, PEARL KATO, and SUPERPREM. One supplier and one relationship for the entire kitchen and bath package.</p>
+        </div>
+        <div class="support-row reveal pre">
+          <h3>Something to tell your client</h3>
+          <p>Every sink from the GEO line plants a tree through One Tree Planted, a partnership running since 2021. The Chiang family also founded Love in Homes in 2010, which PEARL has backed since day one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="talk">
+    <div class="cta-inner">
+      <h2 class="reveal pre">Let's talk about <em>your next job.</em></h2>
+      <p class="reveal pre">
+        A short call with a PEARL rep. Bring a project you're quoting and we'll tell you what we'd stock for it, what it costs, and how fast it lands.
+      </p>
+      <div class="cta-actions reveal pre">
+        <!-- Swap this mailto for a Calendly/scheduling link when one is set up. -->
+        <a href="mailto:sales@lifewithpearl.com?subject=Trade%20partner%20enquiry" class="btn btn-bronze">Book a call with a rep</a>
+        <a href="tel:+16042701184" class="btn btn-quiet-d">Call the Vancouver office</a>
+      </div>
+      <p class="cta-note">
+        Already a partner? <a href="mailto:sales@lifewithpearl.com">Reach your rep directly.</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-brand">PEARL</span>
+    <span class="footer-meta">
+      Greater Vancouver &nbsp;·&nbsp; Calgary &nbsp;·&nbsp; Kingston &nbsp;&nbsp; | &nbsp;&nbsp;
+      <a href="https://lifewithpearl.com" target="_blank" rel="noopener">lifewithpearl.com</a>
+    </span>
+  </footer>
+
+  <script>
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.remove('pre');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal.pre').forEach(el => io.observe(el));
+    }
+  </script>
+
+</body>
+</html>
