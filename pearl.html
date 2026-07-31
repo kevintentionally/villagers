@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PEARL Canada · Partner With Us</title>
-  <meta name="description" content="Sinks, faucets, and fixtures for the builders, fabricators, and designers who put them in. 1,800+ trade partners across Canada since 1998." />
+  <meta name="description" content="PEARL makes the fixtures. We also build the offering around them, so your business can quote more of every job. 1,800+ trade partners across Canada since 1998." />
   <meta name="robots" content="noindex" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +17,6 @@
       --slate-2:      oklch(0.28 0.018 235);
       --bronze:       oklch(0.66 0.095 62);
       --bronze-deep:  oklch(0.45 0.085 62);
-      --bronze-pale:  oklch(0.95 0.022 62);
       --surface:      oklch(0.99 0.002 235);
       --surface-2:    oklch(0.96 0.004 235);
       --text:         oklch(0.22 0.012 235);
@@ -81,7 +80,7 @@
     /* HERO */
     .hero {
       background: var(--slate);
-      padding: clamp(72px, 11vw, 132px) clamp(24px, 5vw, 64px) clamp(56px, 8vw, 88px);
+      padding: clamp(72px, 11vw, 128px) clamp(24px, 5vw, 64px) clamp(56px, 8vw, 84px);
     }
     .hero-inner { max-width: 1080px; margin: 0 auto; }
     .hero h1 {
@@ -91,7 +90,7 @@
       line-height: 1.04;
       letter-spacing: -0.025em;
       color: var(--on-dark);
-      max-width: 17ch;
+      max-width: 18ch;
       margin-bottom: 32px;
       text-wrap: balance;
     }
@@ -103,7 +102,7 @@
       font-size: clamp(16px, 1.7vw, 19px);
       color: var(--on-dark-2);
       line-height: 1.8;
-      max-width: 58ch;
+      max-width: 60ch;
       margin-bottom: 40px;
       text-wrap: pretty;
     }
@@ -131,10 +130,6 @@
       border: 1px solid var(--rule-d);
     }
     .btn-quiet-d:hover { border-color: var(--on-dark-2); }
-    .hero-aside {
-      font-size: 14px;
-      color: var(--on-dark-2);
-    }
 
     /* TRUSTED BY */
     .trusted {
@@ -169,12 +164,12 @@
       letter-spacing: -0.01em;
     }
 
-    /* RECOGNITION */
-    .recog {
+    /* OPPORTUNITY */
+    .opp {
       background: var(--surface);
       padding: clamp(72px, 10vw, 112px) clamp(24px, 5vw, 64px);
     }
-    .recog-inner {
+    .opp-inner {
       max-width: 1080px;
       margin: 0 auto;
       display: grid;
@@ -182,7 +177,7 @@
       gap: clamp(40px, 6vw, 80px);
       align-items: start;
     }
-    .recog h2 {
+    .opp h2 {
       font-family: var(--font-d);
       font-size: clamp(30px, 3.8vw, 46px);
       font-weight: 400;
@@ -191,26 +186,26 @@
       color: var(--text);
       text-wrap: balance;
     }
-    .recog h2 em { font-style: italic; color: var(--bronze-deep); }
-    .recog-items { display: flex; flex-direction: column; }
-    .recog-item {
+    .opp h2 em { font-style: italic; color: var(--bronze-deep); }
+    .opp-items { display: flex; flex-direction: column; }
+    .opp-item {
       padding: 22px 0;
       border-top: 1px solid var(--rule-l);
     }
-    .recog-item:last-child { border-bottom: 1px solid var(--rule-l); }
-    .recog-item p {
+    .opp-item:last-child { border-bottom: 1px solid var(--rule-l); }
+    .opp-item p {
       font-size: 16px;
       color: var(--text-2);
       line-height: 1.7;
       max-width: 60ch;
       text-wrap: pretty;
     }
-    .recog-item strong { color: var(--text); font-weight: 600; }
+    .opp-item strong { color: var(--text); font-weight: 600; }
 
     /* WHY BAND */
     .why {
       background: var(--slate);
-      padding: clamp(80px, 11vw, 128px) clamp(24px, 5vw, 64px);
+      padding: clamp(80px, 11vw, 124px) clamp(24px, 5vw, 64px);
     }
     .why-inner { max-width: 760px; margin: 0 auto; }
     .why p.why-quote {
@@ -222,6 +217,7 @@
       letter-spacing: -0.02em;
       color: var(--on-dark);
       margin-bottom: 40px;
+      max-width: none;
       text-wrap: balance;
     }
     .why-rule {
@@ -269,34 +265,34 @@
       max-width: 30ch;
     }
 
-    /* SUPPORT */
-    .support {
+    /* SOLUTION */
+    .solution {
       background: var(--surface);
       padding: clamp(72px, 10vw, 112px) clamp(24px, 5vw, 64px);
     }
-    .support-inner { max-width: 1080px; margin: 0 auto; }
-    .support h2 {
+    .solution-inner { max-width: 1080px; margin: 0 auto; }
+    .solution h2 {
       font-family: var(--font-d);
       font-size: clamp(30px, 3.8vw, 46px);
       font-weight: 400;
       line-height: 1.12;
       letter-spacing: -0.02em;
       color: var(--text);
-      max-width: 20ch;
+      max-width: 21ch;
       margin-bottom: 14px;
       text-wrap: balance;
     }
-    .support h2 em { font-style: italic; color: var(--bronze-deep); }
-    .support-intro {
+    .solution h2 em { font-style: italic; color: var(--bronze-deep); }
+    .solution-intro {
       font-size: 17px;
       color: var(--text-2);
       line-height: 1.8;
-      max-width: 56ch;
+      max-width: 58ch;
       margin-bottom: 52px;
       text-wrap: pretty;
     }
-    .support-list { display: flex; flex-direction: column; gap: 0; }
-    .support-row {
+    .solution-list { display: flex; flex-direction: column; }
+    .solution-row {
       display: grid;
       grid-template-columns: 0.5fr 1fr;
       gap: clamp(20px, 4vw, 56px);
@@ -304,8 +300,8 @@
       border-top: 1px solid var(--rule-l);
       align-items: start;
     }
-    .support-row:last-child { border-bottom: 1px solid var(--rule-l); }
-    .support-row h3 {
+    .solution-row:last-child { border-bottom: 1px solid var(--rule-l); }
+    .solution-row h3 {
       font-family: var(--font-d);
       font-size: clamp(19px, 2.1vw, 24px);
       font-weight: 500;
@@ -313,7 +309,7 @@
       letter-spacing: -0.015em;
       line-height: 1.25;
     }
-    .support-row p {
+    .solution-row p {
       font-size: 16px;
       color: var(--text-2);
       line-height: 1.75;
@@ -342,7 +338,7 @@
       font-size: 18px;
       color: var(--on-dark-2);
       line-height: 1.8;
-      max-width: 46ch;
+      max-width: 48ch;
       margin: 0 auto 40px;
       text-wrap: pretty;
     }
@@ -384,9 +380,9 @@
         from { opacity: 0; transform: translateY(14px); }
         to   { opacity: 1; transform: translateY(0); }
       }
-      .hero h1        { animation: riseIn 0.8s cubic-bezier(0.16,1,0.3,1) both; }
-      .hero-sub       { animation: riseIn 0.8s 0.10s cubic-bezier(0.16,1,0.3,1) both; }
-      .hero-actions   { animation: riseIn 0.8s 0.20s cubic-bezier(0.16,1,0.3,1) both; }
+      .hero h1      { animation: riseIn 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+      .hero-sub     { animation: riseIn 0.8s 0.10s cubic-bezier(0.16,1,0.3,1) both; }
+      .hero-actions { animation: riseIn 0.8s 0.20s cubic-bezier(0.16,1,0.3,1) both; }
 
       .reveal {
         opacity: 1;
@@ -398,8 +394,8 @@
 
     /* RESPONSIVE */
     @media (max-width: 860px) {
-      .recog-inner { grid-template-columns: 1fr; gap: 32px; }
-      .support-row { grid-template-columns: 1fr; gap: 10px; }
+      .opp-inner { grid-template-columns: 1fr; gap: 32px; }
+      .solution-row { grid-template-columns: 1fr; gap: 10px; }
       .trusted-inner { gap: 14px; }
     }
   </style>
@@ -408,19 +404,19 @@
 
   <nav>
     <a href="#top" class="nav-brand">PEARL<span>.</span></a>
-    <a href="#talk" class="nav-cta">Talk to a rep</a>
+    <a href="#talk" class="nav-cta">Book a call</a>
   </nav>
 
   <!-- HERO -->
   <header class="hero" id="top">
     <div class="hero-inner">
-      <h1>You build the rooms where <em>life actually happens.</em></h1>
+      <h1>We make the fixtures. The real work is <em>helping you sell them.</em></h1>
       <p class="hero-sub">
-        We make the sinks, faucets, and fixtures that go into them. Since 1998, PEARL has supplied the fabricators, builders, designers, and cabinet shops who put their own name on every install. Three distribution centres. 1,800+ trade partners across Canada.
+        Any supplier can ship you a sink. PEARL builds the offering around it: the full kitchen and bath package, showroom and display support, spec help, and stock deep enough to quote bigger jobs. Since 1998, we've grown alongside 1,800+ trade partners across Canada.
       </p>
       <div class="hero-actions">
-        <a href="#talk" class="btn btn-bronze">Talk to a PEARL rep</a>
-        <a href="#partnership" class="btn btn-quiet-d">See how we support partners</a>
+        <a href="#talk" class="btn btn-bronze">Book a call with Kevin</a>
+        <a href="#solution" class="btn btn-quiet-d">See the full solution</a>
       </div>
     </div>
   </header>
@@ -438,24 +434,24 @@
     </div>
   </div>
 
-  <!-- RECOGNITION -->
-  <section class="recog">
-    <div class="recog-inner">
+  <!-- OPPORTUNITY -->
+  <section class="opp">
+    <div class="opp-inner">
       <div class="reveal pre">
-        <h2>When something goes wrong, the homeowner doesn't call us. <em>They call you.</em></h2>
+        <h2>You're already in the room. <em>You could be supplying more of it.</em></h2>
       </div>
-      <div class="recog-items">
-        <div class="recog-item reveal pre">
-          <p><strong>A callback costs more than the fixture.</strong> Pulling a sink out of a finished countertop is a day you don't get paid for, plus a client who now doubts everything else you specified.</p>
+      <div class="opp-items">
+        <div class="opp-item reveal pre">
+          <p><strong>The sink is going in either way.</strong> So is the faucet, and usually a mirror. If you're not supplying them, someone else is billing for them on a job you're already standing in.</p>
         </div>
-        <div class="recog-item reveal pre">
-          <p><strong>Backorders wreck schedules.</strong> A fixture that ships in six weeks instead of six days pushes trades, delays occupancy, and lands on your reputation, not the manufacturer's.</p>
+        <div class="opp-item reveal pre">
+          <p><strong>Adding a category usually costs more than it earns.</strong> New supplier, new terms, new minimums, another rep to chase. Most shops decide it isn't worth the overhead, and they're often right.</p>
         </div>
-        <div class="recog-item reveal pre">
-          <p><strong>Most reps disappear after the PO.</strong> The relationship that mattered during the quote is unreachable when a cutout is wrong or a finish arrives short.</p>
+        <div class="opp-item reveal pre">
+          <p><strong>Clients ask for options you don't carry.</strong> When the answer is "we don't do that," the conversation moves somewhere else, and it can take the rest of the project with it.</p>
         </div>
-        <div class="recog-item reveal pre">
-          <p><strong>Spec sheets that don't match the box.</strong> You measured against the drawing. The drawing was out of date. Now you're improvising on site.</p>
+        <div class="opp-item reveal pre">
+          <p><strong>Bigger jobs want one point of contact.</strong> Builders and designers would rather hand the whole kitchen and bath package to a shop that can cover it than coordinate four suppliers themselves.</p>
         </div>
       </div>
     </div>
@@ -472,10 +468,10 @@
         Connection doesn't need to be forced or formal. It happens when people feel comfortable, supported, and present in the spaces around them. A kitchen sink is where a family lands at the end of the day. That's the room you're building.
       </p>
       <p class="reveal pre">
-        <strong>PEARL started in 1998</strong>, with John and Deborah Chiang selling tools out of the family garage. What they understood from the first sale still runs the company: build trust, do the work, make a community out of the people you serve. That's how a garage operation became a supplier to 1,800+ partners across Canada.
+        <strong>PEARL started in 1998</strong>, with John and Deborah Chiang selling tools out of the family garage. What they understood from the first sale still runs the company: build trust, do the work, make a community out of the people you serve. A garage operation became a supplier to 1,800+ partners because those partners grew, and we grew with them.
       </p>
       <p class="reveal pre">
-        We still treat it the same way. You're not a purchase order. You're the reason the product has to be right.
+        That's still the arrangement. We don't win when we move a pallet. We win when your business can quote more of the job next year than it could this year.
       </p>
     </div>
   </section>
@@ -489,7 +485,7 @@
       </div>
       <div class="number-item reveal pre">
         <span class="number-val">1,800+</span>
-        <span class="number-label">Trade partners supplied across Canada</span>
+        <span class="number-label">Trade partners growing with us across Canada</span>
       </div>
       <div class="number-item reveal pre">
         <span class="number-val">Three</span>
@@ -498,31 +494,31 @@
     </div>
   </div>
 
-  <!-- SUPPORT -->
-  <section class="support" id="partnership">
-    <div class="support-inner">
-      <h2 class="reveal pre">From the first conversation through installation, <em>and long after.</em></h2>
-      <p class="support-intro reveal pre">What a PEARL partnership actually covers, beyond the price list.</p>
-      <div class="support-list">
-        <div class="support-row reveal pre">
-          <h3>Stock that's actually on the floor</h3>
-          <p>Three distribution centres holding real inventory, not a drop-ship promise. You quote a lead time you can defend, and the product is there when the countertop is ready to template.</p>
+  <!-- SOLUTION -->
+  <section class="solution" id="solution">
+    <div class="solution-inner">
+      <h2 class="reveal pre">Everything that turns a product line <em>into an offering.</em></h2>
+      <p class="solution-intro reveal pre">The catalogue is the starting point. This is the part that actually changes what your business can sell.</p>
+      <div class="solution-list">
+        <div class="solution-row reveal pre">
+          <h3>The whole kitchen and bath package</h3>
+          <p>Stainless, granite composite, and ceramic sinks, faucets, and mirrors across PEARL, PEARL KATO, and SUPERPREM. One supplier, one set of terms, one rep. You add lines to the invoice without adding anything to your admin.</p>
         </div>
-        <div class="support-row reveal pre">
-          <h3>A rep who stays reachable</h3>
-          <p>The same person who helped you spec the job picks up when a cutout dimension doesn't match or a finish needs to be swapped mid-build. No ticket queue, no handoff to a call centre.</p>
+        <div class="solution-row reveal pre">
+          <h3>Showroom and display support</h3>
+          <p>Customers buy fixtures by touching them. We help you put the right product in front of people in your space, so the upsell happens on your floor instead of somewhere else.</p>
         </div>
-        <div class="support-row reveal pre">
-          <h3>Specs and templates you can build from</h3>
-          <p>Current cutout drawings, finish samples, and product data through the dealer portal. What's on the sheet matches what's in the box.</p>
+        <div class="solution-row reveal pre">
+          <h3>Stock deep enough to quote from</h3>
+          <p>Three distribution centres holding real inventory, not a drop-ship promise. You commit to a lead time you can defend and take on jobs you'd otherwise pass on.</p>
         </div>
-        <div class="support-row reveal pre">
-          <h3>A range that covers the whole job</h3>
-          <p>Stainless, granite composite, and ceramic sinks, faucets, and mirrors across PEARL, PEARL KATO, and SUPERPREM. One supplier and one relationship for the entire kitchen and bath package.</p>
+        <div class="solution-row reveal pre">
+          <h3>Spec and template support</h3>
+          <p>Current cutout drawings, finish samples, and product data through the dealer portal. The same rep who helped you spec the job is reachable when a dimension doesn't match on site.</p>
         </div>
-        <div class="support-row reveal pre">
-          <h3>Something to tell your client</h3>
-          <p>Every sink from the GEO line plants a tree through One Tree Planted, a partnership running since 2021. The Chiang family also founded Love in Homes in 2010, which PEARL has backed since day one.</p>
+        <div class="solution-row reveal pre">
+          <h3>A story to sell with</h3>
+          <p>Every sink from the GEO line plants a tree through One Tree Planted, a partnership running since 2021. The Chiang family also founded Love in Homes in 2010, which PEARL has backed since day one. It gives your team something to say beyond the spec sheet.</p>
         </div>
       </div>
     </div>
@@ -531,17 +527,16 @@
   <!-- CTA -->
   <section class="cta" id="talk">
     <div class="cta-inner">
-      <h2 class="reveal pre">Let's talk about <em>your next job.</em></h2>
+      <h2 class="reveal pre">Let's look at <em>what you're not quoting yet.</em></h2>
       <p class="reveal pre">
-        A short call with a PEARL rep. Bring a project you're quoting and we'll tell you what we'd stock for it, what it costs, and how fast it lands.
+        A short call. Bring a job you're working on and we'll walk through what else you could have supplied on it, what it would carry, and how fast it lands.
       </p>
       <div class="cta-actions reveal pre">
-        <!-- Swap this mailto for a Calendly/scheduling link when one is set up. -->
-        <a href="mailto:sales@lifewithpearl.com?subject=Trade%20partner%20enquiry" class="btn btn-bronze">Book a call with a rep</a>
-        <a href="tel:+16042701184" class="btn btn-quiet-d">Call the Vancouver office</a>
+        <a href="https://calendar.app.google/41YepkEm1dtqLMHW8" target="_blank" rel="noopener" class="btn btn-bronze">Book a call with Kevin</a>
+        <a href="tel:+16042470887" class="btn btn-quiet-d">Call 604 247 0887</a>
       </div>
       <p class="cta-note">
-        Already a partner? <a href="mailto:sales@lifewithpearl.com">Reach your rep directly.</a>
+        Prefer email? <a href="mailto:kevin@lifewithpearl.com">kevin@lifewithpearl.com</a>
       </p>
     </div>
   </section>
