@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Naming Luke's Vocation</title>
+<meta name="description" content="Kevin's brief for the Luke Schenk missionary page: the thesis, the raw material, and the design calls, in his own words." />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  color-scheme: light;
+  --paper:   #FAF9F7;
+  --card:    #FFFFFF;
+  --ink:     #16191F;
+  --text:    #22272F;
+  --text-2:  #5A626D;
+  --rule:    rgba(22, 25, 31, 0.11);
+  --denim:   #2C4F6E;
+  --sage:    #5C6C53;
+  --brass:   #9C6C2A;
+  --band:    #1A3247;
+  --on-band: #E9EFF4;
+  --on-band-2: #9DB3C5;
+  --serif: 'Newsreader', ui-serif, Georgia, 'Times New Roman', serif;
+  --sans:  'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper:  #101319;
+    --card:   #171B22;
+    --ink:    #F3F2EF;
+    --text:   #E5E4E1;
+    --text-2: #A0A8B3;
+    --rule:   rgba(243, 242, 239, 0.13);
+    --denim:  #83AED0;
+    --sage:   #9EB093;
+    --brass:  #D5A45F;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper:  #101319;
+  --card:   #171B22;
+  --ink:    #F3F2EF;
+  --text:   #E5E4E1;
+  --text-2: #A0A8B3;
+  --rule:   rgba(243, 242, 239, 0.13);
+  --denim:  #83AED0;
+  --sage:   #9EB093;
+  --brass:  #D5A45F;
+}
+
+body {
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.sheet { max-width: 1000px; margin-inline: auto; padding: clamp(28px, 4.5vw, 54px) clamp(20px, 4vw, 48px) 40px; }
+
+.eyebrow {
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--text-2);
+}
+.eyebrow .tick { color: var(--brass); margin-right: 0.55em; }
+
+.masthead { border-bottom: 2px solid var(--ink); padding-bottom: 18px; margin-bottom: 26px; }
+.masthead .eyebrow { display: block; margin-bottom: 12px; }
+h1 {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(34px, 5.2vw, 54px); line-height: 1.04;
+  letter-spacing: -0.025em; color: var(--ink); text-wrap: balance;
+}
+.byline {
+  margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px 18px;
+  font-size: 12.5px; color: var(--text-2);
+}
+.byline b { color: var(--ink); font-weight: 600; }
+
+.thesis {
+  background: var(--band); color: var(--on-band);
+  border-radius: 4px; padding: clamp(22px, 3vw, 30px) clamp(24px, 3.4vw, 34px);
+  margin-bottom: 22px;
+}
+.thesis .eyebrow { color: var(--on-band-2); display: block; margin-bottom: 12px; }
+.thesis .eyebrow .tick { color: #D9A85F; }
+.thesis p {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(17px, 2.1vw, 21px); line-height: 1.52;
+  max-width: 60ch; text-wrap: pretty;
+}
+.thesis p + p { margin-top: 0.7em; }
+.thesis em { font-style: italic; color: #FFFFFF; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 16px; align-items: start; }
+.block {
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: 4px; padding: 20px 22px;
+}
+.block > .eyebrow { display: block; margin-bottom: 12px; color: var(--sage); }
+.block h2 {
+  font-family: var(--serif); font-weight: 400; font-size: 19px;
+  letter-spacing: -0.015em; line-height: 1.25; color: var(--ink); margin-bottom: 10px;
+}
+.block p { color: var(--text-2); }
+.block p + p { margin-top: 0.7em; }
+.block.wide { grid-column: 1 / -1; }
+
+ul { list-style: none; display: grid; gap: 7px; }
+ul li { position: relative; padding-left: 17px; color: var(--text-2); line-height: 1.55; }
+ul li::before {
+  content: ""; position: absolute; left: 0; top: 0.56em;
+  width: 6px; height: 6px;
+  border: 1.5px solid var(--brass); border-radius: 99px;
+}
+ul li b { color: var(--ink); font-weight: 600; }
+
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 18px 26px; }
+
+.said {
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: 16px; line-height: 1.55; color: var(--ink);
+  border-left: 2px solid var(--brass); padding-left: 14px;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-size: 12px; font-weight: 500; color: var(--text-2);
+  border: 1px solid var(--rule); border-radius: 99px; padding: 3px 11px;
+}
+.tag.on { border-color: var(--brass); color: var(--brass); }
+
+.open { border-color: var(--brass); }
+.open > .eyebrow { color: var(--brass); }
+
+footer {
+  margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--rule);
+  display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: space-between;
+  font-size: 12px; color: var(--text-2);
+}
+footer .note { font-family: var(--serif); font-style: italic; }
+footer a { color: var(--denim); }
+
+@media print {
+  body { background: #fff; font-size: 9.5pt; }
+  .sheet { padding: 0; max-width: none; }
+  .block, .thesis { break-inside: avoid; }
+  .thesis { background: #fff; color: #16191F; border: 1.5px solid #1A3247; }
+  .thesis .eyebrow, .thesis em { color: #1A3247; }
+  footer { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="masthead">
+    <span class="eyebrow"><span class="tick">&#9679;</span>Brief &middot; in Kevin's words</span>
+    <h1>Naming Luke's Vocation</h1>
+    <div class="byline">
+      <span><b>For</b> Luke Schenk, Glass Canvas</span>
+      <span><b>From</b> Kevin Chiang</span>
+      <span><b>Output</b> a missionary page, shared as an example</span>
+    </div>
+  </div>
+
+  <div class="thesis">
+    <span class="eyebrow"><span class="tick">&#9679;</span>The point</span>
+    <p>Our team are first movers in naming our vocations, through being in relationship with one another. We are a relational ministry: we lift, encourage, and honor one another, and we model that for other organizations and other people.</p>
+    <p><em>This page is not really about Luke. It is a demonstration of what happens when a team names a person's vocation out loud.</em> Luke is the example because the naming already happened with him.</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="block wide">
+      <span class="eyebrow"><span class="tick">&#9679;</span>What the page has to do</span>
+      <div class="two">
+        <ul>
+          <li>A <b>preface</b> on relational ministry, framing the whole thing</li>
+          <li>A <b>bio</b></li>
+          <li><b>Work he's led</b></li>
+          <li>His <b>heart for ministry</b></li>
+          <li><b>Other ministry</b> he's served</li>
+        </ul>
+        <ul>
+          <li><b>Ministries</b> he's hoping to connect with to serve</li>
+          <li>The <b>type of people</b> he's seeking to accompany</li>
+          <li>His unique <b>charisms</b></li>
+          <li>A short blurb on how he <b>found himself at Glass Canvas</b> through being in a relational ministry</li>
+        </ul>
+      </div>
+      <p style="margin-top:13px; font-size:13px;">Those may not be the right headings. The content is what matters; the structure can move.</p>
+    </div>
+
+    <div class="block wide">
+      <span class="eyebrow"><span class="tick">&#9679;</span>Who Luke is</span>
+      <p class="said" style="margin-bottom:14px">Father, son, husband, friend. A true companion.</p>
+      <div class="two">
+        <ul>
+          <li>Comes alive bearing the load, suffering alongside, sharing in the lives of others, in their success and in their suffering</li>
+          <li>Cares deeply about everyone. All humans</li>
+          <li>A <b>maximizer</b>: sees the potential in everyone, and can set himself aside to see the good</li>
+          <li>Walks alongside people in ways that are inspiring</li>
+        </ul>
+        <ul>
+          <li>Expert at <b>zero to one</b>: keeps people with a vision encouraged and walking the line toward it</li>
+          <li>Loves launching new ideas. Good meat, good barbecue, time with his family</li>
+          <li>From <b>Calgary</b>. Executive Director at Glass Canvas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <span class="eyebrow"><span class="tick">&#9679;</span>His charisms</span>
+      <ul>
+        <li>Calm in the storm</li>
+        <li>Persistent and enduring love</li>
+        <li>Deep self-reflection</li>
+      </ul>
+      <p style="margin-top:13px; font-size:13px;">Don't attribute these to anyone on the page. Name the gift, not the namer.</p>
+    </div>
+
+    <div class="block">
+      <span class="eyebrow"><span class="tick">&#9679;</span>His skills</span>
+      <div class="tags">
+        <span class="tag">Strategic planning</span>
+        <span class="tag">Communication strategy</span>
+        <span class="tag">Leadership</span>
+        <span class="tag">Entrepreneurship</span>
+        <span class="tag on">Seeing what should come next</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <span class="eyebrow"><span class="tick">&#9679;</span>Work he's led</span>
+      <ul>
+        <li>Human, Chicago</li>
+        <li>Unleash the Gospel</li>
+        <li>Tilma</li>
+        <li>The Companion app</li>
+        <li>Exodus 90</li>
+      </ul>
+    </div>
+
+    <div class="block wide">
+      <span class="eyebrow"><span class="tick">&#9679;</span>The turning point</span>
+      <h2>He doesn't have to perform to be loved.</h2>
+      <p>Luke realized he's been working with his best friends for many years, and that they don't need him to be high in competency or to perform in order for him to be loved. He's truly able to internalize that his values and who he is, that and that alone, is worthy of honor.</p>
+      <p style="font-size:13px;">This is the story of how he found himself at Glass Canvas, and it's the strongest thing on the page. It's the thesis proven in one life.</p>
+    </div>
+
+    <div class="block">
+      <span class="eyebrow"><span class="tick">&#9679;</span>Other ministry</span>
+      <ul>
+        <li>He and his wife are <b>marriage mentors</b> in their diocese</li>
+        <li>Part of a <b>mission-driven family since birth</b>. His parents were missionaries</li>
+        <li><b>On mission at home</b>, raising a God-fearing family</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <span class="eyebrow"><span class="tick">&#9679;</span>Who he's looking for</span>
+      <ul>
+        <li>Ministries that have been <b>circling around a good idea</b> for a long time and haven't found an effective way to launch</li>
+        <li>Ministries ready to go from <b>good to great</b></li>
+        <li><b>Ministry leaders</b> who need someone to help them find clarity, accelerate, and maximize their teams</li>
+      </ul>
+      <p style="margin-top:13px; font-size:13px;">Reach him at luke@glasscanvas.io.</p>
+    </div>
+
+    <div class="block">
+      <span class="eyebrow"><span class="tick">&#9679;</span>Design calls</span>
+      <ul>
+        <li><b>Its own look</b>, not the &Uuml;san system. Same craft level, distinct identity</li>
+        <li><b>Palette approved</b>: washed denim, desert sage, brass, granite-warm neutrals, drawn from Luke's own photos</li>
+        <li><b>Type approved</b>: Newsreader for display, Archivo for body</li>
+        <li><b>No attributions</b> under the charisms</li>
+        <li>Lives in the repo at <b>/luke</b>, plus a shareable link that works today</li>
+        <li>Real details only. <b>No invented facts</b> about a real person</li>
+      </ul>
+    </div>
+
+    <div class="block wide open">
+      <span class="eyebrow"><span class="tick">&#9679;</span>Still open</span>
+      <div class="two">
+        <ul>
+          <li>Is it <b>Glass Canvas</b> or <b>Glass Campus Ministries</b> on his title?</li>
+          <li>Is <b>Human</b> in Chicago or Calgary?</li>
+          <li>Are <b>Tilma</b> and <b>Companion</b> one thing or two?</li>
+        </ul>
+        <ul>
+          <li>Luke's <b>role</b> on each of the five launches</li>
+          <li>His wife's and kids' <b>names</b> for the photo caption</li>
+          <li>Does the ask include <b>prayer or support</b>, or introductions only?</li>
+          <li><b>One line from someone who isn't Kevin</b></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>Glass Canvas &middot; a relational ministry</span>
+    <span class="note">Gifts get named before they get titles.</span>
+  </footer>
+
+</div>
+</body>
+</html>

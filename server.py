@@ -135,6 +135,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.send_file(BASE / "deborah.html")
         elif path == "/luke":
             self.send_file(BASE / "luke.html")
+        elif path == "/luke/brief":
+            self.send_file(BASE / "luke-brief.html")
         elif path == "/wall":
             self.send_file(BASE / "wall.html")
         elif path == "/api/memories":

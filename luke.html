@@ -369,11 +369,12 @@ h1 .family { display: block; color: var(--on-band-2); }
 .card p { color: var(--text-2); font-size: 16.5px; }
 .tick-list { list-style: none; display: grid; gap: 11px; }
 .tick-list li {
-  display: grid; grid-template-columns: 1.1rem 1fr; gap: 10px;
+  position: relative; padding-left: 19px;
   font-size: 16px; color: var(--text-2); line-height: 1.6;
 }
 .tick-list li::before {
-  content: ""; width: 7px; height: 7px; margin-top: 0.6em;
+  content: ""; position: absolute; left: 0; top: 0.58em;
+  width: 7px; height: 7px;
   border: 1.5px solid var(--brass); border-radius: 99px;
 }
 
