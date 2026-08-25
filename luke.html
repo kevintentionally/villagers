@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Luke Schenk</title>
-<meta name="description" content="A missionary page for Luke Schenk. Glass Canvas is a relational ministry: we name each other's vocations by being in relationship." />
+<meta name="description" content="A missionary page for Luke Schenk: father, son, husband, friend, and a true companion. Written by the people around him, because Glass Canvas is a relational ministry." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
@@ -339,8 +339,8 @@ h1 .family { display: block; color: var(--on-band-2); }
 .ledger { display: grid; gap: 1px; background: var(--rule); border-block: 1px solid var(--rule); }
 .entry {
   background: var(--paper);
-  display: grid; grid-template-columns: 7rem minmax(0, 1fr) minmax(0, 1.25fr);
-  gap: clamp(16px, 3vw, 40px);
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: clamp(16px, 3vw, 44px);
   padding-block: clamp(22px, 2.8vw, 30px);
   align-items: baseline;
   transition: background .18s ease;
@@ -354,11 +354,11 @@ h1 .family { display: block; color: var(--on-band-2); }
 .entry-what .org { font-size: 13.5px; color: var(--text-2); }
 .entry-note { color: var(--text-2); font-size: 16px; }
 @media (max-width: 780px) {
-  .entry { grid-template-columns: 1fr; gap: 6px; padding-block: 22px; }
+  .entry { grid-template-columns: 1fr; gap: 8px; padding-block: 22px; }
 }
 
 /* ---------- two-up cards ---------- */
-.duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr)); gap: clamp(16px, 2vw, 22px); }
+.duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: clamp(16px, 2vw, 22px); align-items: start; }
 .card {
   background: var(--card); border: 1px solid var(--rule);
   border-radius: 4px; padding: clamp(26px, 3vw, 34px);
@@ -432,6 +432,27 @@ footer .note { font-family: var(--serif); font-style: italic; }
   .rise { opacity: 0; transform: translateY(14px); transition: opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1); }
   .rise.in { opacity: 1; transform: none; }
 }
+
+/* A byline without a quote: used where a gift was named, not described. */
+.byline {
+  display: inline-flex; align-items: baseline; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--text-2);
+}
+.byline::before {
+  content: ""; width: 16px; height: 1.5px; background: var(--brass);
+  align-self: center; flex: none;
+}
+.byline .named { color: var(--brass); }
+
+.lede-cite {
+  display: block; margin-top: 14px; padding-left: 20px;
+  font-family: var(--sans); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-2);
+}
+.lede-cite .named { color: var(--sage); }
+
+.entry-what h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; letter-spacing: -0.015em; }
 </style>
 </head>
 <body>
@@ -470,11 +491,11 @@ footer .note { font-family: var(--serif); font-style: italic; }
     <div class="hero-text">
       <span class="eyebrow hero-eyebrow"><span class="tick">&#9679;</span>Missionary page</span>
       <h1><span class="given">Luke</span><span class="family">Schenk</span></h1>
-      <p class="hero-line"><span class="slot">One line naming Luke's vocation, in someone else's words</span></p>
+      <p class="hero-line">A true companion. He comes alive when he can carry part of what someone else is carrying.</p>
       <div class="hero-facts">
-        <span class="fact"><span class="slot">Where he's based</span></span>
-        <span class="fact"><span class="slot">Role at Glass Canvas</span></span>
-        <span class="fact"><span class="slot">Years in ministry</span></span>
+        <span class="fact">Husband and father of three</span>
+        <span class="fact">Marriage mentor, with his wife</span>
+        <span class="fact">Zero to one</span>
       </div>
       <div class="hero-btns">
         <a class="btn btn-solid" href="#invitation">Partner with Luke</a>
@@ -492,23 +513,23 @@ footer .note { font-family: var(--serif); font-style: italic; }
     <div>
       <div class="head" style="margin-bottom:26px">
         <span class="eyebrow"><span class="tick">&#9679;</span>Who he is</span>
-        <h2>The short version, and then the true one.</h2>
+        <h2>Father, son, husband, friend.</h2>
       </div>
       <div class="prose">
-        <p class="first"><span class="slot">Opening paragraph: where Luke is from, who he's married to, his kids, what he does day to day. Concrete and plain, no throat-clearing.</span></p>
-        <p><span class="slot">Second paragraph: the turn in his story. What he was doing before, and what moved him toward ministry and toward this work.</span></p>
-        <p><span class="slot">Third paragraph: what he's like to be around. The thing people notice in the first ten minutes.</span></p>
+        <p class="first">Luke would put those four words in that order, and he would mean it. He grew up inside a family already on mission: his parents were missionaries, so a life spent on other people was never an argument he had to win with himself. It was the house he was raised in.</p>
+        <p>What he does is companionship, in the older sense of the word. Luke comes alive when he can get underneath the weight of somebody else's life and take a share of it. Not counsel from a safe distance. He stays for the good news and he stays for the hard part, and he treats both as the same work.</p>
+        <p>He is a maximizer. He can see what a person might become before they can see it themselves, and he has an unusual ability to set himself aside long enough to look for the good. Outside of all that: good meat, good barbecue, launching new ideas, and time with his family.</p>
       </div>
       <div class="attest" style="margin-top:30px">
-        <q><span class="slot">A few sentences from someone who knows him well, describing who he is rather than what he does</span></q>
-        <span class="attest-by">Named by <span class="named slot">Name, role</span></span>
+        <q>Luke is a good friend. He walks alongside people in ways that are inspiring.</q>
+        <span class="attest-by">Named by <span class="named">Kevin Chiang</span>, Glass Canvas</span>
       </div>
     </div>
     <div>
       <div class="photo-frame">
         <img src="/luke-family.webp" width="1400" height="1049" alt="Luke with his wife and three children in the desert." />
       </div>
-      <p class="photo-cap"><span class="slot">Caption: family names, and where this was taken</span></p>
+      <p class="photo-cap"><span class="slot">Caption: his wife's name, their three kids' names, and where this was taken</span></p>
     </div>
   </div>
 </section>
@@ -525,35 +546,26 @@ footer .note { font-family: var(--serif); font-style: italic; }
     <div class="charisms">
       <div class="charism">
         <span class="charism-num">01</span>
-        <h3 class="charism-name"><span class="slot">First charism</span></h3>
+        <h3 class="charism-name">Calm in the storm</h3>
         <div class="charism-body">
-          <p><span class="slot">What this gift looks like when Luke uses it, and the effect it has on the people on the other side of it.</span></p>
-          <div class="attest">
-            <q><span class="slot">Someone naming this gift in him, in their own words</span></q>
-            <span class="attest-by">Named by <span class="named slot">Name, role</span></span>
-          </div>
+          <p>When a thing is going badly, Luke's presence does not change. That steadiness isn't distance, and it isn't that he feels it less. He has learned to stay useful while he feels it, which is why he tends to be among the first people called when something comes apart.</p>
+          <span class="byline">Named by <span class="named">Kevin Chiang</span>, Glass Canvas</span>
         </div>
       </div>
       <div class="charism">
         <span class="charism-num">02</span>
-        <h3 class="charism-name"><span class="slot">Second charism</span></h3>
+        <h3 class="charism-name">Persistent and enduring love</h3>
         <div class="charism-body">
-          <p><span class="slot">What this gift looks like when Luke uses it, and the effect it has on the people on the other side of it.</span></p>
-          <div class="attest">
-            <q><span class="slot">Someone naming this gift in him, in their own words</span></q>
-            <span class="attest-by">Named by <span class="named slot">Name, role</span></span>
-          </div>
+          <p>He does not run out. Luke cares deeply about people, and not a category of people. All of them. He keeps showing up long past the point where the relationship stops being convenient or interesting, and long past the point where most of us would have quietly moved on.</p>
+          <span class="byline">Named by <span class="named">Kevin Chiang</span>, Glass Canvas</span>
         </div>
       </div>
       <div class="charism">
         <span class="charism-num">03</span>
-        <h3 class="charism-name"><span class="slot">Third charism</span></h3>
+        <h3 class="charism-name">Deep self-reflection</h3>
         <div class="charism-body">
-          <p><span class="slot">What this gift looks like when Luke uses it, and the effect it has on the people on the other side of it.</span></p>
-          <div class="attest">
-            <q><span class="slot">Someone naming this gift in him, in their own words</span></q>
-            <span class="attest-by">Named by <span class="named slot">Name, role</span></span>
-          </div>
+          <p>Luke examines himself honestly and without theatre. It is what makes the first two gifts trustworthy rather than sentimental: he has done enough interior work to be steady for someone else without needing anything back from them for it.</p>
+          <span class="byline">Named by <span class="named">Kevin Chiang</span>, Glass Canvas</span>
         </div>
       </div>
     </div>
@@ -567,11 +579,12 @@ footer .note { font-family: var(--serif); font-style: italic; }
       <h2>Why he keeps showing up.</h2>
     </div>
     <div class="prose">
-      <p class="first"><span class="slot">In Luke's own voice: what he actually cares about. The conviction underneath the work, stated plainly rather than devotionally.</span></p>
-      <p><span class="slot">The people or the wound he keeps returning to. What he's seen that he can't unsee.</span></p>
-      <p><span class="slot">What he believes ministry is for, and what he thinks it is not for.</span></p>
+      <p class="first">Luke has been part of a mission-driven family since the day he was born. His parents were missionaries, which means the outward orientation of a household was settled for him early. He and his wife are raising a God-fearing family now, and he treats that house as the first assignment rather than the thing left over after the real work.</p>
+      <p>He cares deeply about people, which makes him useful in the two moments most of us avoid: when someone is winning and needs a witness, and when someone is losing and needs company. He is willing to be in the room for both.</p>
+      <p>The rest of it is zero to one. Luke loves launching things, and he is at his best standing next to someone who has seen a vision and now has to survive the long unglamorous middle of building it, keeping them encouraged and walking the line until the thing actually exists.</p>
     </div>
-    <p class="lede" style="margin-top:36px; border-left:2px solid var(--sage); padding-left:20px;"><span class="slot">A single line from Luke that could carry the whole page</span></p>
+    <p class="lede" style="margin-top:36px; border-left:2px solid var(--sage); padding-left:20px;">He comes alive when he can share in someone's life, in their success and in their suffering.</p>
+    <span class="lede-cite">Named by <span class="named">Kevin Chiang</span>, Glass Canvas</span>
   </div></div>
 </section>
 
@@ -580,42 +593,43 @@ footer .note { font-family: var(--serif); font-style: italic; }
     <div class="head">
       <span class="eyebrow"><span class="tick">&#9679;</span>Work he's led</span>
       <h2>Things he built, carried, or handed on.</h2>
-      <p>Listed in order because the order matters: each of these made the next one possible.</p>
+      <p>Most of these were nothing when he got to them. That is the stretch of work he is built for.</p>
     </div>
   </div>
   <div class="wrap">
     <div class="ledger">
       <div class="entry">
-        <span class="entry-when"><span class="slot">Years</span></span>
         <div class="entry-what">
-          <h3><span class="slot">What he led</span></h3>
-          <span class="org"><span class="slot">Organization or parish</span></span>
+          <h3>Human</h3>
+          <span class="org">Chicago</span>
         </div>
-        <p class="entry-note"><span class="slot">What it was, what he was responsible for, and what came of it. One or two sentences, specific.</span></p>
+        <p class="entry-note"><span class="slot">What Human is, and what Luke was responsible for there</span></p>
       </div>
       <div class="entry">
-        <span class="entry-when"><span class="slot">Years</span></span>
         <div class="entry-what">
-          <h3><span class="slot">What he led</span></h3>
-          <span class="org"><span class="slot">Organization or parish</span></span>
+          <h3>Unleash the Gospel</h3>
+          <span class="org">Archdiocese of Detroit</span>
         </div>
-        <p class="entry-note"><span class="slot">What it was, what he was responsible for, and what came of it.</span></p>
+        <p class="entry-note">The archdiocese's effort to reorient itself around missionary discipleship rather than maintenance. <span class="slot">Luke's role in it</span></p>
       </div>
       <div class="entry">
-        <span class="entry-when"><span class="slot">Years</span></span>
         <div class="entry-what">
-          <h3><span class="slot">What he led</span></h3>
-          <span class="org"><span class="slot">Organization or parish</span></span>
+          <h3>Tilma</h3>
         </div>
-        <p class="entry-note"><span class="slot">What it was, what he was responsible for, and what came of it.</span></p>
+        <p class="entry-note"><span class="slot">What Tilma is, and what Luke was responsible for there</span></p>
       </div>
       <div class="entry">
-        <span class="entry-when"><span class="slot">Years</span></span>
         <div class="entry-what">
-          <h3><span class="slot">What he led</span></h3>
-          <span class="org"><span class="slot">Organization or parish</span></span>
+          <h3>Companion</h3>
+          <span class="org">App</span>
         </div>
-        <p class="entry-note"><span class="slot">What it was, what he was responsible for, and what came of it.</span></p>
+        <p class="entry-note"><span class="slot">What Companion does, and what Luke was responsible for there</span></p>
+      </div>
+      <div class="entry">
+        <div class="entry-what">
+          <h3>Exodus 90</h3>
+        </div>
+        <p class="entry-note">The ninety-day spiritual exercise for Catholic men, built on prayer, asceticism, and fraternity. <span class="slot">Luke's role in it</span></p>
       </div>
     </div>
   </div>
@@ -626,28 +640,23 @@ footer .note { font-family: var(--serif); font-style: italic; }
     <div class="head">
       <span class="eyebrow"><span class="tick">&#9679;</span>Other ministry he's served</span>
       <h2>The rooms he's already been in.</h2>
-      <p>Shorter commitments, retreats, fill-ins, and long faithful stretches nobody put a title on.</p>
+      <p>Some of this has a title on it. Most of it doesn't.</p>
     </div>
     <div class="duo">
       <div class="card">
-        <span class="card-kicker">Served with</span>
-        <h3><span class="slot">Ministry or community</span></h3>
-        <p><span class="slot">What he did there and roughly when.</span></p>
+        <span class="card-kicker">Serving now</span>
+        <h3>Marriage mentors</h3>
+        <p>Luke and his wife mentor couples in their diocese, which is to say they let other people's marriages into their own house and stay with them past the first hard conversation.</p>
       </div>
       <div class="card">
-        <span class="card-kicker">Served with</span>
-        <h3><span class="slot">Ministry or community</span></h3>
-        <p><span class="slot">What he did there and roughly when.</span></p>
+        <span class="card-kicker">Since birth</span>
+        <h3>A missionary family</h3>
+        <p>His parents were missionaries. Luke has been inside this work since before he was old enough to choose it, which is a different formation than deciding on it as an adult.</p>
       </div>
       <div class="card">
-        <span class="card-kicker">Served with</span>
-        <h3><span class="slot">Ministry or community</span></h3>
-        <p><span class="slot">What he did there and roughly when.</span></p>
-      </div>
-      <div class="card">
-        <span class="card-kicker">Served with</span>
-        <h3><span class="slot">Ministry or community</span></h3>
-        <p><span class="slot">What he did there and roughly when.</span></p>
+        <span class="card-kicker">Ongoing</span>
+        <h3>On mission at home</h3>
+        <p>Raising a God-fearing family. He counts this as ministry, not as the thing that happens around the edges of ministry, and he is fairly stubborn about the distinction.</p>
       </div>
     </div>
   </div>
@@ -657,30 +666,44 @@ footer .note { font-family: var(--serif); font-style: italic; }
   <div class="wrap">
     <div class="head">
       <span class="eyebrow"><span class="tick">&#9679;</span>The invitation</span>
-      <h2>Who he's looking for, and who he's looking to walk with.</h2>
-      <p>Two different questions, and a missionary page should answer both honestly.</p>
+      <h2>What he brings, who he's for, and where he's asking to be sent.</h2>
+      <p>Three questions, and a missionary page should answer all of them honestly.</p>
     </div>
     <div class="duo">
       <div class="card">
-        <span class="card-kicker">Ministries he hopes to connect with</span>
-        <h3>Where he's asking to be sent</h3>
-        <p><span class="slot">A sentence framing the kind of ministry partnership Luke is hoping to find.</span></p>
+        <span class="card-kicker">What he brings</span>
+        <h3>The practical part</h3>
+        <p>Alongside the charisms, a real set of working skills.</p>
         <ul class="tick-list">
-          <li><span class="slot">Type of ministry, and what he'd bring to it</span></li>
-          <li><span class="slot">Type of ministry, and what he'd bring to it</span></li>
-          <li><span class="slot">Type of ministry, and what he'd bring to it</span></li>
-          <li><span class="slot">Type of ministry, and what he'd bring to it</span></li>
+          <li>Strategic planning</li>
+          <li>Communication strategy</li>
+          <li>Leadership</li>
+          <li>Entrepreneurship and launching</li>
+          <li>Seeing what should come next</li>
         </ul>
       </div>
       <div class="card">
         <span class="card-kicker">People he's seeking to accompany</span>
         <h3>Who he's for</h3>
-        <p><span class="slot">A sentence naming the people Luke feels drawn to walk alongside.</span></p>
+        <p>The people he keeps ending up next to, and would choose again.</p>
         <ul class="tick-list">
-          <li><span class="slot">Who they are, and what they're carrying</span></li>
-          <li><span class="slot">Who they are, and what they're carrying</span></li>
-          <li><span class="slot">Who they are, and what they're carrying</span></li>
-          <li><span class="slot">Who they are, and what they're carrying</span></li>
+          <li>Founders and leaders in the zero-to-one stretch, when the vision is real but nothing exists yet</li>
+          <li>People in the middle of suffering, who need company more than they need counsel</li>
+          <li>Married couples, especially the ones early enough to still be surprised by it</li>
+          <li>Men trying to work out what a serious interior life actually looks like</li>
+          <li>Anyone whose potential nobody has yet said out loud</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-kicker">Ministries he hopes to connect with</span>
+        <h3>Where he's asking to be sent</h3>
+        <p>Drawn from the work he has already carried.</p>
+        <ul class="tick-list">
+          <li>Ministries trying to launch something that does not exist yet</li>
+          <li>Diocesan renewal efforts asking hard questions about what comes next</li>
+          <li>Catholic products and apps that need strategy as much as they need code</li>
+          <li>Marriage and family ministry</li>
+          <li>Men's formation</li>
         </ul>
       </div>
     </div>
@@ -694,8 +717,9 @@ footer .note { font-family: var(--serif); font-style: italic; }
       <div class="hair"></div>
     </div>
     <div class="preface-body">
-      <p><span class="slot">The short blurb: how Luke ended up at Glass Canvas through a relationship rather than an application. Who knew him, what they saw, and what they said out loud.</span></p>
-      <p><span class="slot">And what that has meant since: how being named by other people changed what he understood his own work to be.</span></p>
+      <p>Luke did not arrive at Glass Canvas through an application. He arrived through a relationship, which is the only way anyone has ever arrived here.</p>
+      <p><span class="slot">The specifics: who already knew Luke, what they saw in him, and what they said out loud that made this obvious to everyone else</span></p>
+      <p><span class="slot">And what that has meant since: how being named by other people changed what Luke understood his own work to be</span></p>
     </div>
   </div>
 </section>
@@ -704,9 +728,10 @@ footer .note { font-family: var(--serif); font-style: italic; }
   <div class="close-in">
     <span class="eyebrow hero-eyebrow"><span class="tick">&#9679;</span>Partner with Luke</span>
     <h2>If you saw something here, say it out loud.</h2>
-    <p><span class="slot">Closing paragraph: what partnering actually means. Prayer, support, an introduction, a place to serve. Be concrete about the ask.</span></p>
+    <p>That is the whole method. Somebody names a gift, and then a vocation has somewhere to go. If this page brought a person, a ministry, or an opportunity to mind, Luke would rather hear it than not.</p>
+    <p><span class="slot">The concrete ask: prayer, financial support, an introduction, a place to serve. Say which ones, and what a yes actually looks like.</span></p>
     <div class="btns">
-      <a class="btn btn-solid" href="mailto:hello@example.com"><span class="slot">Email address</span></a>
+      <a class="btn btn-solid" href="mailto:"><span class="slot">Email address</span></a>
       <a class="btn btn-line" href="#top">Back to the top</a>
     </div>
   </div>
