@@ -99,7 +99,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
             return
         path = self.path.split("?")[0]
         # Static assets
-        static = {'.svg': 'image/svg+xml', '.css': 'text/css', '.js': 'application/javascript'}
+        static = {'.svg': 'image/svg+xml', '.css': 'text/css', '.js': 'application/javascript',
+                  '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
+                  '.png': 'image/png', '.ico': 'image/x-icon'}
         ext = Path(path).suffix.lower()
         if ext in static:
             filepath = BASE / path.lstrip('/')
@@ -131,6 +133,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.send_file(BASE / "karina.html")
         elif path == "/deborah":
             self.send_file(BASE / "deborah.html")
+        elif path == "/luke":
+            self.send_file(BASE / "luke.html")
         elif path == "/wall":
             self.send_file(BASE / "wall.html")
         elif path == "/api/memories":

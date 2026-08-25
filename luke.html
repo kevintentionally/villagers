@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Luke Schenk</title>
+<meta name="description" content="A missionary page for Luke Schenk. Glass Canvas is a relational ministry: we name each other's vocations by being in relationship." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  color-scheme: light;
+  --paper:      #FAF9F7;
+  --paper-2:    #F1EFEB;
+  --card:       #FFFFFF;
+  --ink:        #16191F;
+  --text:       #22272F;
+  --text-2:     #5A626D;
+  --rule:       rgba(22, 25, 31, 0.11);
+  --rule-firm:  rgba(22, 25, 31, 0.20);
+  --denim:      #2C4F6E;
+  --denim-2:    #1E3A53;
+  --denim-pale: #E2EAF1;
+  --on-denim:   #FAF9F7;
+  --sage:       #5C6C53;
+  --brass:      #9C6C2A;
+  --shadow:     0 1px 2px rgba(22,25,31,.05), 0 10px 30px -18px rgba(22,25,31,.22);
+
+  /* Constant across themes: the deep bands keep their own world. */
+  --band:       #1A3247;
+  --band-2:     #142838;
+  --on-band:    #E9EFF4;
+  --on-band-2:  #9DB3C5;
+  --band-rule:  rgba(233, 239, 244, 0.16);
+  --band-brass: #D9A85F;
+
+  --serif: 'Newsreader', ui-serif, Georgia, 'Times New Roman', serif;
+  --sans:  'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --measure: 34rem;
+  --pad: clamp(22px, 5vw, 72px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper:      #101319;
+    --paper-2:    #171B22;
+    --card:       #1A1F27;
+    --ink:        #F3F2EF;
+    --text:       #E5E4E1;
+    --text-2:     #A0A8B3;
+    --rule:       rgba(243, 242, 239, 0.12);
+    --rule-firm:  rgba(243, 242, 239, 0.24);
+    --denim:      #83AED0;
+    --denim-2:    #A9CAE4;
+    --denim-pale: #1C2B39;
+    --on-denim:   #101319;
+    --sage:       #9EB093;
+    --brass:      #D5A45F;
+    --shadow:     0 1px 2px rgba(0,0,0,.4), 0 12px 34px -20px rgba(0,0,0,.8);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper:      #101319;
+  --paper-2:    #171B22;
+  --card:       #1A1F27;
+  --ink:        #F3F2EF;
+  --text:       #E5E4E1;
+  --text-2:     #A0A8B3;
+  --rule:       rgba(243, 242, 239, 0.12);
+  --rule-firm:  rgba(243, 242, 239, 0.24);
+  --denim:      #83AED0;
+  --denim-2:    #A9CAE4;
+  --denim-pale: #1C2B39;
+  --on-denim:   #101319;
+  --sage:       #9EB093;
+  --brass:      #D5A45F;
+  --shadow:     0 1px 2px rgba(0,0,0,.4), 0 12px 34px -20px rgba(0,0,0,.8);
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; border-radius: 3px; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* ---------- shared type ---------- */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.eyebrow .tick { color: var(--brass); margin-right: 0.6em; }
+
+h1, h2 { font-family: var(--serif); font-weight: 300; letter-spacing: -0.02em; text-wrap: balance; }
+h2 {
+  font-size: clamp(30px, 4.2vw, 47px);
+  line-height: 1.12;
+  color: var(--ink);
+}
+h3 {
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+p { text-wrap: pretty; }
+.lede {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.4vw, 25px);
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* ---------- placeholder slots ---------- */
+.slot {
+  color: var(--text-2);
+  background: color-mix(in srgb, var(--brass) 9%, transparent);
+  box-shadow: inset 0 -1px 0 0 color-mix(in srgb, var(--brass) 55%, transparent);
+  border-radius: 2px;
+  padding: 0.05em 0.3em;
+  font-style: italic;
+}
+.slot::before { content: "\2009"; }
+.slot::after  { content: "\2009"; }
+
+/* Slots sitting on the deep bands need their own contrast set. */
+.hero .slot, .close .slot {
+  color: var(--on-band);
+  background: rgba(217, 168, 95, 0.15);
+  box-shadow: inset 0 -1px 0 0 rgba(217, 168, 95, 0.65);
+}
+.btn-solid .slot {
+  color: #17202B;
+  background: rgba(23, 32, 43, 0.14);
+  box-shadow: inset 0 -1px 0 0 rgba(23, 32, 43, 0.55);
+}
+
+/* ---------- layout ---------- */
+.wrap { max-width: 1140px; margin-inline: auto; padding-inline: var(--pad); }
+.col  { max-width: var(--measure); }
+
+section { padding-block: clamp(64px, 9vw, 116px); }
+.rule-top { border-top: 1px solid var(--rule); }
+
+.head {
+  display: grid;
+  gap: 18px;
+  margin-bottom: clamp(38px, 5vw, 60px);
+  max-width: 46rem;
+}
+.head p { color: var(--text-2); font-size: 17px; max-width: var(--measure); }
+
+/* ---------- masthead ---------- */
+.masthead {
+  position: sticky; top: 0; z-index: 60;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(14px) saturate(1.3);
+  border-bottom: 1px solid var(--rule);
+}
+.masthead-in {
+  max-width: 1140px; margin-inline: auto; padding: 13px var(--pad);
+  display: flex; align-items: center; justify-content: space-between; gap: 18px;
+}
+.brand { display: flex; align-items: baseline; gap: 9px; text-decoration: none; }
+.brand-mark {
+  font-family: var(--serif); font-size: 19px; font-weight: 400;
+  color: var(--ink); letter-spacing: -0.01em;
+}
+.brand-sub {
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--text-2);
+}
+.mast-nav { display: flex; align-items: center; gap: 4px; }
+.mast-nav a {
+  font-size: 13.5px; font-weight: 500; color: var(--text-2);
+  text-decoration: none; padding: 6px 11px; border-radius: 99px;
+  transition: color .16s ease, background .16s ease;
+}
+.mast-nav a:hover { color: var(--ink); background: var(--rule); }
+.mast-nav a.cta {
+  color: var(--on-denim); background: var(--denim); font-weight: 600;
+}
+.mast-nav a.cta:hover { background: var(--denim-2); }
+@media (max-width: 720px) { .mast-nav .hide-sm { display: none; } }
+
+/* ---------- preface ---------- */
+.preface { padding-block: clamp(44px, 5.5vw, 70px); }
+.preface-in {
+  max-width: 1140px; margin-inline: auto; padding-inline: var(--pad);
+  display: grid; grid-template-columns: minmax(0, 13rem) minmax(0, 32rem);
+  gap: clamp(24px, 5vw, 64px); align-items: start;
+}
+@media (max-width: 860px) { .preface-in { grid-template-columns: 1fr; gap: 22px; } }
+.preface-label { padding-top: 8px; }
+.preface-label .eyebrow { display: block; margin-bottom: 10px; }
+.preface-label .hair { width: 46px; height: 2px; background: var(--brass); }
+.preface-body p {
+  font-family: var(--serif);
+  font-size: clamp(16.5px, 1.7vw, 19px);
+  font-weight: 300;
+  line-height: 1.66;
+  color: var(--text);
+}
+.preface-body p + p { margin-top: 1em; }
+.preface-body em { font-style: italic; color: var(--ink); }
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative;
+  background: linear-gradient(168deg, var(--band) 0%, var(--band-2) 100%);
+  color: var(--on-band);
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 82% 8%, rgba(217,168,95,.14), transparent 62%),
+    radial-gradient(90% 70% at 10% 100%, rgba(131,174,208,.14), transparent 60%);
+}
+.hero-in {
+  position: relative; z-index: 1;
+  max-width: 1140px; margin-inline: auto; padding-inline: var(--pad);
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+  gap: clamp(24px, 4vw, 56px); align-items: end;
+  padding-top: clamp(56px, 8vw, 96px);
+}
+.hero-text { padding-bottom: clamp(56px, 8vw, 96px); }
+.hero-eyebrow { color: var(--on-band-2); margin-bottom: 22px; display: block; }
+.hero-eyebrow .tick { color: var(--band-brass); }
+h1 {
+  font-size: clamp(46px, 8vw, 88px);
+  line-height: 0.98;
+  color: #FFFFFF;
+  margin-bottom: 22px;
+}
+h1 .given { display: block; }
+h1 .family { display: block; color: var(--on-band-2); }
+.hero-line {
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: clamp(19px, 2.3vw, 24px); line-height: 1.5;
+  color: var(--on-band); max-width: 30ch; margin-bottom: 30px;
+}
+.hero-facts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+.fact {
+  font-size: 12.5px; font-weight: 500; color: var(--on-band);
+  border: 1px solid var(--band-rule); border-radius: 99px;
+  padding: 5px 13px; background: rgba(255,255,255,.04);
+}
+.hero-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--sans); font-size: 14.5px; font-weight: 600;
+  padding: 12px 22px; border-radius: 99px; text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform .16s ease, background .16s ease, border-color .16s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-solid { background: var(--band-brass); color: #17202B; }
+.btn-solid:hover { background: #E6B872; }
+.btn-line { border-color: var(--band-rule); color: var(--on-band); }
+.btn-line:hover { border-color: var(--on-band-2); background: rgba(255,255,255,.05); }
+
+.hero-portrait { position: relative; align-self: end; }
+.hero-portrait img {
+  width: 100%; max-width: 430px; margin-inline: auto;
+  max-height: min(72vh, 620px); object-fit: contain; object-position: bottom;
+  filter: drop-shadow(0 30px 50px rgba(0,0,0,.42));
+}
+@media (max-width: 860px) {
+  .hero-in { grid-template-columns: 1fr; align-items: start; }
+  .hero-text { padding-bottom: 8px; }
+  .hero-portrait img { max-width: 330px; }
+}
+
+/* ---------- attestation ---------- */
+.attest {
+  border-left: 2px solid var(--brass);
+  padding-left: 18px;
+  display: grid; gap: 8px;
+}
+.attest q {
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: 18px; line-height: 1.58; color: var(--ink);
+  quotes: "\201C" "\201D";
+}
+.attest-by {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--text-2);
+}
+.attest-by .named { color: var(--brass); }
+
+/* ---------- charisms ---------- */
+.charisms { display: grid; gap: 1px; background: var(--rule); border-block: 1px solid var(--rule); }
+.charism {
+  background: var(--paper);
+  padding: clamp(26px, 3.4vw, 38px) 0;
+  display: grid; grid-template-columns: 3.2rem minmax(0, 20rem) minmax(0, 1fr);
+  gap: clamp(18px, 3vw, 44px); align-items: start;
+}
+.charism-in { display: contents; }
+.charism-num {
+  font-family: var(--serif); font-size: 15px; font-weight: 400;
+  color: var(--brass); font-variant-numeric: tabular-nums; padding-top: 5px;
+}
+.charism-name { font-family: var(--serif); font-size: clamp(23px, 2.6vw, 30px); font-weight: 400; line-height: 1.2; color: var(--ink); letter-spacing: -0.015em; }
+.charism-body { display: grid; gap: 20px; }
+.charism-body p { color: var(--text-2); font-size: 16.5px; }
+@media (max-width: 860px) {
+  .charism { grid-template-columns: 2.2rem minmax(0,1fr); }
+  .charism-body { grid-column: 1 / -1; }
+}
+
+/* ---------- ledger (work led / where served) ---------- */
+.ledger { display: grid; gap: 1px; background: var(--rule); border-block: 1px solid var(--rule); }
+.entry {
+  background: var(--paper);
+  display: grid; grid-template-columns: 7rem minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: clamp(16px, 3vw, 40px);
+  padding-block: clamp(22px, 2.8vw, 30px);
+  align-items: baseline;
+  transition: background .18s ease;
+}
+.entry:hover { background: var(--paper-2); }
+.entry-when {
+  font-size: 13px; font-weight: 600; color: var(--brass);
+  font-variant-numeric: tabular-nums; letter-spacing: 0.02em;
+}
+.entry-what { display: grid; gap: 4px; }
+.entry-what .org { font-size: 13.5px; color: var(--text-2); }
+.entry-note { color: var(--text-2); font-size: 16px; }
+@media (max-width: 780px) {
+  .entry { grid-template-columns: 1fr; gap: 6px; padding-block: 22px; }
+}
+
+/* ---------- two-up cards ---------- */
+.duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr)); gap: clamp(16px, 2vw, 22px); }
+.card {
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: 4px; padding: clamp(26px, 3vw, 34px);
+  box-shadow: var(--shadow);
+  display: grid; gap: 14px; align-content: start;
+}
+.card-kicker {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--sage);
+}
+.card h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; letter-spacing: -0.015em; line-height: 1.22; }
+.card p { color: var(--text-2); font-size: 16.5px; }
+.tick-list { list-style: none; display: grid; gap: 11px; }
+.tick-list li {
+  display: grid; grid-template-columns: 1.1rem 1fr; gap: 10px;
+  font-size: 16px; color: var(--text-2); line-height: 1.6;
+}
+.tick-list li::before {
+  content: ""; width: 7px; height: 7px; margin-top: 0.6em;
+  border: 1.5px solid var(--brass); border-radius: 99px;
+}
+
+/* ---------- portrait/family split ---------- */
+.split {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  gap: clamp(28px, 5vw, 66px); align-items: center;
+}
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+.photo-frame { border-radius: 4px; overflow: hidden; border: 1px solid var(--rule); box-shadow: var(--shadow); }
+.photo-cap { margin-top: 12px; font-size: 13px; color: var(--text-2); font-family: var(--serif); font-style: italic; }
+.prose { display: grid; gap: 1.05em; }
+.prose p { color: var(--text-2); font-size: 17px; }
+.prose p.first { color: var(--text); }
+
+/* ---------- origin band ---------- */
+.origin {
+  background: var(--paper-2);
+  border-block: 1px solid var(--rule);
+}
+.origin-in {
+  max-width: 1140px; margin-inline: auto; padding-inline: var(--pad);
+  display: grid; grid-template-columns: minmax(0, 13rem) minmax(0, 36rem);
+  gap: clamp(24px, 5vw, 64px); align-items: start;
+}
+@media (max-width: 860px) { .origin-in { grid-template-columns: 1fr; gap: 20px; } }
+
+/* ---------- closing ---------- */
+.close {
+  background: linear-gradient(168deg, var(--band-2) 0%, var(--band) 100%);
+  color: var(--on-band);
+}
+.close-in { max-width: 1140px; margin-inline: auto; padding-inline: var(--pad); }
+.close-in > * { max-width: 46rem; }
+.close h2 { color: #FFFFFF; }
+.close p { color: var(--on-band-2); font-size: 17.5px; margin-top: 18px; max-width: 42ch; }
+.close .btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
+
+/* ---------- footer ---------- */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 26px var(--pad);
+  max-width: 1140px; margin-inline: auto;
+  display: flex; flex-wrap: wrap; gap: 12px;
+  justify-content: space-between; align-items: center;
+  font-size: 13px; color: var(--text-2);
+}
+footer .note { font-family: var(--serif); font-style: italic; }
+
+/* ---------- motion ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .rise { opacity: 0; transform: translateY(14px); transition: opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1); }
+  .rise.in { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in">
+    <a class="brand" href="#top">
+      <span class="brand-mark">Luke Schenk</span>
+      <span class="brand-sub">Glass Canvas</span>
+    </a>
+    <nav class="mast-nav">
+      <a href="#who" class="hide-sm">Who he is</a>
+      <a href="#charisms" class="hide-sm">Charisms</a>
+      <a href="#led" class="hide-sm">Work he's led</a>
+      <a href="#invitation" class="cta">Partner with Luke</a>
+    </nav>
+  </div>
+</header>
+
+<div class="preface" id="top">
+  <div class="preface-in">
+    <div class="preface-label">
+      <span class="eyebrow">A note before you read</span>
+      <div class="hair"></div>
+    </div>
+    <div class="preface-body">
+      <p>Most pages like this one are written by the person they're about. This one isn't, and that's the point.</p>
+      <p>Glass Canvas is a relational ministry. What that means in practice is unglamorous: we pay close attention to each other, and we say out loud what we see. Gifts get named before they get titles. Vocations get spoken by the people who watched them form, not claimed by the person carrying them.</p>
+      <p>So this is a page about Luke, built out of what the people around him have named in him. <em>We think naming vocation is the first work, not the last.</em> If your team or your parish or your organization is trying to figure out how to honor the people inside it, this is the shape we'd offer you.</p>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-in">
+    <div class="hero-text">
+      <span class="eyebrow hero-eyebrow"><span class="tick">&#9679;</span>Missionary page</span>
+      <h1><span class="given">Luke</span><span class="family">Schenk</span></h1>
+      <p class="hero-line"><span class="slot">One line naming Luke's vocation, in someone else's words</span></p>
+      <div class="hero-facts">
+        <span class="fact"><span class="slot">Where he's based</span></span>
+        <span class="fact"><span class="slot">Role at Glass Canvas</span></span>
+        <span class="fact"><span class="slot">Years in ministry</span></span>
+      </div>
+      <div class="hero-btns">
+        <a class="btn btn-solid" href="#invitation">Partner with Luke</a>
+        <a class="btn btn-line" href="#who">Read his story</a>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <img src="/luke-portrait.webp" width="900" height="1368" alt="Luke Schenk, smiling, in a denim jacket." />
+    </div>
+  </div>
+</section>
+
+<section id="who" class="wrap">
+  <div class="split">
+    <div>
+      <div class="head" style="margin-bottom:26px">
+        <span class="eyebrow"><span class="tick">&#9679;</span>Who he is</span>
+        <h2>The short version, and then the true one.</h2>
+      </div>
+      <div class="prose">
+        <p class="first"><span class="slot">Opening paragraph: where Luke is from, who he's married to, his kids, what he does day to day. Concrete and plain, no throat-clearing.</span></p>
+        <p><span class="slot">Second paragraph: the turn in his story. What he was doing before, and what moved him toward ministry and toward this work.</span></p>
+        <p><span class="slot">Third paragraph: what he's like to be around. The thing people notice in the first ten minutes.</span></p>
+      </div>
+      <div class="attest" style="margin-top:30px">
+        <q><span class="slot">A few sentences from someone who knows him well, describing who he is rather than what he does</span></q>
+        <span class="attest-by">Named by <span class="named slot">Name, role</span></span>
+      </div>
+    </div>
+    <div>
+      <div class="photo-frame">
+        <img src="/luke-family.webp" width="1400" height="1049" alt="Luke with his wife and three children in the desert." />
+      </div>
+      <p class="photo-cap"><span class="slot">Caption: family names, and where this was taken</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="charisms" class="rule-top">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow"><span class="tick">&#9679;</span>His charisms</span>
+      <h2>What the people around him keep naming.</h2>
+      <p>Not a skills list. These are the gifts that showed up before anyone gave him a job description for them, and the people who saw them first.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="charisms">
+      <div class="charism">
+        <span class="charism-num">01</span>
+        <h3 class="charism-name"><span class="slot">First charism</span></h3>
+        <div class="charism-body">
+          <p><span class="slot">What this gift looks like when Luke uses it, and the effect it has on the people on the other side of it.</span></p>
+          <div class="attest">
+            <q><span class="slot">Someone naming this gift in him, in their own words</span></q>
+            <span class="attest-by">Named by <span class="named slot">Name, role</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="charism">
+        <span class="charism-num">02</span>
+        <h3 class="charism-name"><span class="slot">Second charism</span></h3>
+        <div class="charism-body">
+          <p><span class="slot">What this gift looks like when Luke uses it, and the effect it has on the people on the other side of it.</span></p>
+          <div class="attest">
+            <q><span class="slot">Someone naming this gift in him, in their own words</span></q>
+            <span class="attest-by">Named by <span class="named slot">Name, role</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="charism">
+        <span class="charism-num">03</span>
+        <h3 class="charism-name"><span class="slot">Third charism</span></h3>
+        <div class="charism-body">
+          <p><span class="slot">What this gift looks like when Luke uses it, and the effect it has on the people on the other side of it.</span></p>
+          <div class="attest">
+            <q><span class="slot">Someone naming this gift in him, in their own words</span></q>
+            <span class="attest-by">Named by <span class="named slot">Name, role</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="heart">
+  <div class="wrap"><div class="col" style="max-width:44rem">
+    <div class="head">
+      <span class="eyebrow"><span class="tick">&#9679;</span>His heart for ministry</span>
+      <h2>Why he keeps showing up.</h2>
+    </div>
+    <div class="prose">
+      <p class="first"><span class="slot">In Luke's own voice: what he actually cares about. The conviction underneath the work, stated plainly rather than devotionally.</span></p>
+      <p><span class="slot">The people or the wound he keeps returning to. What he's seen that he can't unsee.</span></p>
+      <p><span class="slot">What he believes ministry is for, and what he thinks it is not for.</span></p>
+    </div>
+    <p class="lede" style="margin-top:36px; border-left:2px solid var(--sage); padding-left:20px;"><span class="slot">A single line from Luke that could carry the whole page</span></p>
+  </div></div>
+</section>
+
+<section id="led" class="rule-top">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow"><span class="tick">&#9679;</span>Work he's led</span>
+      <h2>Things he built, carried, or handed on.</h2>
+      <p>Listed in order because the order matters: each of these made the next one possible.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="ledger">
+      <div class="entry">
+        <span class="entry-when"><span class="slot">Years</span></span>
+        <div class="entry-what">
+          <h3><span class="slot">What he led</span></h3>
+          <span class="org"><span class="slot">Organization or parish</span></span>
+        </div>
+        <p class="entry-note"><span class="slot">What it was, what he was responsible for, and what came of it. One or two sentences, specific.</span></p>
+      </div>
+      <div class="entry">
+        <span class="entry-when"><span class="slot">Years</span></span>
+        <div class="entry-what">
+          <h3><span class="slot">What he led</span></h3>
+          <span class="org"><span class="slot">Organization or parish</span></span>
+        </div>
+        <p class="entry-note"><span class="slot">What it was, what he was responsible for, and what came of it.</span></p>
+      </div>
+      <div class="entry">
+        <span class="entry-when"><span class="slot">Years</span></span>
+        <div class="entry-what">
+          <h3><span class="slot">What he led</span></h3>
+          <span class="org"><span class="slot">Organization or parish</span></span>
+        </div>
+        <p class="entry-note"><span class="slot">What it was, what he was responsible for, and what came of it.</span></p>
+      </div>
+      <div class="entry">
+        <span class="entry-when"><span class="slot">Years</span></span>
+        <div class="entry-what">
+          <h3><span class="slot">What he led</span></h3>
+          <span class="org"><span class="slot">Organization or parish</span></span>
+        </div>
+        <p class="entry-note"><span class="slot">What it was, what he was responsible for, and what came of it.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="served">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow"><span class="tick">&#9679;</span>Other ministry he's served</span>
+      <h2>The rooms he's already been in.</h2>
+      <p>Shorter commitments, retreats, fill-ins, and long faithful stretches nobody put a title on.</p>
+    </div>
+    <div class="duo">
+      <div class="card">
+        <span class="card-kicker">Served with</span>
+        <h3><span class="slot">Ministry or community</span></h3>
+        <p><span class="slot">What he did there and roughly when.</span></p>
+      </div>
+      <div class="card">
+        <span class="card-kicker">Served with</span>
+        <h3><span class="slot">Ministry or community</span></h3>
+        <p><span class="slot">What he did there and roughly when.</span></p>
+      </div>
+      <div class="card">
+        <span class="card-kicker">Served with</span>
+        <h3><span class="slot">Ministry or community</span></h3>
+        <p><span class="slot">What he did there and roughly when.</span></p>
+      </div>
+      <div class="card">
+        <span class="card-kicker">Served with</span>
+        <h3><span class="slot">Ministry or community</span></h3>
+        <p><span class="slot">What he did there and roughly when.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="invitation" class="rule-top">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow"><span class="tick">&#9679;</span>The invitation</span>
+      <h2>Who he's looking for, and who he's looking to walk with.</h2>
+      <p>Two different questions, and a missionary page should answer both honestly.</p>
+    </div>
+    <div class="duo">
+      <div class="card">
+        <span class="card-kicker">Ministries he hopes to connect with</span>
+        <h3>Where he's asking to be sent</h3>
+        <p><span class="slot">A sentence framing the kind of ministry partnership Luke is hoping to find.</span></p>
+        <ul class="tick-list">
+          <li><span class="slot">Type of ministry, and what he'd bring to it</span></li>
+          <li><span class="slot">Type of ministry, and what he'd bring to it</span></li>
+          <li><span class="slot">Type of ministry, and what he'd bring to it</span></li>
+          <li><span class="slot">Type of ministry, and what he'd bring to it</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-kicker">People he's seeking to accompany</span>
+        <h3>Who he's for</h3>
+        <p><span class="slot">A sentence naming the people Luke feels drawn to walk alongside.</span></p>
+        <ul class="tick-list">
+          <li><span class="slot">Who they are, and what they're carrying</span></li>
+          <li><span class="slot">Who they are, and what they're carrying</span></li>
+          <li><span class="slot">Who they are, and what they're carrying</span></li>
+          <li><span class="slot">Who they are, and what they're carrying</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="origin" id="origin">
+  <div class="origin-in">
+    <div class="preface-label">
+      <span class="eyebrow"><span class="tick">&#9679;</span>How he got here</span>
+      <div class="hair"></div>
+    </div>
+    <div class="preface-body">
+      <p><span class="slot">The short blurb: how Luke ended up at Glass Canvas through a relationship rather than an application. Who knew him, what they saw, and what they said out loud.</span></p>
+      <p><span class="slot">And what that has meant since: how being named by other people changed what he understood his own work to be.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="close-in">
+    <span class="eyebrow hero-eyebrow"><span class="tick">&#9679;</span>Partner with Luke</span>
+    <h2>If you saw something here, say it out loud.</h2>
+    <p><span class="slot">Closing paragraph: what partnering actually means. Prayer, support, an introduction, a place to serve. Be concrete about the ask.</span></p>
+    <div class="btns">
+      <a class="btn btn-solid" href="mailto:hello@example.com"><span class="slot">Email address</span></a>
+      <a class="btn btn-line" href="#top">Back to the top</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Glass Canvas &middot; a relational ministry</span>
+  <span class="note">Gifts get named before they get titles.</span>
+</footer>
+
+<script>
+(function () {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var targets = document.querySelectorAll(".head, .charism, .entry, .card, .split > *, .preface-body, .prose, .close-in");
+  targets.forEach(function (el) { el.classList.add("rise"); });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+  targets.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
