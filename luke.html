@@ -335,27 +335,23 @@ h1 .family { display: block; color: var(--on-band-2); }
   .charism-body { grid-column: 1 / -1; }
 }
 
-/* ---------- ledger (work led / where served) ---------- */
-.ledger { display: grid; gap: 1px; background: var(--rule); border-block: 1px solid var(--rule); }
-.entry {
-  background: var(--paper);
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
-  gap: clamp(16px, 3vw, 44px);
-  padding-block: clamp(22px, 2.8vw, 30px);
-  align-items: baseline;
-  transition: background .18s ease;
+/* ---------- launches (work he's led) ---------- */
+.launches {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: clamp(12px, 1.4vw, 16px);
 }
-.entry:hover { background: var(--paper-2); }
-.entry-when {
-  font-size: 13px; font-weight: 600; color: var(--brass);
-  font-variant-numeric: tabular-nums; letter-spacing: 0.02em;
+.launch {
+  background: var(--card); padding: 26px 24px;
+  border: 1px solid var(--rule); border-radius: 4px;
+  display: grid; gap: 7px; align-content: start;
+  transition: background .18s ease, border-color .18s ease;
 }
-.entry-what { display: grid; gap: 4px; }
-.entry-what .org { font-size: 13.5px; color: var(--text-2); }
-.entry-note { color: var(--text-2); font-size: 16px; }
-@media (max-width: 780px) {
-  .entry { grid-template-columns: 1fr; gap: 8px; padding-block: 22px; }
+.launch:hover { background: var(--paper-2); border-color: var(--rule-firm); }
+.launch h3 {
+  font-family: var(--serif); font-size: 23px; font-weight: 400;
+  letter-spacing: -0.015em; line-height: 1.2;
 }
+.launch .org { font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
 
 /* ---------- two-up cards ---------- */
 .duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: clamp(16px, 2vw, 22px); align-items: start; }
@@ -433,17 +429,6 @@ footer .note { font-family: var(--serif); font-style: italic; }
   .rise.in { opacity: 1; transform: none; }
 }
 
-/* A byline without a quote: used where a gift was named, not described. */
-.byline {
-  display: inline-flex; align-items: baseline; gap: 8px;
-  font-size: 12px; font-weight: 600; letter-spacing: 0.07em;
-  text-transform: uppercase; color: var(--text-2);
-}
-.byline::before {
-  content: ""; width: 16px; height: 1.5px; background: var(--brass);
-  align-self: center; flex: none;
-}
-.byline .named { color: var(--brass); }
 
 .lede-cite {
   display: block; margin-top: 14px; padding-left: 20px;
@@ -452,7 +437,6 @@ footer .note { font-family: var(--serif); font-style: italic; }
 }
 .lede-cite .named { color: var(--sage); }
 
-.entry-what h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; letter-spacing: -0.015em; }
 </style>
 </head>
 <body>
@@ -493,9 +477,10 @@ footer .note { font-family: var(--serif); font-style: italic; }
       <h1><span class="given">Luke</span><span class="family">Schenk</span></h1>
       <p class="hero-line">A true companion. He comes alive when he can carry part of what someone else is carrying.</p>
       <div class="hero-facts">
+        <span class="fact">Calgary</span>
+        <span class="fact">Executive Director, Glass Canvas</span>
         <span class="fact">Husband and father of three</span>
         <span class="fact">Marriage mentor, with his wife</span>
-        <span class="fact">Zero to one</span>
       </div>
       <div class="hero-btns">
         <a class="btn btn-solid" href="#invitation">Partner with Luke</a>
@@ -516,7 +501,7 @@ footer .note { font-family: var(--serif); font-style: italic; }
         <h2>Father, son, husband, friend.</h2>
       </div>
       <div class="prose">
-        <p class="first">Luke would put those four words in that order, and he would mean it. He grew up inside a family already on mission: his parents were missionaries, so a life spent on other people was never an argument he had to win with himself. It was the house he was raised in.</p>
+        <p class="first">Luke would put those four words in that order, and he would mean it. He is from Calgary, and he grew up inside a family already on mission: his parents were missionaries, so a life spent on other people was never an argument he had to win with himself. It was the house he was raised in.</p>
         <p>What he does is companionship, in the older sense of the word. Luke comes alive when he can get underneath the weight of somebody else's life and take a share of it. Not counsel from a safe distance. He stays for the good news and he stays for the hard part, and he treats both as the same work.</p>
         <p>He is a maximizer. He can see what a person might become before they can see it themselves, and he has an unusual ability to set himself aside long enough to look for the good. Outside of all that: good meat, good barbecue, launching new ideas, and time with his family.</p>
       </div>
@@ -529,7 +514,7 @@ footer .note { font-family: var(--serif); font-style: italic; }
       <div class="photo-frame">
         <img src="/luke-family.webp" width="1400" height="1049" alt="Luke with his wife and three children in the desert." />
       </div>
-      <p class="photo-cap"><span class="slot">Caption: his wife's name, their three kids' names, and where this was taken</span></p>
+      <p class="photo-cap">Luke with his wife and their three kids.</p>
     </div>
   </div>
 </section>
@@ -549,7 +534,6 @@ footer .note { font-family: var(--serif); font-style: italic; }
         <h3 class="charism-name">Calm in the storm</h3>
         <div class="charism-body">
           <p>When a thing is going badly, Luke's presence does not change. That steadiness isn't distance, and it isn't that he feels it less. He has learned to stay useful while he feels it, which is why he tends to be among the first people called when something comes apart.</p>
-          <span class="byline">Named by <span class="named">Kevin Chiang</span>, Glass Canvas</span>
         </div>
       </div>
       <div class="charism">
@@ -557,7 +541,6 @@ footer .note { font-family: var(--serif); font-style: italic; }
         <h3 class="charism-name">Persistent and enduring love</h3>
         <div class="charism-body">
           <p>He does not run out. Luke cares deeply about people, and not a category of people. All of them. He keeps showing up long past the point where the relationship stops being convenient or interesting, and long past the point where most of us would have quietly moved on.</p>
-          <span class="byline">Named by <span class="named">Kevin Chiang</span>, Glass Canvas</span>
         </div>
       </div>
       <div class="charism">
@@ -565,7 +548,6 @@ footer .note { font-family: var(--serif); font-style: italic; }
         <h3 class="charism-name">Deep self-reflection</h3>
         <div class="charism-body">
           <p>Luke examines himself honestly and without theatre. It is what makes the first two gifts trustworthy rather than sentimental: he has done enough interior work to be steady for someone else without needing anything back from them for it.</p>
-          <span class="byline">Named by <span class="named">Kevin Chiang</span>, Glass Canvas</span>
         </div>
       </div>
     </div>
@@ -597,39 +579,25 @@ footer .note { font-family: var(--serif); font-style: italic; }
     </div>
   </div>
   <div class="wrap">
-    <div class="ledger">
-      <div class="entry">
-        <div class="entry-what">
-          <h3>Human</h3>
-          <span class="org">Chicago</span>
-        </div>
-        <p class="entry-note"><span class="slot">What Human is, and what Luke was responsible for there</span></p>
+    <div class="launches">
+      <div class="launch">
+        <h3>Human</h3>
+        <span class="org">Chicago</span>
       </div>
-      <div class="entry">
-        <div class="entry-what">
-          <h3>Unleash the Gospel</h3>
-          <span class="org">Archdiocese of Detroit</span>
-        </div>
-        <p class="entry-note">The archdiocese's effort to reorient itself around missionary discipleship rather than maintenance. <span class="slot">Luke's role in it</span></p>
+      <div class="launch">
+        <h3>Unleash the Gospel</h3>
+        <span class="org">The Archdiocese of Detroit's turn toward missionary discipleship</span>
       </div>
-      <div class="entry">
-        <div class="entry-what">
-          <h3>Tilma</h3>
-        </div>
-        <p class="entry-note"><span class="slot">What Tilma is, and what Luke was responsible for there</span></p>
+      <div class="launch">
+        <h3>Tilma</h3>
       </div>
-      <div class="entry">
-        <div class="entry-what">
-          <h3>Companion</h3>
-          <span class="org">App</span>
-        </div>
-        <p class="entry-note"><span class="slot">What Companion does, and what Luke was responsible for there</span></p>
+      <div class="launch">
+        <h3>Companion</h3>
+        <span class="org">App</span>
       </div>
-      <div class="entry">
-        <div class="entry-what">
-          <h3>Exodus 90</h3>
-        </div>
-        <p class="entry-note">The ninety-day spiritual exercise for Catholic men, built on prayer, asceticism, and fraternity. <span class="slot">Luke's role in it</span></p>
+      <div class="launch">
+        <h3>Exodus 90</h3>
+        <span class="org">The ninety-day exercise for Catholic men: prayer, asceticism, fraternity</span>
       </div>
     </div>
   </div>
@@ -687,23 +655,21 @@ footer .note { font-family: var(--serif); font-style: italic; }
         <h3>Who he's for</h3>
         <p>The people he keeps ending up next to, and would choose again.</p>
         <ul class="tick-list">
-          <li>Founders and leaders in the zero-to-one stretch, when the vision is real but nothing exists yet</li>
+          <li>Ministry leaders who need clarity before they can move</li>
+          <li>Leaders who need to accelerate, not just plan another year</li>
+          <li>Leaders trying to get the most out of the team they already have</li>
           <li>People in the middle of suffering, who need company more than they need counsel</li>
           <li>Married couples, especially the ones early enough to still be surprised by it</li>
-          <li>Men trying to work out what a serious interior life actually looks like</li>
-          <li>Anyone whose potential nobody has yet said out loud</li>
         </ul>
       </div>
       <div class="card">
         <span class="card-kicker">Ministries he hopes to connect with</span>
         <h3>Where he's asking to be sent</h3>
-        <p>Drawn from the work he has already carried.</p>
+        <p>Two situations in particular.</p>
         <ul class="tick-list">
-          <li>Ministries trying to launch something that does not exist yet</li>
-          <li>Diocesan renewal efforts asking hard questions about what comes next</li>
-          <li>Catholic products and apps that need strategy as much as they need code</li>
-          <li>Marriage and family ministry</li>
-          <li>Men's formation</li>
+          <li>Ministries that have been circling a good idea for years and have never found an effective way to launch it</li>
+          <li>Ministries that are already good and want to be great</li>
+          <li>Teams where the vision is clear and the path to it isn't</li>
         </ul>
       </div>
     </div>
@@ -718,8 +684,8 @@ footer .note { font-family: var(--serif); font-style: italic; }
     </div>
     <div class="preface-body">
       <p>Luke did not arrive at Glass Canvas through an application. He arrived through a relationship, which is the only way anyone has ever arrived here.</p>
-      <p><span class="slot">The specifics: who already knew Luke, what they saw in him, and what they said out loud that made this obvious to everyone else</span></p>
-      <p><span class="slot">And what that has meant since: how being named by other people changed what Luke understood his own work to be</span></p>
+      <p>The turn came quietly. Luke looked up one day and understood that he had been working beside his best friends for years, and that not one of them needed him to be the most competent person in the room. Nobody was keeping score of his performance. They loved him before he produced anything, and they would have gone on loving him if he produced nothing at all.</p>
+      <p>Agreeing with that is easy. Internalizing it is not, and he did. What it left him with is the conviction running underneath everything he does here: <em>a person's values and character are worth honoring on their own, before any of it is useful to anybody.</em> That is what he is now trying to give other people. It is also what was given to him first.</p>
     </div>
   </div>
 </section>
@@ -728,10 +694,10 @@ footer .note { font-family: var(--serif); font-style: italic; }
   <div class="close-in">
     <span class="eyebrow hero-eyebrow"><span class="tick">&#9679;</span>Partner with Luke</span>
     <h2>If you saw something here, say it out loud.</h2>
-    <p>That is the whole method. Somebody names a gift, and then a vocation has somewhere to go. If this page brought a person, a ministry, or an opportunity to mind, Luke would rather hear it than not.</p>
-    <p><span class="slot">The concrete ask: prayer, financial support, an introduction, a place to serve. Say which ones, and what a yes actually looks like.</span></p>
+    <p>That is the whole method. Somebody names a gift, and then a vocation has somewhere to go.</p>
+    <p>So if a ministry came to mind while you were reading &mdash; one that has been circling a good idea for years without a way to launch it, or one that is already good and wants to be great &mdash; the most useful thing you can do is make the introduction.</p>
     <div class="btns">
-      <a class="btn btn-solid" href="mailto:"><span class="slot">Email address</span></a>
+      <a class="btn btn-solid" href="mailto:luke@glasscanvas.io">luke@glasscanvas.io</a>
       <a class="btn btn-line" href="#top">Back to the top</a>
     </div>
   </div>
@@ -745,7 +711,7 @@ footer .note { font-family: var(--serif); font-style: italic; }
 <script>
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var targets = document.querySelectorAll(".head, .charism, .entry, .card, .split > *, .preface-body, .prose, .close-in");
+  var targets = document.querySelectorAll(".head, .charism, .launch, .card, .split > *, .preface-body, .prose, .close-in");
   targets.forEach(function (el) { el.classList.add("rise"); });
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
