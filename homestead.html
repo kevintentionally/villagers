@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Villagers Homestead</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a field-notebook proposal. Big hand-set hero, then a single readable column with wide "map" bands for the land and the math. */
+:root{
+  --bg:#eef1ee;          /* sea-fog */
+  --paper:#f8faf7;
+  --ink:#1c2a24;         /* spruce ink */
+  --muted:#56645d;
+  --line:#c9d3cc;
+  --moss:#2f5d46;        /* accent */
+  --moss-soft:#dce8e0;
+  --kelp:#9a7b2f;        /* secondary, used sparingly */
+  --display:"Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --body:"Newsreader", Georgia, "Times New Roman", serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121a17;--paper:#18221e;--ink:#e3ebe6;--muted:#9fb0a7;--line:#2c3a34;
+  --moss:#7fbf9b;--moss-soft:#1f3229;--kelp:#d4b261;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121a17;--paper:#18221e;--ink:#e3ebe6;--muted:#9fb0a7;--line:#2c3a34;
+  --moss:#7fbf9b;--moss-soft:#1f3229;--kelp:#d4b261;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.12rem;line-height:1.6;padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+.wrap{max-width:46rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wide{max-width:64rem}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.05;margin:0}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+a{color:var(--moss)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--moss);outline-offset:3px}
+
+/* hero */
+header{padding-block:3.5rem 2.5rem}
+.coords{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem}
+h1{font-size:clamp(2.8rem,10vw,6rem);font-weight:800;letter-spacing:-.03em;margin-top:1.4rem}
+h1 em{font-family:var(--body);font-style:italic;font-weight:400;color:var(--moss);letter-spacing:-.01em}
+.lede{font-size:1.35rem;margin-top:1.4rem;max-width:36rem}
+.tide{display:block;width:100%;height:42px;margin-top:2.5rem;color:var(--moss)}
+
+section{padding-block:2.75rem;border-top:1px solid var(--line)}
+section h2{font-size:clamp(1.7rem,5vw,2.4rem);font-weight:600;margin-top:.6rem;margin-bottom:1rem}
+section p+p{margin-top:1rem}
+
+/* who */
+.who{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem;margin-top:1.5rem}
+.who div{min-width:0;padding-top:1rem;border-top:3px solid var(--moss)}
+.who h3{font-size:1.25rem;font-weight:600;margin-bottom:.4rem}
+
+/* values */
+.values{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;gap:1.4rem}
+.values li{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;align-items:baseline}
+.values b{font-family:var(--display);font-size:1.3rem;font-weight:600;color:var(--moss)}
+@media (max-width:520px){.values li{grid-template-columns:1fr;gap:.2rem}}
+
+/* rhythm */
+.rhythm{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:1rem;margin-top:1.5rem}
+.rhythm div{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:1rem}
+.rhythm .eyebrow{color:var(--kelp)}
+.rhythm p{margin-top:.35rem;font-size:1rem}
+
+/* land */
+.band{background:var(--moss-soft)}
+.band section{border-top:none}
+.picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1rem;margin-top:1.5rem}
+.pick{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:1.2rem;display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.pick.lead{border-color:var(--moss);box-shadow:0 0 0 1px var(--moss)}
+.pick h3{font-size:1.25rem;font-weight:600}
+.price{font-family:var(--mono);font-size:.95rem;font-variant-numeric:tabular-nums;color:var(--moss)}
+.pick p{font-size:1rem}
+.tag{align-self:flex-start;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:var(--moss);color:var(--paper);padding:.2rem .5rem;border-radius:3px}
+.fine{font-size:.9rem;color:var(--muted);margin-top:1.2rem}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem;margin-top:1.5rem}
+@media (max-width:640px){.calc{grid-template-columns:1fr}}
+.inputs{display:grid;gap:1rem}
+.field label{display:flex;justify-content:space-between;gap:1rem;font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.field output{color:var(--ink);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--moss)}
+.out{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:1.25rem;display:grid;gap:1rem;align-content:start}
+.row{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:.6rem}
+.row:last-child{border-bottom:none;padding-bottom:0}
+.row span{font-size:1rem}
+.row strong{font-family:var(--display);font-size:1.5rem;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.row.big strong{font-size:2rem;color:var(--moss)}
+
+/* questions */
+.qs{list-style:none;padding:0;margin:1.25rem 0 0;display:grid;gap:.8rem}
+.qs li{padding-left:1.4rem;position:relative}
+.qs li::before{content:"?";position:absolute;left:0;font-family:var(--display);font-weight:800;color:var(--kelp)}
+
+/* ask */
+.ask{background:var(--ink);color:var(--bg)}
+.ask section{border-top:none;padding-block:3.5rem}
+.ask h2{font-size:clamp(2rem,6vw,3rem);font-weight:800}
+.ask .eyebrow{color:var(--moss-soft);opacity:.8}
+.steps{display:grid;gap:.8rem;margin-top:1.5rem;padding-left:1.2rem}
+footer{padding-block:2rem;font-size:.9rem;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.tide path{animation:drift 9s ease-in-out infinite alternate}@keyframes drift{to{transform:translateX(-40px)}}}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="coords eyebrow"><span>A Villagers proposal</span><span>Gabriola Island · 49.17°N 123.85°W</span><span>Draft · Nov 2026</span></div>
+  <h1>What if we just <em>lived</em> like this?</h1>
+  <p class="lede">We already share Sunday meals, babysit each other's kids and show up when life gets hard. This is a wild, half-serious idea to do it on the same piece of land.</p>
+  <svg class="tide" viewBox="0 0 800 42" preserveAspectRatio="none" aria-hidden="true"><path d="M0 21 Q 50 0 100 21 T 200 21 T 300 21 T 400 21 T 500 21 T 600 21 T 700 21 T 800 21 T 900 21" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+</header>
+
+<main>
+  <section class="wrap">
+    <span class="eyebrow">The itch</span>
+    <h2>Rent is brutal, and we only see each other twice a week</h2>
+    <p>Most of us are paying Lower Mainland rent for places that don't feel like home. Some of us are about to have babies with no grandparents nearby. Some of us are single and quietly tired of eating alone.</p>
+    <p>A shared homestead is one answer: a few homes on one piece of land, separate front doors, one big table. Kids grow up with a crowd of aunties and uncles. Nobody has to figure out life on their own.</p>
+  </section>
+
+  <section class="wrap">
+    <span class="eyebrow">Who it's for</span>
+    <h2>Families and singles, on purpose</h2>
+    <div class="who">
+      <div>
+        <h3>Families</h3>
+        <p>Your own place, your own sleep schedule. Plus built-in friends for your kids, shared childcare when you need a night off, and more hands at 6pm when everyone's melting down.</p>
+      </div>
+      <div>
+        <h3>Single people</h3>
+        <p>Not a guest room in someone else's life. A real place of your own, a real share and a real voice, with a community that notices if you haven't come out in a few days.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <span class="eyebrow">What holds it together</span>
+    <h2>Core values</h2>
+    <ul class="values">
+      <li><b>Belonging</b><span>Everyone has a place at the table, married or single, kids or no kids, early riser or night owl.</span></li>
+      <li><b>Freedom</b><span>Shared life, not shared everything. Separate homes, separate budgets, and the freedom to close your door.</span></li>
+      <li><b>Truth</b><span>We say the hard thing early and kindly, especially about money and expectations.</span></li>
+      <li><b>Grace</b><span>Things will go sideways. We'll get it wrong with each other, then forgive and try again.</span></li>
+      <li><b>Deeper</b><span>Fewer people, more depth. We're building a village, not a commune or a startup.</span></li>
+    </ul>
+  </section>
+
+  <section class="wrap">
+    <span class="eyebrow">What a week might look like</span>
+    <h2>The rhythm</h2>
+    <div class="rhythm">
+      <div><span class="eyebrow">Sunday</span><p>One long table, one big meal, rotating cooks.</p></div>
+      <div><span class="eyebrow">Tuesday</span><p>Villagers night, on the land.</p></div>
+      <div><span class="eyebrow">Saturdays</span><p>Garden, chickens, fixing whatever broke.</p></div>
+      <div><span class="eyebrow">Every day</span><p>Kids running between houses. Coffee on whoever's porch.</p></div>
+    </div>
+  </section>
+
+  <div class="band">
+    <section class="wrap wide">
+      <span class="eyebrow">The land we're dreaming about</span>
+      <h2>Gabriola Island, 20 minutes from Nanaimo by ferry</h2>
+      <div class="picks">
+        <article class="pick lead">
+          <span class="tag">Best fit now</span>
+          <h3>324 Easthom Rd + 440 North Rd</h3>
+          <span class="price">$1,749,000 · 5 units · ~20 acres</span>
+          <p>A waterfront lot with five homes already built, plus 18.5 undeveloped acres with approved water. Everyone can move in on day one, and there's land to build family homes as kids arrive.</p>
+        </article>
+        <article class="pick">
+          <h3>1320 North Rd + Lot 1 South Rd</h3>
+          <span class="price">~$1.7–1.8M · 1 home · ~24 acres</span>
+          <p>The dreamiest homestead: fenced fields, fruit trees, greenhouses and a chicken coop, plus nearly 20 ocean-view acres near Brickyard Beach. It needs building, so it's a slower start.</p>
+        </article>
+        <article class="pick">
+          <h3>1597 Starbuck Lane</h3>
+          <span class="price">~$1.4–1.6M · 9 bed · 5.27 acres</span>
+          <p>One huge house with 8 bathrooms. Great for the early years if the layout splits into suites, but tight once babies arrive.</p>
+        </article>
+      </div>
+      <p class="fine">Prices are from public listings in Nov 2026 and some vary by site. Nothing here is verified yet: zoning, water and tenancies all need checking.</p>
+    </section>
+  </div>
+
+  <section class="wrap">
+    <span class="eyebrow">The money, roughly</span>
+    <h2>What would it cost each household?</h2>
+    <p>Move the sliders. Single people count as half a share by default, since they'd usually take a smaller home. That's just a starting point for the conversation.</p>
+    <div class="calc">
+      <div class="inputs">
+        <div class="field"><label for="price">Purchase price <output id="priceOut"></output></label><input type="range" id="price" min="900000" max="2500000" step="25000" value="1750000"></div>
+        <div class="field"><label for="down">Down payment (total) <output id="downOut"></output></label><input type="range" id="down" min="350000" max="1000000" step="25000" value="500000"></div>
+        <div class="field"><label for="rate">Interest rate <output id="rateOut"></output></label><input type="range" id="rate" min="3" max="7" step="0.05" value="4.5"></div>
+        <div class="field"><label for="fam">Families <output id="famOut"></output></label><input type="range" id="fam" min="0" max="6" step="1" value="4"></div>
+        <div class="field"><label for="sing">Single people <output id="singOut"></output></label><input type="range" id="sing" min="0" max="6" step="1" value="2"></div>
+        <div class="field"><label for="weight">A single's share <output id="weightOut"></output></label><input type="range" id="weight" min="0.25" max="1" step="0.05" value="0.5"></div>
+      </div>
+      <div class="out" aria-live="polite">
+        <div class="row big"><span>Each family, per month</span><strong id="famMo">–</strong></div>
+        <div class="row"><span>Each single, per month</span><strong id="singMo">–</strong></div>
+        <div class="row"><span>Each family puts down</span><strong id="famDown">–</strong></div>
+        <div class="row"><span>Each single puts down</span><strong id="singDown">–</strong></div>
+        <div class="row"><span>Whole mortgage, per month</span><strong id="totMo">–</strong></div>
+      </div>
+    </div>
+    <p class="fine">Mortgage only, 25-year amortization, Canadian semi-annual compounding. It doesn't include property tax, insurance, upkeep, closing costs or BC property transfer tax. Over $1.5M, Canadian lenders need at least 20% down. This is a sketch, not financial advice.</p>
+  </section>
+
+  <section class="wrap">
+    <span class="eyebrow">Before anyone signs anything</span>
+    <h2>The questions we'd answer together</h2>
+    <ul class="qs">
+      <li>Who lives where, and what happens when a family outgrows their place?</li>
+      <li>If someone needs to leave, how do we value their share and buy them out?</li>
+      <li>How do we split bills, repairs and the work of keeping the land going?</li>
+      <li>How shared is shared? Meals and childcare, or friendly neighbours with fences?</li>
+      <li>Who decides things, and how do we work through disagreements?</li>
+      <li>Can we handle ferry life, an hour away from a hospital and big grocery stores?</li>
+    </ul>
+  </section>
+
+  <div class="ask">
+    <section class="wrap">
+      <span class="eyebrow">The ask</span>
+      <h2>Come dream about it over dinner.</h2>
+      <p style="margin-top:1rem">No commitment, no money, no pressure. Just an honest conversation about whether this could be us.</p>
+      <ol class="steps">
+        <li>Read this and sit with it for a week.</li>
+        <li>Come to a Sunday dinner where we talk it through.</li>
+        <li>If there's real interest, we visit Gabriola together on a day trip.</li>
+      </ol>
+    </section>
+  </div>
+</main>
+
+<footer class="wrap">A Villagers daydream, written down so we can talk about it.</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const money=n=>"$"+Math.round(n).toLocaleString("en-CA");
+function payment(L,annual,years=25){
+  if(L<=0)return 0;
+  const r=Math.pow(1+annual/200,1/6)-1, n=years*12;
+  return L*r/(1-Math.pow(1+r,-n));
+}
+function update(){
+  const price=+$("price").value, down=Math.min(+$("down").value,price), rate=+$("rate").value;
+  const fam=+$("fam").value, sing=+$("sing").value, w=+$("weight").value;
+  $("priceOut").textContent=money(price);
+  $("downOut").textContent=money(down)+" ("+Math.round(down/price*100)+"%)";
+  $("rateOut").textContent=rate.toFixed(2)+"%";
+  $("famOut").textContent=fam; $("singOut").textContent=sing;
+  $("weightOut").textContent=Math.round(w*100)+"% of a family";
+  const mo=payment(price-down,rate), shares=fam+sing*w;
+  $("totMo").textContent=money(mo);
+  if(shares===0){["famMo","singMo","famDown","singDown"].forEach(k=>$(k).textContent="–");return;}
+  $("famMo").textContent=fam?money(mo/shares):"–";
+  $("singMo").textContent=sing?money(mo*w/shares):"–";
+  $("famDown").textContent=fam?money(down/shares):"–";
+  $("singDown").textContent=sing?money(down*w/shares):"–";
+}
+document.querySelectorAll("input[type=range]").forEach(i=>i.addEventListener("input",update));
+update();
+</script>
+
+</body>
+</html>

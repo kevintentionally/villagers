@@ -77,10 +77,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.send_header("Content-Length", "0")
         self.end_headers()
 
-    def send_file(self, filepath, content_type="text/html"):
+    def send_file(self, filepath, content_type="text/html", noindex=False):
         content = Path(filepath).read_bytes()
         self.send_response(200)
         self.send_header("Content-Type", content_type)
+        if noindex:
+            self.send_header("X-Robots-Tag", "noindex, nofollow")
         self.send_header("Content-Length", str(len(content)))
         self.end_headers()
         self.wfile.write(content)
@@ -133,6 +135,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.send_file(BASE / "deborah.html")
         elif path == "/wall":
             self.send_file(BASE / "wall.html")
+        elif path == "/homestead":
+            # Private Villagers proposal: unlinked and kept out of search.
+            self.send_file(BASE / "homestead.html", noindex=True)
         elif path == "/api/memories":
             self.send_json(get_memories())
         else:
